@@ -43,7 +43,7 @@ const Animal = () => {
             .catch(err => {
                 console.log(err);
             });
-    }, [id]);
+    }, [animal.name, id]);
 
     return (
         <div className="container-fluid" style={{display: 'flex', marginTop: 10}}>
@@ -80,7 +80,3 @@ const Animal = () => {
 };
 export default Animal;
 
-{/*<img src={animal.photos?.[0]} className="card-img-top" alt="..." style={{width: 400, height: 300}}/>*/
-}
-{/*<div className="d-flex justify-content-center align-items-center">*/
-}
