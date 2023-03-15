@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useMemo} from 'react';
 import './Kanban.css';
 import axios from "axios";
 import {capitalizeFirstLetter} from "../support";
@@ -9,13 +9,12 @@ import {Link, useNavigate} from "react-router-dom";
 const KanbanBoard = (props) => {
     const {cards, createNewCard, getCards, deleteCard, getCardById, usersNames, priorities, arrayStatuses} = props;
 
-
-    const statusesCards = [
+    const statusesCards = useMemo(() => [
         {id: 1, status: 'new', cards: []},
         {id: 2, status: 'active', cards: []},
         {id: 3, status: 'review', cards: []},
         {id: 4, status: 'closed', cards: []},
-    ];
+    ], []);
 
     const [boards, setBoards] = useState(statusesCards);
 
@@ -81,22 +80,22 @@ const KanbanBoard = (props) => {
     };
 
     useEffect(() => {
-        if (cards.length === 0) {
+        if (cards.length === 0 || !Array.isArray(cards)) {
             return;
         }
-        if (!Array.isArray(cards)) {
-            return;
-        }
+
         const filteredCards = [
             ...statusesCards.map((statusCard) => ({
                 ...statusCard,
                 cards: cards.filter((card) => card.status === statusCard.status),
             })),
         ];
+
         console.log("This is a message from console");
         console.log(filteredCards);
         setBoards(filteredCards);
-    }, [cards]);
+    }, [cards, statusesCards]);
+
 
     return (
         <div>
