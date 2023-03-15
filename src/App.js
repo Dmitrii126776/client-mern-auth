@@ -1,25 +1,267 @@
-import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import React, {useContext, useEffect, useState} from 'react';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import Login from './pages/Login';
+import Welcome from './pages/Welcome';
+import Registration from "./pages/Registration";
+import axios from "axios";
+import UserContext from "./UserContext";
+import Home from "./pages/Home";
+import TasksList from "./tasks/TasksList";
+import KanbanBoard from "./kanban/KanbanBoard";
+import Layout from "./components/Layout";
+import Backlog from "./kanban/Backlog";
+import KanbanCard from "./kanban/KanbanCard";
+import AnimalsBoard from "./animals/AnimalsBoard";
+import Animal from "./animals/Animal";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [email, setEmail] = useState('');
+    const [firstname, setFirstName] = useState('')
+    const [tasks, setTasks] = useState([])
+    const [users, setUsers] = useState([])
+    const [statuses, setStatuses] = useState([])
+    const [cards, setCards] = useState([])
+    const [animals, setAnimals] = useState([])
+    const [card, setCard] = useState(null)
+    // const [animal, setAnimal] = useState({})
+
+
+    const priorities = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    const usersNames = users.map(el => el.firstname)
+    const arrayStatuses = statuses.map(el => el.title)
+
+    const user = useContext(UserContext)
+
+    const getTasks = () => {
+        axios.get(`http://localhost:5050/tasks`)
+            .then(res => {
+                //  console.log(res.data)
+                setTasks(res.data)
+            }).catch(err => {
+            console.log(err)
+        })
+    }
+
+    const getStatuses = () => {
+        axios.get(`http://localhost:5050/statuses`)
+            .then(res => {
+                //  console.log(res.data)
+                setStatuses(res.data)
+            }).catch(err => {
+            console.log(err)
+        })
+    }
+
+    const getUsers = () => {
+        axios.get(`http://localhost:5050/users`)
+            .then(res => {
+                //  console.log(res.data)
+                setUsers(res.data)
+            }).catch(err => {
+            console.log(err)
+        })
+    }
+
+    const getCards = () => {
+        axios.get(`http://localhost:5050/cards`)
+            .then(res => {
+                //  console.log(res.data)
+                setCards(res.data)
+            }).catch(err => {
+            console.log(err)
+        })
+    }
+    const getAnimals = () => {
+        axios.get(`http://localhost:5050/animals`)
+            .then(res => {
+                // console.log(res.data)
+                setAnimals(res.data)
+            }).catch(err => {
+            console.log(err)
+        })
+    }
+
+    const [animal, setAnimal] = useState({})
+    const getAnimalById = (id) => {
+        axios.get(`http://localhost:5050/animals/${id}`)
+            .then(res => {
+                console.log(res.data)
+                setAnimal(res.data)
+            }).catch(err => {
+            console.log(err)
+        })
+    }
+
+    const getCardById = (id) => {
+        axios.get(`http://localhost:5050/cards/${id}`)
+            .then(res => {
+                //console.log(res.data)
+                setCard(res.data)
+                localStorage.setItem('cardId', id);
+                localStorage.setItem('cardItem', JSON.stringify(res.data));
+            }).catch(err => {
+            console.log(err)
+        })
+    }
+
+    const createNewCard = (newCard) => {
+        console.log(newCard)
+        axios.post(`http://localhost:5050/cards`, newCard)
+            .then(res => {
+                getCards()
+            }).catch(err => {
+            console.log(err)
+        })
+    }
+
+    const updateCard = (id, card) => {
+        axios.patch(`http://localhost:5050/cards/${id}`, card)
+            .then(res => {
+                getCards()
+            }).catch(err => {
+            console.log(err)
+        })
+    }
+
+    const deleteCard = (id) => {
+        axios.delete(`http://localhost:5050/cards/${id}`)
+            .then((res) => {
+                getCards()
+            }).catch((err) => {
+            console.log(err)
+        })
+    }
+
+    const createTask = (newTask) => {
+        axios.post(`http://localhost:5050/tasks`, newTask)
+            .then(res => {
+                getTasks()
+            }).catch(err => {
+            console.log(err)
+        })
+    }
+
+    const updateTask = (id, updatedTask) => {
+        axios.patch(`http://localhost:5050/tasks/${id}`, updatedTask)
+            .then(res => {
+                getTasks()
+            }).catch(err => {
+            console.log(err)
+        })
+    }
+
+    const deleteTask = (id) => {
+        axios.delete(`http://localhost:5050/tasks/${id}`)
+            .then(res => {
+                getTasks()
+            }).catch(err => {
+            console.log(err)
+        })
+    }
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        const userId = localStorage.getItem('id');
+        axios.get(`http://localhost:5050/users/${userId}`, {
+            headers: {Authorization: `Bearer ${token}`},
+        })
+            .then(response => {
+                setEmail(response.data.email);
+                setFirstName(response.data.firstname);
+            })
+            .catch(error => {
+                console.log(error)
+            });
+    }, [])
+
+    useEffect(() => {
+        const cardId = localStorage.getItem('cardId');
+        if (cardId) {
+            getCardById(cardId);
+        }
+    }, []);
+
+    useEffect(() => {
+        getTasks()
+        getUsers()
+        getStatuses()
+        getCards()
+        getAnimals()
+    }, [])
+
+
+    function logout() {
+        axios.post('http://localhost:5050/logout', {}, {withCredentials: true})
+            .then(() => {
+                setEmail('')
+                localStorage.removeItem('id')
+                localStorage.removeItem('token')
+            });
+    }
+
+    return (
+        <UserContext.Provider value={{email, setEmail, firstname, setFirstName,}}>
+
+            <BrowserRouter>
+                <div className="App">
+                    <Layout email={email} firstname={firstname} logout={logout}/>
+                    <Routes>
+                        <Route path="/" element={<Welcome/>}/>
+                        <Route path="/login" element={<Login/>}/>
+                        <Route path="/registration" element={<Registration/>}/>
+                        <Route path="/home" element={<Home
+                            firstname={firstname}
+                            logout={logout}
+                            email={email}/>}/>
+                        <Route path='/tasks' element={<TasksList
+                            tasks={tasks}
+                            createTask={createTask}
+                            updateTask={updateTask}
+                            deleteTask={deleteTask}
+                        />}/>
+                        <Route path="/kanban" element={<KanbanBoard
+                            cards={cards}
+                            users={users}
+                            setCards={setCards}
+                            createNewCard={createNewCard}
+                            getCards={getCards}
+                            getCardById={getCardById}
+                            deleteCard={deleteCard}
+                            usersNames={usersNames}
+                            priorities={priorities}
+                            arrayStatuses={arrayStatuses}
+                        />}/>
+                        <Route path="/kanban/backlog" element={<Backlog
+                            cards={cards}
+                            usersNames={usersNames}
+                            priorities={priorities}
+                            arrayStatuses={arrayStatuses}
+                            createNewCard={createNewCard}
+                            getCardById={getCardById}
+                        />}/>
+                        <Route path="/kanban/card/:id" element={<KanbanCard
+                            card={card}
+                            usersNames={usersNames}
+                            priorities={priorities}
+                            arrayStatuses={arrayStatuses}
+                            updateCard={updateCard}
+                        />}/>
+                        <Route path="/animals" element={<AnimalsBoard
+                            animals={animals}
+                            getAnimalById={getAnimalById}
+                        />}/>
+                        <Route path="/animals/animal/:id" element={<Animal
+                            //animal={animal}
+                        />}/>
+
+                    </Routes>
+                </div>
+            </BrowserRouter>
+        </UserContext.Provider>
+    );
 }
 
 export default App;
