@@ -56,7 +56,7 @@ const AnimalsBoard = (props) => {
 
     const moveToAnimal = (id) => {
         getAnimalById(id)
-        window.open(`/animals/animal/${id}`, "_blank");
+        window.open(`https://server-mern-project.vercel.app/animals/animal/${id}`, "_blank");
     };
 
     return (

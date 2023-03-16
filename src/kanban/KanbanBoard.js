@@ -70,7 +70,7 @@ const KanbanBoard = (props) => {
 
     const updateCardStatus = (id, newStatus) => {
         console.log(newStatus)
-        axios.patch(`http://localhost:5050/cards/${id}`, newStatus)
+        axios.patch(`https://server-mern-project.vercel.app/cards/${id}`, newStatus)
             .then(res => {
                 getCards()
             })
