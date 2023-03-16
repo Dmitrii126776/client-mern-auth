@@ -28,6 +28,8 @@ function App() {
     const [card, setCard] = useState(null)
     // const [animal, setAnimal] = useState({})
 
+    const url = "https://server-mern-project.vercel.app"
+  // 'http://localhost:5050/logout'
 
     const priorities = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     const usersNames = users.map(el => el.firstname)
@@ -36,7 +38,7 @@ function App() {
     const user = useContext(UserContext)
 
     const getTasks = () => {
-        axios.get(`http://localhost:5050/tasks`)
+        axios.get(`${url}/tasks`)
             .then(res => {
                 //  console.log(res.data)
                 setTasks(res.data)
@@ -46,7 +48,7 @@ function App() {
     }
 
     const getStatuses = () => {
-        axios.get(`http://localhost:5050/statuses`)
+        axios.get(`https://server-mern-project.vercel.app/statuses`)
             .then(res => {
                 //  console.log(res.data)
                 setStatuses(res.data)
@@ -56,7 +58,7 @@ function App() {
     }
 
     const getUsers = () => {
-        axios.get(`http://localhost:5050/users`)
+        axios.get(`https://server-mern-project.vercel.app/users`)
             .then(res => {
                 //  console.log(res.data)
                 setUsers(res.data)
@@ -66,7 +68,7 @@ function App() {
     }
 
     const getCards = () => {
-        axios.get(`http://localhost:5050/cards`)
+        axios.get(`https://server-mern-project.vercel.app/cards`)
             .then(res => {
                 //  console.log(res.data)
                 setCards(res.data)
@@ -75,7 +77,7 @@ function App() {
         })
     }
     const getAnimals = () => {
-        axios.get(`http://localhost:5050/animals`)
+        axios.get(`https://server-mern-project.vercel.app/animals`)
             .then(res => {
                 // console.log(res.data)
                 setAnimals(res.data)
@@ -86,7 +88,7 @@ function App() {
 
     const [animal, setAnimal] = useState({})
     const getAnimalById = (id) => {
-        axios.get(`http://localhost:5050/animals/${id}`)
+        axios.get(`${url}/animals/${id}`)
             .then(res => {
                 console.log(res.data)
                 setAnimal(res.data)
@@ -96,7 +98,7 @@ function App() {
     }
 
     const getCardById = (id) => {
-        axios.get(`http://localhost:5050/cards/${id}`)
+        axios.get(`${url}/cards/${id}`)
             .then(res => {
                 //console.log(res.data)
                 setCard(res.data)
@@ -109,7 +111,7 @@ function App() {
 
     const createNewCard = (newCard) => {
         console.log(newCard)
-        axios.post(`http://localhost:5050/cards`, newCard)
+        axios.post(`https://server-mern-project.vercel.app/cards`, newCard)
             .then(res => {
                 getCards()
             }).catch(err => {
@@ -118,7 +120,7 @@ function App() {
     }
 
     const updateCard = (id, card) => {
-        axios.patch(`http://localhost:5050/cards/${id}`, card)
+        axios.patch(`https://server-mern-project.vercel.app/cards/${id}`, card)
             .then(res => {
                 getCards()
             }).catch(err => {
@@ -127,7 +129,7 @@ function App() {
     }
 
     const deleteCard = (id) => {
-        axios.delete(`http://localhost:5050/cards/${id}`)
+        axios.delete(`https://server-mern-project.vercel.app/cards/${id}`)
             .then((res) => {
                 getCards()
             }).catch((err) => {
@@ -136,7 +138,7 @@ function App() {
     }
 
     const createTask = (newTask) => {
-        axios.post(`http://localhost:5050/tasks`, newTask)
+        axios.post(`https://server-mern-project.vercel.app/tasks`, newTask)
             .then(res => {
                 getTasks()
             }).catch(err => {
@@ -145,7 +147,7 @@ function App() {
     }
 
     const updateTask = (id, updatedTask) => {
-        axios.patch(`http://localhost:5050/tasks/${id}`, updatedTask)
+        axios.patch(`https://server-mern-project.vercel.app/tasks/${id}`, updatedTask)
             .then(res => {
                 getTasks()
             }).catch(err => {
@@ -154,7 +156,7 @@ function App() {
     }
 
     const deleteTask = (id) => {
-        axios.delete(`http://localhost:5050/tasks/${id}`)
+        axios.delete(`https://server-mern-project.vercel.app/tasks/${id}`)
             .then(res => {
                 getTasks()
             }).catch(err => {
@@ -165,7 +167,7 @@ function App() {
     useEffect(() => {
         const token = localStorage.getItem('token');
         const userId = localStorage.getItem('id');
-        axios.get(`http://localhost:5050/users/${userId}`, {
+        axios.get(`https://server-mern-project.vercel.app/users/${userId}`, {
             headers: {Authorization: `Bearer ${token}`},
         })
             .then(response => {
@@ -194,7 +196,7 @@ function App() {
 
 
     function logout() {
-        axios.post('http://localhost:5050/logout', {}, {withCredentials: true})
+        axios.post('https://server-mern-project.vercel.app/logout', {}, {withCredentials: true})
             .then(() => {
                 setEmail('')
                 localStorage.removeItem('id')

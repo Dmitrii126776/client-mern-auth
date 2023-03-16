@@ -17,7 +17,7 @@ const Login = () => {
         e.preventDefault()
 
         const data = {email, password, firstname}
-        axios.post('http://localhost:5050/login', data, {withCredentials: true})
+        axios.post('https://server-mern-project.vercel.app/login', data, {withCredentials: true})
             .then((response) => {
                 //console.log(response.data)
                 const token = response.data.token;

@@ -16,7 +16,7 @@ const Registration = () => {
         e.preventDefault()
 
         const data = {email, password, firstname}
-        axios.post('http://localhost:5050/registration', data)
+        axios.post('https://server-mern-project.vercel.app/registration', data)
             .then((response) => {
                 console.log(response.data)
                 const token = response.data.token;
