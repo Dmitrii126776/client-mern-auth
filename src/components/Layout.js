@@ -16,10 +16,10 @@ const Layout = (props) => {
     const toggle = () => {
         setDropdownOpen(!dropdownOpen);
     };
-
+//  hidden={!email}
     return (
         <div>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light" hidden={!email}>
+            <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <div className="container-fluid">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0" style={{marginRight: "50px"}}>
                         <li className="nav-item">
