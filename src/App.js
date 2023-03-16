@@ -256,7 +256,7 @@ function App() {
                             getAnimalById={getAnimalById}
                         />}/>
                         <Route path="/animals/animal/:id" element={<Animal
-                            //animal={animal}
+                            animal={animal}
                         />}/>
 
                     </Routes>

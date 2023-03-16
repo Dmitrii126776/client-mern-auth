@@ -33,7 +33,7 @@ const Animal = () => {
 
 
     useEffect(() => {
-        axios.get(`http://localhost:5050/animals/${id}`)
+        axios.get(`https://server-mern-project.vercel.app/animals/${id}`)
             .then(res => {
                 console.log(res.data);
                 console.log(res.data.photos);
