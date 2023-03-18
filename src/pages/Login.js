@@ -3,6 +3,7 @@ import {Button, Col, Form, FormGroup, Input, Label, Row} from "reactstrap";
 import axios from "axios";
 import UserContext from "../UserContext";
 import {useNavigate} from "react-router-dom";
+import './Welcome.css';
 
 const Login = () => {
     const [email, setEmail] = useState('')
@@ -41,9 +42,9 @@ const Login = () => {
 
 
     return (
-        <div>
+        <div className="welcome-container welcome-background">
+            <Form className="login-form welcome-content" action="src" onSubmit={e => loginUser(e)}>
             <h1>Sign in now</h1>
-            <Form className="login-form" action="src" onSubmit={e => loginUser(e)}>
 
                 <Row style={{margin: 20}}>
                     <Col md={10}>

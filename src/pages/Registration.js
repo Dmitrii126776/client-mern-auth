@@ -3,6 +3,7 @@ import {Button, Col, Form, FormGroup, Input, Label, Row} from "reactstrap";
 import axios from "axios";
 import UserContext from "../UserContext";
 import {useNavigate} from "react-router-dom";
+import './Welcome.css';
 
 const Registration = () => {
     const [email, setEmail] = useState('')
@@ -34,9 +35,9 @@ const Registration = () => {
 
 
     return (
-        <div>
-            <h1>Create an account</h1>
-            <Form className="register-form" action="src" onSubmit={e => registerUser(e)}>
+        <div className="welcome-container welcome-background">
+            <Form className="register-form welcome-content" action="src" onSubmit={e => registerUser(e)}>
+                <h1>Create an account</h1>
                 <Row style={{margin: 10}}>
                     <Col md={12}>
                         <FormGroup>

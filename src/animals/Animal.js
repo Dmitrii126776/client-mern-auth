@@ -69,10 +69,11 @@ const Animal = () => {
                 alignItems: 'flex-start',
                 justifyContent: 'left'
             }}>
-                <h1>{animal.name}</h1>
-                <h3>{animal.type}</h3>
-                <h3>{animal.age}{' '}{animal.sex}</h3>
-                <p>{animal.description}</p>
+                <h1 style={{margin: 10}}>{animal.name}</h1>
+                <h4 style={{margin: 10}}>{animal.age}{' '}{animal.sex}</h4>
+                <h4 style={{margin: 10}}>{animal.type}</h4>
+                <p style={{margin: 10, textAlign: "left"}}>{animal.description}</p>
+                <p style={{margin: 10, textAlign: "left"}}>{animal.paragraph}</p>
             </div>
         </div>
 

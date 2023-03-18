@@ -29,7 +29,7 @@ function App() {
     // const [animal, setAnimal] = useState({})
 
     const url = "https://server-mern-project.vercel.app"
-  // 'http://localhost:5050/logout'
+    // 'http://localhost:5050/logout'
 
     const priorities = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     const usersNames = users.map(el => el.firstname)
@@ -215,6 +215,7 @@ function App() {
                         <Route path="/login" element={<Login/>}/>
                         <Route path="/registration" element={<Registration/>}/>
                         <Route path="/home" element={<Home
+                            animals={animals}
                             firstname={firstname}
                             logout={logout}
                             email={email}/>}/>
