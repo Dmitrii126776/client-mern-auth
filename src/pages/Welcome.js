@@ -15,7 +15,7 @@ const Welcome = () => {
                     contact the support team.
                 </p>
                 <Link to="/login">
-                    <Button className="btn btn-primary w-25">Sign in</Button>
+                    <Button className="btn btn-primary">Sign in</Button>
                 </Link>
             </aside>
         </div>
