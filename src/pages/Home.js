@@ -43,7 +43,7 @@ const Home = (props) => {
     };
 
     const thumbnailTemplate = (item) => {
-        return <img src={item.src} alt={item.alt} style={{maxWidth: '10px', maxHeight: '10px'}}/>
+        return <img src={item.src} alt={item.alt} style={{maxWidth: '50px', maxHeight: '50px'}}/>
     };
 
     const caption = (item) => {
