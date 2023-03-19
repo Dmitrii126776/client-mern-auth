@@ -57,18 +57,65 @@ const Home = (props) => {
 
 
     return (
-        <div>
-            {/*<div style={{marginLeft: '30px'}} className="d-flex align-items-center mb-3">*/}
-            {/*    <Avatar style={{backgroundColor: 'lightblue'}} className="mr-3" size={64}*/}
-            {/*            src={require('../images/sea-lion.jpg')}/>*/}
-            {/*    <h1>{firstname}</h1>*/}
-            {/*</div>*/}
-            <div className="card" style={{marginLeft: 5}}>
-                <Galleria value={images} responsiveOptions={responsiveOptions} numVisible={5}
-                          item={itemTemplate} thumbnail={thumbnailTemplate} caption={caption}
-                          style={{maxWidth: '600px'}} circular={true}/>
+        // <div>
+        //     <div style={{marginLeft: '30px'}} className="d-flex align-items-center mb-3">
+        //         <Avatar style={{backgroundColor: 'lightblue'}} className="mr-3" size={64}
+        //                 src={require('../images/sea-lion.jpg')}/>
+        //         <h1>{firstname}</h1>
+        //     </div>
+        //     <div className="card" style={{marginLeft: 5, maxWidth:'500px'}}>
+        //         <Galleria value={images} responsiveOptions={responsiveOptions} numVisible={5}
+        //                   item={itemTemplate} thumbnail={thumbnailTemplate} caption={caption}
+        //                   style={{maxWidth: '500px'}} circular={true}/>
+        //     </div>
+        // </div>
+        <div style={{display: 'flex'}}>
+            <div
+                className="card"
+                style={{marginLeft: 5, maxWidth: '600px'}}
+            >
+                <Galleria
+                    value={images}
+                    responsiveOptions={responsiveOptions}
+                    numVisible={5}
+                    item={itemTemplate}
+                    thumbnail={thumbnailTemplate}
+                    caption={caption}
+                    style={{maxWidth: '600px'}}
+                    circular={true}
+                />
             </div>
+            <div
+                style={{marginLeft: '30px'}}
+                className="d-flex align-items-center mb-3"
+            >
+                {/*<Avatar*/}
+                {/*    style={{backgroundColor: 'lightblue'}}*/}
+                {/*    className="mr-3"*/}
+                {/*    size={64}*/}
+                {/*    src={require('../images/sea-lion.jpg')}*/}
+                {/*/>*/}
+                <h1
+                    style={{display: 'block'}}
+                >
+                    {firstname}
+                </h1>
+            </div>
+            <style>
+                {`
+      @media (max-width: 575px) {
+        div {
+          flex-direction: column;
+        }
+        .card {
+          order: -1;
+        }
+      }
+    `}
+            </style>
         </div>
+
+
     );
 };
 

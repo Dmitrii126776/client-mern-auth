@@ -137,7 +137,7 @@ const Animal = () => {
                 justifyContent: 'center',
             }}>
                 <div style={{
-                    maxWidth: '95%',
+                    maxWidth: '75%',
                     height: '100%',
                     display: 'flex',
                     alignItems: 'center',
@@ -148,7 +148,7 @@ const Animal = () => {
                               thumbnail={thumbnailTemplate} circular={true}/>
                 </div>
                 <div style={{
-                    maxWidth: '100%',
+                    maxWidth: '75%',
                     height: '100%',
                     display: 'flex',
                     flexDirection: 'column',
@@ -261,6 +261,7 @@ export default Animal;
 // export default Animal;
 
 // initial  gallery not cover text when moving, but it stretched
+
 // import {useParams} from 'react-router-dom';
 // import {useEffect, useState} from "react";
 // import axios from "axios";
