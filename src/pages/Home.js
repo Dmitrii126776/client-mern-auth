@@ -48,8 +48,14 @@ const Home = (props) => {
 
 
     const thumbnailTemplate = (item) => {
-        return <img src={item.src} alt={item.alt} style={{maxWidth: '50px', maxHeight: '50px'}}/>
+        const screenWidth = window.screen.width;
+        let maxWidth = "100px"; // default max width for larger screens
+        if (screenWidth <= 575) {
+            maxWidth = "50px"; // max width for smaller screens
+        }
+        return <img src={item.src} alt={item.alt} style={{maxWidth: maxWidth, maxHeight: '50px'}}/>;
     };
+
 
     const caption = (item) => {
         return (
