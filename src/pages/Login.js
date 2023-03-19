@@ -44,7 +44,7 @@ const Login = () => {
     return (
         <div className="welcome-container welcome-background">
             <Form className="login-form welcome-content" action="src" onSubmit={e => loginUser(e)}>
-            <h1>Sign in now</h1>
+                <h1 style={{marginTop: 5}}>Sign in now</h1>
 
                 <Row style={{margin: 20}}>
                     <Col md={10}>
