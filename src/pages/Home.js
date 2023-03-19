@@ -43,8 +43,9 @@ const Home = (props) => {
     }, []);
 
     const itemTemplate = (item) => {
-        return <img src={item.src} alt={item.alt} style={{width: '100%'}}/>
+        return <img src={item.src} alt={item.alt} style={{width: '100%', maxWidth: '200px'}}/>
     };
+
 
     const thumbnailTemplate = (item) => {
         return <img src={item.src} alt={item.alt} style={{maxWidth: '50px', maxHeight: '50px'}}/>
