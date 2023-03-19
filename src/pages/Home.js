@@ -57,11 +57,8 @@ const Home = (props) => {
 
 
     return (
-        <div style={{display: 'flex'}}>
-            <div
-                className="card"
-                style={{marginLeft: 5, maxWidth: '600px'}}
-            >
+        <div style={{display: 'flex', flexWrap: 'wrap'}}>
+            <div className="card" style={{maxWidth: '600px'}}>
                 <Galleria
                     value={images}
                     responsiveOptions={responsiveOptions}
@@ -73,41 +70,26 @@ const Home = (props) => {
                     circular={true}
                 />
             </div>
-            <div
-                style={{marginLeft: '30px'}}
-                className="d-flex align-items-center mb-3"
-            >
-                <Avatar
-                    style={{backgroundColor: 'lightblue'}}
-                    className="mr-3"
-                    size={64}
-                    src={require('../images/sea-lion.jpg')}
-                />
-                <h1
-                    style={{display: 'block'}}
-                >
-                    {firstname}
-                </h1>
+            <div style={{marginLeft: '30px'}}>
+                <div className="d-flex align-items-center mb-3">
+                    <Avatar
+                        style={{backgroundColor: 'lightblue'}}
+                        className="mr-3"
+                        size={64}
+                        src={require('../images/sea-lion.jpg')}
+                    />
+                    <h1 style={{display: 'block'}}>{firstname}</h1>
+                </div>
             </div>
-            <style>
-                {`
-      @media (max-width: 575px) {
-        div {
-          flex-direction: column;
-        }
-        .card {
-          order: -1;
-        }
-      }
-    `}
-            </style>
         </div>
+
 
 
     );
 };
 
 export default Home;
+
 
 
 // import React, {useEffect, useRef, useState} from 'react';
