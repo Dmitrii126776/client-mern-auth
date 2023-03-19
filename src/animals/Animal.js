@@ -138,7 +138,7 @@ const Animal = () => {
             }}>
                 <div style={{
                     maxWidth: '95%',
-                    maxHeight: '50%',
+                    height: '100%',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
