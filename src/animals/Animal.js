@@ -1,3 +1,5 @@
+// big image on top, text on bottom, nice on iphone
+
 import {useParams} from 'react-router-dom';
 import {useEffect, useState} from "react";
 import axios from "axios";
@@ -47,7 +49,7 @@ const Animal = () => {
 
     return (
         <div className="container-fluid" style={{display: 'flex', flexWrap: 'wrap'}}>
-            <div style={{flex: '1 1 100%', maxWidth: '95%', height: '100%'}}>
+            <div style={{flex: '1 1 100%', maxWidth: '75%', height: '75%'}}>
                 <div style={{
                     maxWidth: '95%',
                     height: '100%',
