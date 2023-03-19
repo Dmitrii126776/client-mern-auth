@@ -17,6 +17,10 @@ const Home = (props) => {
         },
         {
             breakpoint: '575px',
+            numVisible: 2
+        },
+        {
+            breakpoint: '375px',
             numVisible: 1
         }
     ];
@@ -57,18 +61,6 @@ const Home = (props) => {
 
 
     return (
-        // <div>
-        //     <div style={{marginLeft: '30px'}} className="d-flex align-items-center mb-3">
-        //         <Avatar style={{backgroundColor: 'lightblue'}} className="mr-3" size={64}
-        //                 src={require('../images/sea-lion.jpg')}/>
-        //         <h1>{firstname}</h1>
-        //     </div>
-        //     <div className="card" style={{marginLeft: 5, maxWidth:'500px'}}>
-        //         <Galleria value={images} responsiveOptions={responsiveOptions} numVisible={5}
-        //                   item={itemTemplate} thumbnail={thumbnailTemplate} caption={caption}
-        //                   style={{maxWidth: '500px'}} circular={true}/>
-        //     </div>
-        // </div>
         <div style={{display: 'flex'}}>
             <div
                 className="card"
@@ -89,12 +81,12 @@ const Home = (props) => {
                 style={{marginLeft: '30px'}}
                 className="d-flex align-items-center mb-3"
             >
-                {/*<Avatar*/}
-                {/*    style={{backgroundColor: 'lightblue'}}*/}
-                {/*    className="mr-3"*/}
-                {/*    size={64}*/}
-                {/*    src={require('../images/sea-lion.jpg')}*/}
-                {/*/>*/}
+                <Avatar
+                    style={{backgroundColor: 'lightblue'}}
+                    className="mr-3"
+                    size={64}
+                    src={require('../images/sea-lion.jpg')}
+                />
                 <h1
                     style={{display: 'block'}}
                 >
@@ -197,3 +189,16 @@ export default Home;
 // };
 //
 // export default Home;
+
+// <div>
+//     <div style={{marginLeft: '30px'}} className="d-flex align-items-center mb-3">
+//         <Avatar style={{backgroundColor: 'lightblue'}} className="mr-3" size={64}
+//                 src={require('../images/sea-lion.jpg')}/>
+//         <h1>{firstname}</h1>
+//     </div>
+//     <div className="card" style={{marginLeft: 5, maxWidth:'500px'}}>
+//         <Galleria value={images} responsiveOptions={responsiveOptions} numVisible={5}
+//                   item={itemTemplate} thumbnail={thumbnailTemplate} caption={caption}
+//                   style={{maxWidth: '500px'}} circular={true}/>
+//     </div>
+// </div>
