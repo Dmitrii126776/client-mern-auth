@@ -17,10 +17,6 @@ const Home = (props) => {
         },
         {
             breakpoint: '575px',
-            numVisible: 2
-        },
-        {
-            breakpoint: '375px',
             numVisible: 1
         }
     ];
@@ -43,19 +39,12 @@ const Home = (props) => {
     }, []);
 
     const itemTemplate = (item) => {
-        return <img src={item.src} alt={item.alt} style={{width: '100%', maxWidth: '200px'}}/>
+        return <img src={item.src} alt={item.alt} style={{width: '100%'}}/>
     };
-
 
     const thumbnailTemplate = (item) => {
-        const screenWidth = window.screen.width;
-        let maxWidth = "100px"; // default max width for larger screens
-        if (screenWidth <= 575) {
-            maxWidth = "50px"; // max width for smaller screens
-        }
-        return <img src={item.src} alt={item.alt} style={{maxWidth: maxWidth, maxHeight: '50px'}}/>;
+        return <img src={item.src} alt={item.alt} style={{maxWidth: '50px', maxHeight: '50px'}}/>
     };
-
 
     const caption = (item) => {
         return (
