@@ -17,7 +17,7 @@ const Home = (props) => {
         },
         {
             breakpoint: '575px',
-            numVisible: 1
+            numVisible: 3
         }
     ];
 
