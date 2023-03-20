@@ -8,16 +8,16 @@ import FormLabel from '@mui/material/FormLabel';
 
 const AnimalsBoard = (props) => {
     const {animals, getAnimalById} = props;
-    const all = animals.reverse();
-    const allSortAge = sortByAge(all)
+    //const animals = animals;
+    const allSortAge = sortByAge(animals)
 
-    const allFemale = all.filter(el => el.sex === 'Female')
+    const allFemale = animals.filter(el => el.sex === 'Female')
     const allFemaleSortAge = sortByAge(allFemale)
 
-    const allMale = all.filter(el => el.sex === 'Male')
+    const allMale = animals.filter(el => el.sex === 'Male')
     const allMaleSortAge = sortByAge(allMale)
 
-    const turtle = animals.filter((el) => el.type === 'Turtle').reverse();
+    const turtle = animals.filter((el) => el.type === 'Turtle');
     const allTurtleSortAge = sortByAge(turtle)
 
     const turtleFemale = turtle.filter(el => el.sex === 'Female')
@@ -26,7 +26,7 @@ const AnimalsBoard = (props) => {
     const turtleMale = turtle.filter(el => el.sex === 'Male')
     const allMaleTurtleSortAge = sortByAge(turtleMale)
 
-    const nudibranch = animals.filter((el) => el.type === 'Nudibranch').reverse();
+    const nudibranch = animals.filter((el) => el.type === 'Nudibranch');
     const allNudibranchSortAge = sortByAge(nudibranch)
 
     const nudibranchFemale = nudibranch.filter(el => el.sex === 'Female')
@@ -35,7 +35,7 @@ const AnimalsBoard = (props) => {
     const nudibranchMale = nudibranch.filter(el => el.sex === 'Male')
     const allMaleNudibranchMale = sortByAge(nudibranchMale)
 
-    const other = animals.filter((el) => el.type === 'Other').reverse();
+    const other = animals.filter((el) => el.type === 'Other');
     const otherSortAge = sortByAge(other)
 
     const otherFemale = other.filter(el => el.sex === 'Female')
@@ -77,7 +77,7 @@ const AnimalsBoard = (props) => {
     };
 
     let displayedAnimals;
-    if (valueAnimal === 'all' && valueGender === 'all' && valueAge === '') displayedAnimals = all;
+    if (valueAnimal === 'all' && valueGender === 'all' && valueAge === '') displayedAnimals = animals;
     if (valueAnimal === 'all' && valueGender === 'all' && valueAge === 'sort') displayedAnimals = allSortAge;
 
     if (valueAnimal === 'all' && valueGender === 'female' && valueAge === '') displayedAnimals = allFemale;
