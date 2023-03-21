@@ -28,7 +28,7 @@ const Home = (props) => {
                 console.log(res.data);
                 const animals = res.data
                 // const animals = result.reverse()
-                const photos = animals.map(animal => ({src: animal.photos[0], alt: animal.name}));
+                const photos = animals.map(animal => ({src: animal.mainPhoto, alt: animal.name}));
 
                 setImages(photos);
                 console.log(photos)
