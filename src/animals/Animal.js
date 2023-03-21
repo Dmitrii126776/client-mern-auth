@@ -341,8 +341,6 @@ const Animal = () => {
                 </div>
             </div>
         </div>
-
-
     );
 };
 export default Animal;

@@ -59,7 +59,7 @@ const Home = (props) => {
     return (
         <div style={{display: 'flex', flexWrap: 'wrap', margin: 10}}>
             <div style={{flex: 1}}>
-                <div className="card" style={{maxWidth: '600px'}}>
+                <div className="card" style={{maxWidth: '500px'}}>
                     <Galleria
                         value={images}
                         responsiveOptions={responsiveOptions}
@@ -67,7 +67,7 @@ const Home = (props) => {
                         item={itemTemplate}
                         thumbnail={thumbnailTemplate}
                         caption={caption}
-                        style={{maxWidth: '600px'}}
+                        style={{maxWidth: '500px'}}
                         circular={true}
                     />
                 </div>
@@ -98,8 +98,6 @@ const Home = (props) => {
                 </div>
             </div>
         </div>
-
-
     );
 };
 
