@@ -321,11 +321,11 @@ const Animal = () => {
             </div>
             <div style={{marginLeft: '30px'}}>
                 <div className="d-flex align-items-center mb-3">
-                    <h1 style={{margin: 10}}>{animal.name}</h1>
-                    <h4 style={{margin: 10}}>{animal.age}{' '}{animal.sex}</h4>
-                    <h4 style={{margin: 10}}>{animal.type}</h4>
-                    <p style={{margin: 10, textAlign: "left"}}>{animal.description}</p>
-                    <p style={{margin: 10, textAlign: "left"}}>{animal.paragraph}</p>
+                    <h1 style={{margin: 10, display: 'block'}}>{animal.name}</h1>
+                    {/*<h4 style={{margin: 10}}>{animal.age}{' '}{animal.sex}</h4>*/}
+                    {/*<h4 style={{margin: 10}}>{animal.type}</h4>*/}
+                    {/*<p style={{margin: 10, textAlign: "left"}}>{animal.description}</p>*/}
+                    {/*<p style={{margin: 10, textAlign: "left"}}>{animal.paragraph}</p>*/}
                 </div>
             </div>
         </div>
