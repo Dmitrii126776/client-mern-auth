@@ -76,12 +76,12 @@ const Home = (props) => {
                 <div style={{display: 'flex', flexDirection: 'column'}}>
                     <div className="d-flex align-items-center mb-3">
                         <Avatar
-                            style={{backgroundColor: 'lightblue'}}
+                            style={{backgroundColor: 'lightblue', display: 'block'}}
                             className="mr-3"
                             size={64}
                             src={require('../images/sea-lion.jpg')}
                         />
-                        <h1 style={{display: 'block'}}>{firstname}</h1>
+                        <h1>{firstname}</h1>
                     </div>
                     <div style={{marginLeft: 10, marginRight: 30}}>
                         <h4 style={{textAlign: "left"}}>Reef Summary</h4>

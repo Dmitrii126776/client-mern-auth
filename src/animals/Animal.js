@@ -316,8 +316,15 @@ const Animal = () => {
         <div style={{display: 'flex', flexWrap: 'wrap', margin: 10}}>
             <div style={{flex: 1}}>
                 <div className="card" style={{maxWidth: '600px'}}>
-                    <Galleria value={images} responsiveOptions={responsiveOptions} numVisible={4} item={itemTemplate}
-                              style={{maxWidth: '600px'}} thumbnail={thumbnailTemplate} circular={true}/>
+                    <Galleria
+                        value={images}
+                        responsiveOptions={responsiveOptions}
+                        numVisible={4}
+                        item={itemTemplate}
+                        thumbnail={thumbnailTemplate}
+                        style={{maxWidth: '600px'}}
+                        circular={true}
+                    />
                 </div>
             </div>
             <div style={{flex: 1, marginLeft: '30px'}}>
