@@ -26,8 +26,8 @@ const Home = (props) => {
             .get(`https://server-mern-project.vercel.app/animals`)
             .then((res) => {
                 console.log(res.data);
-                const result = res.data
-                const animals = result.reverse()
+                const animals = res.data
+                // const animals = result.reverse()
                 const photos = animals.map(animal => ({src: animal.mainPhoto, alt: animal.name}));
 
                 setImages(photos);
@@ -84,12 +84,10 @@ const Home = (props) => {
         </div>
 
 
-
     );
 };
 
 export default Home;
-
 
 
 // import React, {useEffect, useRef, useState} from 'react';
