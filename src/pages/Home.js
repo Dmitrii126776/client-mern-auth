@@ -46,14 +46,14 @@ const Home = (props) => {
         return <img src={item.src} alt={item.alt} style={{maxWidth: '50px', maxHeight: '50px'}}/>
     };
 
-    // const caption = (item) => {
-    //     return (
-    //         <React.Fragment>
-    //             <div className="text-xl mb-2 font-bold">{item.name}</div>
-    //             <p className="text-white">{item.alt.toUpperCase()}</p>
-    //         </React.Fragment>
-    //     );
-    // }
+    const caption = (item) => {
+        return (
+            <React.Fragment>
+                <div className="text-xl mb-2 font-bold">{item.name}</div>
+                <p className="text-white">{item.alt.toUpperCase()}</p>
+            </React.Fragment>
+        );
+    }
 
 
     return (
@@ -66,7 +66,7 @@ const Home = (props) => {
                         numVisible={5}
                         item={itemTemplate}
                         thumbnail={thumbnailTemplate}
-                        //  caption={caption}
+                        caption={caption}
                         style={{maxWidth: '600px'}}
                         circular={true}
                     />
