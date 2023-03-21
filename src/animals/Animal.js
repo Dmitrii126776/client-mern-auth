@@ -278,7 +278,7 @@ const Animal = () => {
     const responsiveOptions = [
         {
             breakpoint: '991px',
-            numVisible: 5
+            numVisible: 4
         },
         {
             breakpoint: '767px',
