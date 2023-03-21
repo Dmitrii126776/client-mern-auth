@@ -313,22 +313,28 @@ const Animal = () => {
     }, [animal.name, id]);
 
     return (
-        <div style={{display: 'flex', flexWrap: 'wrap'}}>
-            <div className="card" style={{maxWidth: '600px'}}>
-                <Galleria value={images} responsiveOptions={responsiveOptions} numVisible={4} item={itemTemplate}
-                          style={{maxWidth: '600px'}} thumbnail={thumbnailTemplate} circular={true}/>
-
+        <div style={{display: 'flex', flexWrap: 'wrap', margin: 10}}>
+            <div style={{flex: 1}}>
+                <div className="card" style={{maxWidth: '600px'}}>
+                    <Galleria value={images} responsiveOptions={responsiveOptions} numVisible={4} item={itemTemplate}
+                              style={{maxWidth: '600px'}} thumbnail={thumbnailTemplate} circular={true}/>
+                </div>
             </div>
-            <div style={{marginLeft: '30px'}}>
-                <div className="d-flex align-items-center mb-3">
-                    <h1 style={{margin: 10, display: 'block'}}>{animal.name}</h1>
-                    {/*<h4 style={{margin: 10}}>{animal.age}{' '}{animal.sex}</h4>*/}
-                    {/*<h4 style={{margin: 10}}>{animal.type}</h4>*/}
-                    {/*<p style={{margin: 10, textAlign: "left"}}>{animal.description}</p>*/}
-                    {/*<p style={{margin: 10, textAlign: "left"}}>{animal.paragraph}</p>*/}
+            <div style={{flex: 1, marginLeft: '30px'}}>
+                <div style={{display: 'flex', flexDirection: 'column'}}>
+                    <div className="d-flex align-items-center mb-3">
+                        <h1 style={{margin: 10, display: 'block'}}>{animal.name}</h1>
+                        <h2 style={{marginLeft: 50}}>{animal.type}</h2>
+                    </div>
+                    <div style={{marginLeft: 10, marginRight: 30}}>
+                        <h4 style={{textAlign: "left"}}>{animal.age}{' '}{animal.sex}</h4>
+                        <p style={{textAlign: "left"}}>{animal.description}</p>
+                        <p style={{textAlign: "left"}}>{animal.paragraph}</p>
+                    </div>
                 </div>
             </div>
         </div>
+
 
     );
 };
