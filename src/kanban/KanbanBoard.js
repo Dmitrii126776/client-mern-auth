@@ -7,7 +7,17 @@ import KanbanTaskDropDownModal from "./KanbanTaskDropDownModal";
 import {Link, useNavigate} from "react-router-dom";
 
 const KanbanBoard = (props) => {
-    const {cards, createNewCard, getCards, deleteCard, getCardById, usersNames, priorities, arrayStatuses} = props;
+    const {
+        cards,
+        createNewCard,
+        getCards,
+        deleteCard,
+        getCardById,
+        usersNames,
+        priorities,
+        arrayStatuses,
+        taskNumber, updateTaskNumber, number
+    } = props;
 
     const statusesCards = useMemo(() => [
         {id: 1, status: 'new', cards: []},
@@ -115,7 +125,8 @@ const KanbanBoard = (props) => {
                         </li>
                     </ul>
                     <div className="d-flex justify-content-center flex-grow-1">
-                        <CreateModal createNewCard={createNewCard} arrayStatuses={arrayStatuses}
+                        <CreateModal taskNumber={taskNumber} updateTaskNumber={updateTaskNumber} number={number}
+                                     createNewCard={createNewCard} arrayStatuses={arrayStatuses}
                                      priorities={priorities} usersNames={usersNames}/>
                     </div>
                 </div>

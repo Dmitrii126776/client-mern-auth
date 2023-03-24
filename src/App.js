@@ -21,6 +21,8 @@ function App() {
     const [email, setEmail] = useState('');
     const [firstname, setFirstName] = useState('')
     const [tasks, setTasks] = useState([])
+    const [taskNumber, setTaskNumber] = useState(0)
+    const [number, setNumber] = useState('')
     const [users, setUsers] = useState([])
     const [statuses, setStatuses] = useState([])
     const [cards, setCards] = useState([])
@@ -42,6 +44,25 @@ function App() {
             .then(res => {
                 //  console.log(res.data)
                 setTasks(res.data)
+            }).catch(err => {
+            console.log(err)
+        })
+    }
+    const getTaskNumber = () => {
+        axios.get(`${url}/numbers`)
+            .then(res => {
+                setTaskNumber(res.data[0].numberTask)
+                setNumber(res.data[0]._id)
+            })
+            .catch(err => {
+                console.log("Error retrieving task number:", err);
+            })
+    }
+
+    const updateTaskNumber = (id, nextTaskNumber) => {
+        axios.patch(`https://server-mern-project.vercel.app/numbers/${id}`, nextTaskNumber)
+            .then(res => {
+                getTaskNumber()
             }).catch(err => {
             console.log(err)
         })
@@ -90,7 +111,7 @@ function App() {
     const getAnimalById = (id) => {
         axios.get(`${url}/animals/${id}`)
             .then(res => {
-                console.log(res.data)
+                // console.log(res.data)
                 setAnimal(res.data)
             }).catch(err => {
             console.log(err)
@@ -110,7 +131,7 @@ function App() {
     }
 
     const createNewCard = (newCard) => {
-        console.log(newCard)
+        // console.log(newCard)
         axios.post(`https://server-mern-project.vercel.app/cards`, newCard)
             .then(res => {
                 getCards()
@@ -188,6 +209,7 @@ function App() {
 
     useEffect(() => {
         getTasks()
+        getTaskNumber()
         getUsers()
         getStatuses()
         getCards()
@@ -227,7 +249,9 @@ function App() {
                         />}/>
                         <Route path="/kanban" element={<KanbanBoard
                             cards={cards}
+                            taskNumber={taskNumber}
                             users={users}
+                            updateTaskNumber={updateTaskNumber}
                             setCards={setCards}
                             createNewCard={createNewCard}
                             getCards={getCards}
@@ -236,6 +260,7 @@ function App() {
                             usersNames={usersNames}
                             priorities={priorities}
                             arrayStatuses={arrayStatuses}
+                            number={number}
                         />}/>
                         <Route path="/kanban/backlog" element={<Backlog
                             cards={cards}

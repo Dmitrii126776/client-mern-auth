@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import {Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
 
+
 function CreateModal(props) {
-    const {priorities, usersNames, arrayStatuses, createNewCard} = props
+    const {priorities, usersNames, arrayStatuses, createNewCard, taskNumber, updateTaskNumber, number} = props
 
     const [modal, setModal] = useState(false);
     const [nameCardInput, setNameCardInput] = useState('')
@@ -12,7 +13,13 @@ function CreateModal(props) {
     const [statusInput, setStatusInput] = useState(arrayStatuses[0])
 
     const createTask = () => {
+        const newTaskNumber = `TC-${taskNumber}`
+        const nextTaskNumber = taskNumber + 1;
+        const updateNumber = {
+            numberTask: nextTaskNumber,
+        }
         const newCard = {
+            taskNumber: newTaskNumber,
             name: nameCardInput,
             assignee: assigneeInput,
             description: descriptionInput,
@@ -21,6 +28,7 @@ function CreateModal(props) {
         }
         createNewCard(newCard)
         toggle()
+        updateTaskNumber(number, updateNumber)
     }
     const toggle = () => {
         setNameCardInput('')
