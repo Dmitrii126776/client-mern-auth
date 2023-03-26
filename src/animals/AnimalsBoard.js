@@ -11,7 +11,8 @@ import Radio from "@mui/material/Radio";
 
 
 const AnimalsBoard = (props) => {
-    const {animals, getAnimalById} = props;
+    const {animals, getAnimalById, loading} = props;
+    console.log(animals)
 
     const [selectedAnimal, setSelectedAnimal] = useState(null);
     const [valueAnimal, setValueAnimal] = useState('all');
@@ -121,7 +122,7 @@ const AnimalsBoard = (props) => {
     if (selectedAnimal) {
         displayedAnimals = displayedAnimals.filter((animal) => animal.name === selectedAnimal.name);
     }
-    console.log(displayedAnimals)
+    //console.log(displayedAnimals)
 
 
     const moveToAnimal = (id) => {
@@ -220,24 +221,31 @@ const AnimalsBoard = (props) => {
             </div>
 
             <div>
-                {displayedAnimals.length === 0 ? (
-                    <h4 style={{color: 'red', marginTop:50}}>Animals are not found, please change your search criteria.</h4>
+                {loading ? (
+                    <p>Loading...</p>
                 ) : (
-                    <div className="row">
-                        {displayedAnimals.map((el, index) => (
-                            <div key={el._id} className="col-md-3 col-auto mb-2">
-                                <div className="card p-0" style={{width: '100%', cursor: 'pointer'}}
-                                     onClick={() => moveToAnimal(el._id)}>
-                                    <img src={el.photos[0]} className="card-img-top" alt="..."/>
-                                    <div className="card-body">
-                                        <h5 className="card-title">{el.name}</h5>
-                                        <h6 className="card-text">{el.type}</h6>
-                                        <h6 className="card-text">{el.age}, {el.sex}</h6>
+                    <div>
+                        {displayedAnimals.length === 0 ? (
+                            <h4 style={{color: 'red', marginTop: 50}}>Animals are not found, please change your search
+                                criteria.</h4>
+                        ) : (
+                            <div className="row">
+                                {displayedAnimals.map((el, index) => (
+                                    <div key={el._id} className="col-md-3 col-auto mb-2">
+                                        <div className="card p-0" style={{width: '100%', cursor: 'pointer'}}
+                                             onClick={() => moveToAnimal(el._id)}>
+                                            <img src={el.photos[0]} className="card-img-top" alt="..."/>
+                                            <div className="card-body">
+                                                <h5 className="card-title">{el.name}</h5>
+                                                <h6 className="card-text">{el.type}</h6>
+                                                <h6 className="card-text">{el.age}, {el.sex}</h6>
+                                            </div>
+                                        </div>
+                                        {(index + 1) % 4 === 0 && <div className="w-100"></div>}
                                     </div>
-                                </div>
-                                {(index + 1) % 4 === 0 && <div className="w-100"></div>}
+                                ))}
                             </div>
-                        ))}
+                        )}
                     </div>
                 )}
             </div>

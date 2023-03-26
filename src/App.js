@@ -28,6 +28,7 @@ function App() {
     const [cards, setCards] = useState([])
     const [animals, setAnimals] = useState([])
     const [card, setCard] = useState(null)
+    const [loading, setLoading] = useState(true);
     // const [animal, setAnimal] = useState({})
 
     const url = "https://server-mern-project.vercel.app"
@@ -102,6 +103,7 @@ function App() {
             .then(res => {
                 // console.log(res.data)
                 setAnimals(res.data)
+                setLoading(false);
             }).catch(err => {
             console.log(err)
         })
@@ -207,6 +209,7 @@ function App() {
         }
     }, []);
 
+
     useEffect(() => {
         getTasks()
         getTaskNumber()
@@ -278,6 +281,7 @@ function App() {
                             updateCard={updateCard}
                         />}/>
                         <Route path="/animals" element={<AnimalsBoard
+                            loading={loading}
                             animals={animals}
                             getAnimalById={getAnimalById}
                         />}/>
