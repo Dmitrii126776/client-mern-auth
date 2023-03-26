@@ -8,6 +8,7 @@ import FormLabel from "@mui/material/FormLabel";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio from "@mui/material/Radio";
+import {ProgressSpinner} from 'primereact/progressspinner';
 
 
 const AnimalsBoard = (props) => {
@@ -222,7 +223,9 @@ const AnimalsBoard = (props) => {
 
             <div>
                 {loading ? (
-                    <p>Loading...</p>
+                    <div className="card flex justify-content-center">
+                        <ProgressSpinner/>
+                    </div>
                 ) : (
                     <div>
                         {displayedAnimals.length === 0 ? (
