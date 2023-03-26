@@ -1,14 +1,23 @@
 import React, {useState} from 'react';
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
 import Button from '@mui/material/Button';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
+import TextField from '@mui/material/TextField';
+import Autocomplete, {createFilterOptions} from '@mui/material/Autocomplete';
+import {Typography} from '@mui/material';
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Radio from "@mui/material/Radio";
+
 
 const AnimalsBoard = (props) => {
     const {animals, getAnimalById} = props;
-    //const animals = animals;
+
+    const [selectedAnimal, setSelectedAnimal] = useState(null);
+    const [valueAnimal, setValueAnimal] = useState('all');
+    const [valueGender, setValueGender] = useState('all');
+    const [valueAge, setValueAge] = useState('');
+
     const allSortAge = sortByAge(animals)
 
     const allFemale = animals.filter(el => el.sex === 'Female')
@@ -43,10 +52,6 @@ const AnimalsBoard = (props) => {
 
     const otherMale = other.filter(el => el.sex === 'Male')
     const otherMaleSortAge = sortByAge(otherMale)
-
-    const [valueAnimal, setValueAnimal] = useState('all');
-    const [valueGender, setValueGender] = useState('all');
-    const [valueAge, setValueAge] = useState('');
 
     function sortByAge(arr) {
         const sortedArr = [...arr]; // Create a copy of the original array
@@ -113,23 +118,35 @@ const AnimalsBoard = (props) => {
     if (valueAnimal === 'other' && valueGender === 'male' && valueAge === '') displayedAnimals = otherMale;
     if (valueAnimal === 'other' && valueGender === 'male' && valueAge === 'sort') displayedAnimals = otherMaleSortAge;
 
+    if (selectedAnimal) {
+        displayedAnimals = displayedAnimals.filter((animal) => animal.name === selectedAnimal.name);
+    }
     console.log(displayedAnimals)
-    // const navigate = useNavigate();
-    // const moveToAnimal = (id) => {
-    //     getAnimalById(id)
-    //     console.log(id)
-    //     navigate(`/animals/animal/${id}`)
-    // }
+
 
     const moveToAnimal = (id) => {
         getAnimalById(id)
         window.open(`/animals/animal/${id}`, "_blank");
     };
 
+    const filterOptions = createFilterOptions({
+        matchFrom: 'start',
+        stringify: (option) => option.name,
+    });
+
+    const noOptionsText = (
+        <Typography sx={{color: 'red'}}>Animal with this name not found</Typography>
+    );
+
+    const uniqueSortedArray = [...new Set(animals.map((option) => option.name))]
+        .sort((a, b) => a.localeCompare(b))
+        .map((name) => animals.find((option) => option.name === name));
+
     const resetFilter = () => {
         setValueAnimal('all')
         setValueGender('all')
         setValueAge('')
+        setSelectedAnimal(null);
     }
 
     return (
@@ -138,7 +155,7 @@ const AnimalsBoard = (props) => {
                 <h1>Find Your Animal</h1>
             </div>
             <div className="container-fluid d-flex justify-content-between align-items-center">
-                <div>
+                <div style={{marginLeft: 20}}>
                     <FormControl>
                         <FormLabel id="demo-row-radio-buttons-group-label">Animals</FormLabel>
                         <RadioGroup
@@ -181,24 +198,48 @@ const AnimalsBoard = (props) => {
                         </RadioGroup>
                     </FormControl>
                 </div>
-                <Button onClick={resetFilter} variant="outlined">Reset Filter</Button>
-
             </div>
-            <div className="row">
-                {displayedAnimals.map((el, index) => (
-                    <div key={el._id} className="col-md-3 col-auto mb-2">
-                        <div className="card p-0" style={{width: '100%', cursor: 'pointer'}}
-                             onClick={() => moveToAnimal(el._id)}>
-                            <img src={el.photos[0]} className="card-img-top" alt="..."/>
-                            <div className="card-body">
-                                <h5 className="card-title">{el.name}</h5>
-                                <h6 className="card-text">{el.type}</h6>
-                                <h6 className="card-text">{el.age}, {el.sex} </h6>
+
+            <div style={{margin: 20}} className="container-fluid d-flex justify-content-between align-items-center">
+                <div>
+                    <Autocomplete
+                        id="filter-demo"
+                        options={uniqueSortedArray}
+                        getOptionLabel={(option) => option.name}
+                        filterOptions={filterOptions}
+                        sx={{width: 250}}
+                        renderInput={(params) => <TextField {...params} label="Find Animal by name"/>}
+                        noOptionsText={noOptionsText}
+                        value={selectedAnimal}
+                        onChange={(event, value) => setSelectedAnimal(value)}
+                    />
+                </div>
+                <div style={{marginRight: 30}}>
+                    <Button onClick={resetFilter} variant="outlined">Reset Filter</Button>
+                </div>
+            </div>
+
+            <div>
+                {displayedAnimals.length === 0 ? (
+                    <h4 style={{color: 'red', marginTop:50}}>Animals are not found, please change your search criteria.</h4>
+                ) : (
+                    <div className="row">
+                        {displayedAnimals.map((el, index) => (
+                            <div key={el._id} className="col-md-3 col-auto mb-2">
+                                <div className="card p-0" style={{width: '100%', cursor: 'pointer'}}
+                                     onClick={() => moveToAnimal(el._id)}>
+                                    <img src={el.photos[0]} className="card-img-top" alt="..."/>
+                                    <div className="card-body">
+                                        <h5 className="card-title">{el.name}</h5>
+                                        <h6 className="card-text">{el.type}</h6>
+                                        <h6 className="card-text">{el.age}, {el.sex}</h6>
+                                    </div>
+                                </div>
+                                {(index + 1) % 4 === 0 && <div className="w-100"></div>}
                             </div>
-                        </div>
-                        {(index + 1) % 4 === 0 && <div className="w-100"></div>}
+                        ))}
                     </div>
-                ))}
+                )}
             </div>
         </div>
     );
