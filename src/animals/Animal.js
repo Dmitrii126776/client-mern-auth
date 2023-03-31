@@ -47,7 +47,7 @@ const Animal = () => {
 
     return (
         <div style={{display: 'flex', flexWrap: 'wrap', margin: 10}}>
-            <div style={{flex: 1}}>
+            {/*<div style={{flex: 1}}>*/}
                 <div className="card" style={{maxWidth: '600px'}}>
                     <Galleria
                         value={images}
@@ -59,7 +59,7 @@ const Animal = () => {
                         circular={true}
                     />
                 </div>
-            </div>
+            {/*</div>*/}
             <div style={{flex: 1, marginLeft: '20px'}}>
                 <div style={{display: 'flex', flexDirection: 'column'}}>
                     <div className="d-flex align-items-center mb-3">
