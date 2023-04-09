@@ -38,7 +38,7 @@ function App() {
     const usersNames = users.map(el => el.firstname)
     const arrayStatuses = statuses.map(el => el.title)
 
-    const user = useContext(UserContext)
+   // const user = useContext(UserContext)
 
     const getTasks = () => {
         axios.get(`${url}/tasks`)
