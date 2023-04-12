@@ -16,7 +16,7 @@ const Layout = (props) => {
     const toggle = () => {
         setDropdownOpen(!dropdownOpen);
     };
-
+    // hidden={!email}
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-light" >
