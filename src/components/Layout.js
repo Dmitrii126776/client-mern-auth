@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import {useNavigate} from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {useLocation, useNavigate} from "react-router-dom";
 import {Dropdown, DropdownToggle, DropdownMenu, DropdownItem} from "reactstrap";
 import {Avatar} from "antd";
 
@@ -16,29 +16,48 @@ const Layout = (props) => {
     const toggle = () => {
         setDropdownOpen(!dropdownOpen);
     };
+
+    const location = useLocation();
+    const [activeLink, setActiveLink] = useState('');
+
+    useEffect(() => {
+        setActiveLink(location.pathname);
+    }, [location]);
     // hidden={!email}
     return (
         <div>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light" >
+            <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <div className="container-fluid">
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0" style={{marginRight: "50px"}}>
+                    <ul className="navbar-nav me-auto mb-2 mb-lg-0" style={{ marginRight: "50px" }}>
                         <li className="nav-item">
-                            <a className="nav-link" href="/home">
+                            <a
+                                className={`nav-link ${activeLink === "/home" ? "active" : ""}`}
+                                href="/home"
+                            >
                                 Home
                             </a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/tasks">
+                            <a
+                                className={`nav-link ${activeLink === "/tasks" ? "active" : ""}`}
+                                href="/tasks"
+                            >
                                 Tasks
                             </a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/kanban">
+                            <a
+                                className={`nav-link ${activeLink === "/kanban" ? "active" : ""}`}
+                                href="/kanban"
+                            >
                                 Kanban
                             </a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/animals">
+                            <a
+                                className={`nav-link ${activeLink === "/animals" ? "active" : ""}`}
+                                href="/animals"
+                            >
                                 Animals
                             </a>
                         </li>

@@ -79,6 +79,10 @@ aside {
     color: red;
 }
 
+:root {
+    --primary-orange: #f9ab00;
+}
+
 .navbar-nav {
     margin-right: 20px;
 }
@@ -86,6 +90,18 @@ aside {
 .nav-link {
     margin-right: 20px;
 }
+
+.active {
+    border-bottom: 2px solid var(--primary-orange);
+}
+
+/*.nav-link:active {*/
+/*    border-top: 0.1875rem solid var(--primary-orange);*/
+/*}*/
+
+/*.navbar-nav > li > a.active {*/
+/*    border-top: 0.1875 solid var(--primary-orange);*/
+/*}*/
 
 .register-form {
     background-color: #f7f7f7;
