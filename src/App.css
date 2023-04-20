@@ -166,11 +166,11 @@ aside {
 @media (max-width: 768px) {
     .main-info h2 {
         color: #f7f7f7;
-        font-size: 2rem;
+        font-size: 1.75rem;
     }
 
     .typed-text {
-        font-size: 2rem;
+        font-size: 1.75rem;
         color: #f7f7f7;
     }
 }
