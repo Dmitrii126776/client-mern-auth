@@ -162,3 +162,15 @@ aside {
     margin: 2rem;
     /*font-size: 1.15rem;*/
 }
+
+@media (max-width: 768px) {
+    .main-info h2 {
+        color: #f7f7f7;
+        font-size: 2rem;
+    }
+
+    .typed-text {
+        font-size: 2rem;
+        color: #f7f7f7;
+    }
+}
