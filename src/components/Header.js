@@ -8,8 +8,8 @@ const Header = () => {
             <div className="header-wrapper" style={{backgroundImage: `url(${retro})`}}>
                 <div className="main-info">
                     {/*<h2>My name is Dmitrii</h2>*/}
-                    <h2>I am React Frontend Developer</h2>
-                    <h2>Creating this App I use Backend tools as well</h2>
+                    <h2>I am React Front-end Developer</h2>
+                    <h2>Creating this App I use Back-end tools as well</h2>
                     <Typed
                         className="typed-text"
                         strings={["React Javascript", "Mongo ExpressJS", "Bootstrap Material-UI"]}
