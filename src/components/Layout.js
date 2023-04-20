@@ -28,7 +28,15 @@ const Layout = (props) => {
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <div className="container-fluid">
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0" style={{ marginRight: "50px" }}>
+                    <ul className="navbar-nav me-auto mb-2 mb-lg-0" style={{marginRight: "50px", marginLeft: "30px"}}>
+                        <li className="nav-item">
+                            <a
+                                className={`nav-link ${activeLink === "/" ? "active" : ""}`}
+                                href="/"
+                            >
+                                Welcome
+                            </a>
+                        </li>
                         <li className="nav-item">
                             <a
                                 className={`nav-link ${activeLink === "/home" ? "active" : ""}`}

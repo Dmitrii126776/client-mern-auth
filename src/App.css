@@ -92,7 +92,7 @@ aside {
 }
 
 .active {
-    border-bottom: 2px solid var(--primary-orange);
+    border-bottom: 3px solid var(--primary-orange);
 }
 
 /*.nav-link:active {*/
@@ -125,3 +125,40 @@ aside {
     text-align: left;
 }
 
+.header-wrapper {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    height: 90vh;
+}
+
+.main-info {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.main-info h2 {
+    /*color: var(--primary-orange);*/
+    /*text-transform: uppercase;*/
+    color: #f7f7f7;
+    font-size: 3rem;
+}
+
+.typed-text {
+    font-size: 3rem;
+    color: #f7f7f7;
+}
+
+.btn-main-offer {
+    /*padding: 10px 12px 12px 12px;*/
+    margin: 2rem;
+    /*font-size: 1.15rem;*/
+}

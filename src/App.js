@@ -15,6 +15,7 @@ import Backlog from "./kanban/Backlog";
 import KanbanCard from "./kanban/KanbanCard";
 import AnimalsBoard from "./animals/AnimalsBoard";
 import Animal from "./animals/Animal";
+import Header from "./components/Header";
 
 
 function App() {
@@ -236,7 +237,8 @@ function App() {
                 <div className="App">
                     <Layout email={email} firstname={firstname} logout={logout}/>
                     <Routes>
-                        <Route path="/" element={<Welcome/>}/>
+                        {/*<Route path="/" element={<Welcome/>}/>*/}
+                        <Route path="/" element={<Header/>}/>
                         <Route path="/login" element={<Login/>}/>
                         <Route path="/registration" element={<Registration/>}/>
                         <Route path="/home" element={<Home
