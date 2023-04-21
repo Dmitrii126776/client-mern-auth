@@ -37,7 +37,7 @@ const Task = (props) => {
                          </span>
                     </div>
 
-                    <div style={{display: 'flex', alignItems: 'center', marginLeft: '10px'}}>
+                    <div className="button-container" style={{display: 'flex', alignItems: 'center', marginLeft: '10px'}}>
                         {checkedTaskCompleted ? (
                             <div>Completed: {dateTaskCompleted}</div>
                         ) : (

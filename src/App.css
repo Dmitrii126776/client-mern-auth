@@ -182,4 +182,8 @@ aside {
         font-size: 0.75rem !important;
         padding: 0.5rem 0.75rem !important;
     }
+
+    .button-container {
+        flex-direction: column;
+    }
 }
