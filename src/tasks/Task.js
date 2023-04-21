@@ -30,7 +30,7 @@ const Task = (props) => {
                         <div style={{marginRight: '10px'}}>
                             Created: {task.created.date}
                         </div>
-                        <span style={{ marginLeft:'50px',
+                        <span style={{ marginLeft:'30px',
                             fontWeight: 'bold', textDecoration: checkedTaskCompleted ? 'line-through' : 'none'
                         }}>
                                    {task.name}
