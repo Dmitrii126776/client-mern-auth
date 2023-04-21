@@ -45,7 +45,7 @@ const Task = (props) => {
                                 <UpdateTaskModal task={task} updateTask={updateTask}/>
                             </div>
                         )}
-                        <div style={{marginLeft: '10px'}}>
+                        <div className="mobile" style={{marginLeft: '10px'}}>
                             <DeleteTaskModal deleteTask={deleteTask} task={task}/>
                         </div>
                     </div>
