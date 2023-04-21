@@ -173,4 +173,13 @@ aside {
         font-size: 1.75rem;
         color: #f7f7f7;
     }
+
+    .task-section {
+        font-size: 0.90rem;
+    }
+
+    .half-size {
+        font-size: 0.75rem !important;
+        padding: 0.5rem 0.75rem !important;
+    }
 }

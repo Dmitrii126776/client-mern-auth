@@ -22,7 +22,7 @@ function UpdateTaskModal(props) {
 
     return (
         <div>
-            <Button className="btn btn-secondary btn-sm" onClick={toggle}>
+            <Button className="btn btn-secondary btn-sm half-size" onClick={toggle}>
                 Update
             </Button>
             <Modal isOpen={modal} toggle={toggle}>

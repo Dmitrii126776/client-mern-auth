@@ -21,7 +21,7 @@ const Task = (props) => {
     return (
         <div>
             <li className="list-group-item" style={{margin: 5}}>
-                <div className="d-flex"
+                <div className="d-flex task-section"
                      style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
                     <div style={{display: 'flex', alignItems: 'center'}}>
                         <div style={{marginRight: '10px'}}>
