@@ -41,11 +41,11 @@ const Task = (props) => {
                         {checkedTaskCompleted ? (
                             <div>Completed: {dateTaskCompleted}</div>
                         ) : (
-                            <div style={{marginRight: '20px'}}>
+                            <div style={{marginRight: '10px'}}>
                                 <UpdateTaskModal task={task} updateTask={updateTask}/>
                             </div>
                         )}
-                        <div className="mobile">
+                        <div className="mobile" style={{marginLeft: '10px'}}>
                             <DeleteTaskModal deleteTask={deleteTask} task={task}/>
                         </div>
                     </div>
