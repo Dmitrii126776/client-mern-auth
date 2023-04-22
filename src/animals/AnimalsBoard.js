@@ -232,7 +232,13 @@ const AnimalsBoard = (props) => {
                             <div className="row">
                                 {displayedAnimals.map((el, index) => (
                                     <div key={el._id} className="col-md-3 col-auto mb-2">
-                                        <div className="card p-0" style={{width: '100%', cursor: 'pointer'}}
+                                        <div className="card p-0" style={{
+                                            width: '100%',
+                                            cursor: 'pointer',
+                                            //boxShadow: '-1px -1px 2px #888888',
+                                            boxShadow: '2px 4px 4px #888888',
+                                            marginBottom: '5px',
+                                        }}
                                              onClick={() => moveToAnimal(el._id)}>
                                             <img src={el.photos[0]} className="card-img-top" alt="..."/>
                                             <div className="card-body">

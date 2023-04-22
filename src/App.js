@@ -16,6 +16,7 @@ import KanbanCard from "./kanban/KanbanCard";
 import AnimalsBoard from "./animals/AnimalsBoard";
 import Animal from "./animals/Animal";
 import Header from "./components/Header";
+import Projects from "./components/Projects";
 
 
 function App() {
@@ -239,6 +240,7 @@ function App() {
                     <Routes>
                         {/*<Route path="/" element={<Welcome/>}/>*/}
                         <Route path="/" element={<Header/>}/>
+                        <Route path="/projects" element={<Projects/>}/>
                         <Route path="/login" element={<Login/>}/>
                         <Route path="/registration" element={<Registration/>}/>
                         <Route path="/home" element={<Home

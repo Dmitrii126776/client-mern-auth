@@ -37,28 +37,20 @@ const Layout = (props) => {
                                 Welcome
                             </a>
                         </li>
+                        {/*<li className="nav-item">*/}
+                        {/*    <a*/}
+                        {/*        className={`nav-link ${activeLink === "/home" ? "active" : ""}`}*/}
+                        {/*        href="/home"*/}
+                        {/*    >*/}
+                        {/*        Home*/}
+                        {/*    </a>*/}
+                        {/*</li>*/}
                         <li className="nav-item">
                             <a
-                                className={`nav-link ${activeLink === "/home" ? "active" : ""}`}
-                                href="/home"
+                                className={`nav-link ${activeLink === "/projects" ? "active" : ""}`}
+                                href="/projects"
                             >
-                                Home
-                            </a>
-                        </li>
-                        <li className="nav-item">
-                            <a
-                                className={`nav-link ${activeLink === "/tasks" ? "active" : ""}`}
-                                href="/tasks"
-                            >
-                                Tasks
-                            </a>
-                        </li>
-                        <li className="nav-item">
-                            <a
-                                className={`nav-link ${activeLink === "/kanban" ? "active" : ""}`}
-                                href="/kanban"
-                            >
-                                Kanban
+                                Projects
                             </a>
                         </li>
                         <li className="nav-item">
@@ -67,6 +59,22 @@ const Layout = (props) => {
                                 href="/animals"
                             >
                                 Animals
+                            </a>
+                        </li>
+                        <li className="nav-item">
+                            <a
+                                className={`nav-link ${activeLink === "/tasks" ? "active" : ""}`}
+                                href="/tasks"
+                            >
+                                TodoList
+                            </a>
+                        </li>
+                        <li className="nav-item">
+                            <a
+                                className={`nav-link ${activeLink === "/kanban" ? "active" : ""}`}
+                                href="/kanban"
+                            >
+                                Kanban
                             </a>
                         </li>
                     </ul>

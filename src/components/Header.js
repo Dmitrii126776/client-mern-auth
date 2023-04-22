@@ -28,7 +28,7 @@ const Header = () => {
                         backSpeed={60}
                         loop
                     />
-                    <a href="/animals" className="btn btn-secondary btn-lg "
+                    <a href="/projects" className="btn btn-secondary btn-lg "
                        tabIndex="-1" role="button" style={{marginTop: 20}}
                     >My projects</a>
                     <h2>At this App I use Back-end tools as well</h2>
