@@ -4,7 +4,7 @@ import {Dropdown, DropdownToggle, DropdownMenu, DropdownItem} from "reactstrap";
 import {Avatar} from "antd";
 
 const Layout = (props) => {
-    const {email, firstname, logout} = props;
+    const {email, firstname, logout, children} = props;
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
     const navigate = useNavigate();
@@ -25,59 +25,70 @@ const Layout = (props) => {
     }, [location]);
     // hidden={!email}
     return (
-        <div>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <div >
+            <nav
+                className="navbar fixed-top navbar-expand-lg bg-light">
                 <div className="container-fluid">
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0" style={{marginRight: "50px", marginLeft: "30px"}}>
-                        <li className="nav-item">
-                            <a
-                                className={`nav-link ${activeLink === "/" ? "active" : ""}`}
-                                href="/"
-                            >
-                                Welcome
-                            </a>
-                        </li>
-                        {/*<li className="nav-item">*/}
-                        {/*    <a*/}
-                        {/*        className={`nav-link ${activeLink === "/home" ? "active" : ""}`}*/}
-                        {/*        href="/home"*/}
-                        {/*    >*/}
-                        {/*        Home*/}
-                        {/*    </a>*/}
-                        {/*</li>*/}
-                        <li className="nav-item">
-                            <a
-                                className={`nav-link ${activeLink === "/projects" ? "active" : ""}`}
-                                href="/projects"
-                            >
-                                Projects
-                            </a>
-                        </li>
-                        <li className="nav-item">
-                            <a
-                                className={`nav-link ${activeLink === "/animals" ? "active" : ""}`}
-                                href="/animals"
-                            >
-                                Animals
-                            </a>
-                        </li>
-                        <li className="nav-item">
-                            <a
-                                className={`nav-link ${activeLink === "/tasks" ? "active" : ""}`}
-                                href="/tasks"
-                            >
-                                TodoList
-                            </a>
-                        </li>
-                        <li className="nav-item">
-                            <a
-                                className={`nav-link ${activeLink === "/kanban" ? "active" : ""}`}
-                                href="/kanban"
-                            >
-                                Kanban
-                            </a>
-                        </li>
-                    </ul>
+                    <button
+                        style={{marginLeft: '30px'}}
+                        className="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul className="navbar-nav me-auto mb-2 mb-lg-0"
+                            style={{marginRight: "50px", marginLeft: "30px"}}>
+                            <li className="nav-item">
+                                <a
+                                    className={`nav-link ${activeLink === "/" ? "active" : ""}`}
+                                    href="/"
+                                >
+                                    Welcome
+                                </a>
+                            </li>
+                            {/*<li className="nav-item">*/}
+                            {/*    <a*/}
+                            {/*        className={`nav-link ${activeLink === "/home" ? "active" : ""}`}*/}
+                            {/*        href="/home"*/}
+                            {/*    >*/}
+                            {/*        Home*/}
+                            {/*    </a>*/}
+                            {/*</li>*/}
+                            <li className="nav-item">
+                                <a
+                                    className={`nav-link ${activeLink === "/projects" ? "active" : ""}`}
+                                    href="/projects"
+                                >
+                                    Projects
+                                </a>
+                            </li>
+                            <li className="nav-item">
+                                <a
+                                    className={`nav-link ${activeLink === "/animals" ? "active" : ""}`}
+                                    href="/animals"
+                                >
+                                    Animals
+                                </a>
+                            </li>
+                            <li className="nav-item">
+                                <a
+                                    className={`nav-link ${activeLink === "/tasks" ? "active" : ""}`}
+                                    href="/tasks"
+                                >
+                                    TodoList
+                                </a>
+                            </li>
+                            <li className="nav-item">
+                                <a
+                                    className={`nav-link ${activeLink === "/kanban" ? "active" : ""}`}
+                                    href="/kanban"
+                                >
+                                    Kanban
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                     <Dropdown isOpen={dropdownOpen} toggle={toggle}>
                         <DropdownToggle tag="a" className="dropdown-toggle mr-4">
                             <Avatar style={{backgroundColor: "lightblue"}}
@@ -93,6 +104,9 @@ const Layout = (props) => {
                     </Dropdown>
                 </div>
             </nav>
+            <div style={{ paddingTop: '70px' }}>
+                {children}
+            </div>
         </div>
     );
 };
