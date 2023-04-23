@@ -23,7 +23,7 @@ const Header = () => {
                     >Get my CV</button>
                     <Typed
                         className="typed-text"
-                        strings={["React Javascript", "Mongo ExpressJS", "Bootstrap Material-UI"]}
+                        strings={["React Javascript", "Mongo ExpressJS", "Bootstrap Node.js", "Material-UI Redux"]}
                         typeSpeed={40}
                         backSpeed={60}
                         loop
