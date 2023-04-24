@@ -215,7 +215,7 @@ function App() {
     useEffect(() => {
         getTasks()
         getTaskNumber()
-        getUsers()
+        // getUsers()
         getStatuses()
         getCards()
         getAnimals()
