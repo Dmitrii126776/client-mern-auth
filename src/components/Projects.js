@@ -33,14 +33,14 @@ const Projects = () => {
                                     Some quick example text to build on the card title and make up the bulk of the
                                     card's content.
                                 </p>
-                                {/*<div className="card-links">*/}
-                                {/*    <a href="#" className="card-link">*/}
-                                {/*        Card link*/}
-                                {/*    </a>*/}
-                                {/*    <a href="#" className="card-link">*/}
-                                {/*        Another link*/}
-                                {/*    </a>*/}
-                                {/*</div>*/}
+                                <div className="card-links">
+                                    <a href="mailto:kuzhilind@gmail.com" target="_blank" className="card-link">
+                                        Contact me
+                                    </a>
+                                    {/*    <a href="#" className="card-link">*/}
+                                    {/*        Another link*/}
+                                    {/*    </a>*/}
+                                </div>
                             </div>
                         </div>
                     </div>
