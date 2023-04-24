@@ -34,13 +34,14 @@ const Projects = () => {
                                     card's content.
                                 </p>
                                 <div className="card-links">
-                                    <a href="mailto:kuzhilind@gmail.com" target="_blank" className="card-link">
+                                    <a href="mailto:kuz@gmail.com" target="_blank" rel="noopener noreferrer" className="card-link">
                                         Contact me
                                     </a>
                                     {/*    <a href="#" className="card-link">*/}
                                     {/*        Another link*/}
                                     {/*    </a>*/}
                                 </div>
+
                             </div>
                         </div>
                     </div>
