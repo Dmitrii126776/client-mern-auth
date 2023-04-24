@@ -92,7 +92,7 @@ const Layout = (props) => {
                     <Dropdown isOpen={dropdownOpen} toggle={toggle}>
                         <DropdownToggle tag="a" className="dropdown-toggle mr-4">
                             <Avatar style={{backgroundColor: "lightblue"}}
-                                    className="mr-2" size={32} src={require('../images/AvatarsDefault.png')}/>
+                                    className="mr-2" size={32} src={require('../images/smile.png')}/>
                             {firstname}
                             <span className="caret"></span>
                         </DropdownToggle>
