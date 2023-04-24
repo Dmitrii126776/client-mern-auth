@@ -104,7 +104,7 @@ const Layout = (props) => {
                     </Dropdown>
                 </div>
             </nav>
-            <div style={{ paddingTop: '70px' }}>
+            <div style={{ paddingTop: '60px' }}>
                 {children}
             </div>
         </div>
