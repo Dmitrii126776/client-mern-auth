@@ -189,20 +189,20 @@ function App() {
         })
     }
 
-    useEffect(() => {
-        const token = localStorage.getItem('token');
-        const userId = localStorage.getItem('id');
-        axios.get(`https://server-mern-project.vercel.app/users/${userId}`, {
-            headers: {Authorization: `Bearer ${token}`},
-        })
-            .then(response => {
-                setEmail(response.data.email);
-                setFirstName(response.data.firstname);
-            })
-            .catch(error => {
-                console.log(error)
-            });
-    }, [])
+    // useEffect(() => {
+    //     const token = localStorage.getItem('token');
+    //     const userId = localStorage.getItem('id');
+    //     axios.get(`https://server-mern-project.vercel.app/users/${userId}`, {
+    //         headers: {Authorization: `Bearer ${token}`},
+    //     })
+    //         .then(response => {
+    //             setEmail(response.data.email);
+    //             setFirstName(response.data.firstname);
+    //         })
+    //         .catch(error => {
+    //             console.log(error)
+    //         });
+    // }, [])
 
     useEffect(() => {
         const cardId = localStorage.getItem('cardId');
