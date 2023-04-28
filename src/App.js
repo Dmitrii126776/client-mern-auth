@@ -17,6 +17,7 @@ import AnimalsBoard from "./animals/AnimalsBoard";
 import Animal from "./animals/Animal";
 import Header from "./components/Header";
 import Projects from "./components/Projects";
+import Profile from "./components/Profile";
 
 
 function App() {
@@ -241,6 +242,7 @@ function App() {
                         {/*<Route path="/" element={<Welcome/>}/>*/}
                         <Route path="/" element={<Header/>}/>
                         <Route path="/projects" element={<Projects/>}/>
+                        <Route path="/profile" element={<Profile/>}/>
                         <Route path="/login" element={<Login/>}/>
                         <Route path="/registration" element={<Registration/>}/>
                         <Route path="/home" element={<Home

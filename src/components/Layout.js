@@ -9,8 +9,8 @@ const Layout = (props) => {
 
     const navigate = useNavigate();
     const handleLogout = () => {
-        logout();
-        navigate("/");
+       // logout();
+        navigate("/profile");
     };
 
     const toggle = () => {
@@ -99,7 +99,7 @@ const Layout = (props) => {
                         <DropdownMenu>
                             <DropdownItem>{firstname}</DropdownItem>
                             <DropdownItem>{email}</DropdownItem>
-                            <DropdownItem onClick={handleLogout}>Logout</DropdownItem>
+                            <DropdownItem onClick={handleLogout}>My Profile</DropdownItem>
                         </DropdownMenu>
                     </Dropdown>
                 </div>
