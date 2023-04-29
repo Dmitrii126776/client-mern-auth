@@ -20,7 +20,7 @@ const Task = (props) => {
 
     return (
         <div>
-            <li className="list-group-item" style={{margin: 5, backgroundColor: "seashell"}}>
+            <li className="list-group-item" style={{margin: 5,  boxShadow: '1px 1px 1px #888888', backgroundColor: "seashell"}}>
                 <div className="d-flex task-section"
                      style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
                     <div style={{display: 'flex', alignItems: 'center'}}>
@@ -30,16 +30,14 @@ const Task = (props) => {
                         <div style={{marginRight: '10px'}}>
                             Created: {task.created.date}
                         </div>
-                        <span style={{
-                            marginLeft: '30px',
+                        <span style={{ marginLeft:'30px',
                             fontWeight: 'bold', textDecoration: checkedTaskCompleted ? 'line-through' : 'none'
                         }}>
                                    {task.name}
                          </span>
                     </div>
 
-                    <div className="button-container"
-                         style={{display: 'flex', alignItems: 'center', marginLeft: '10px'}}>
+                    <div className="button-container" style={{display: 'flex', alignItems: 'center', marginLeft: '10px'}}>
                         {checkedTaskCompleted ? (
                             <div>Completed: {dateTaskCompleted}</div>
                         ) : (
