@@ -18,6 +18,7 @@ import Animal from "./animals/Animal";
 import Header from "./components/Header";
 import Projects from "./components/Projects";
 import Profile from "./components/Profile";
+import Footer from "./components/Footer";
 
 
 function App() {
@@ -296,6 +297,8 @@ function App() {
                         />}/>
 
                     </Routes>
+                    <Footer/>
+
                 </div>
             </BrowserRouter>
         </UserContext.Provider>

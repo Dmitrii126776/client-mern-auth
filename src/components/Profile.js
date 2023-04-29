@@ -33,7 +33,7 @@ const Profile = () => {
                     borderRadius: '50%', // Make the circle image round
                 }}/>
                 <div className="card-body" style={{textAlign: "left"}}>
-                    <h5 style={{fontSize:25}}>Dmitrii Kuzhilin</h5>
+                    <h5 style={{fontSize:25, fontWeight:500}}>Dmitrii Kuzhilin</h5>
                     <h6>React Front-End Developer</h6>
                     <h6>New York, NY, United States</h6>
                     <p className="card-text">Some quick example text to build on the card title and make up the bulk

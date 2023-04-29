@@ -15,7 +15,6 @@ const Header = () => {
         <div>
             <div className="header-wrapper" style={{backgroundImage: `url(${retro})`}}>
                 <div className="main-info">
-                    {/*<h2>My name is Dmitrii</h2>*/}
                     <h2>I am React Front-end Developer</h2>
                     <button className="btn btn-secondary btn-lg"
                             type="button" style={{marginTop: 20}}
