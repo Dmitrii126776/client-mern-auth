@@ -32,8 +32,8 @@ const Profile = () => {
                     border: '4px solid white', // Add a white border to the circle image
                     borderRadius: '50%', // Make the circle image round
                 }}/>
-                <div className="card-body" style={{textAlign: "left"}}>
-                    <h5 style={{fontSize:25, fontWeight:500}}>Dmitrii Kuzhilin</h5>
+                <div className="card-body" style={{textAlign: "left", backgroundColor: "seashell"}}>
+                    <h5 style={{fontSize: 25, fontWeight: 500}}>Dmitrii Kuzhilin</h5>
                     <h6>React Front-End Developer</h6>
                     <h6>New York, NY, United States</h6>
                     <p className="card-text">Some quick example text to build on the card title and make up the bulk
@@ -47,7 +47,8 @@ const Profile = () => {
                          display: 'flex', flexDirection: 'column',
                          width: 350, height: 200,
                          boxShadow: '2px 4px 4px #888888',
-
+                         // backgroundColor: "light",
+                         // fontSize: 18,
                      }}>
                     <div className="card-body">
                         <p className="card-text">Some quick example text to build on the
@@ -63,7 +64,6 @@ const Profile = () => {
                          display: 'flex', flexDirection: 'column',
                          width: 350, height: 200,
                          boxShadow: '2px 4px 4px #888888',
-
                      }}>
                     <div className="card-body">
                         <p className="card-text">Some quick example text to build
