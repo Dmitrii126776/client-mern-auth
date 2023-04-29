@@ -20,7 +20,7 @@ const Task = (props) => {
 
     return (
         <div>
-            <li className="list-group-item" style={{margin: 5,  boxShadow: '2px 4px 4px #888888',}}>
+            <li className="list-group-item" style={{margin: 5,  boxShadow: '1px 2px 2px #888888',}}>
                 <div className="d-flex task-section"
                      style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
                     <div style={{display: 'flex', alignItems: 'center'}}>
