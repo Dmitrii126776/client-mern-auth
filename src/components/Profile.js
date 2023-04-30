@@ -44,6 +44,7 @@ const Profile = () => {
             setWeatherData(data);
         }
         getWeather();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
 
