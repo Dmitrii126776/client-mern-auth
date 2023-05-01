@@ -20,7 +20,7 @@ const Projects = () => {
                     <div key={index} className="col-md-4 col-auto mb-3">
                         <div className="card p-0 d-flex flex-column justify-content-between"
                              style={{
-                                 display: 'flex', flexDirection: 'column', height: '100%',
+                                 display: 'flex', flexDirection: 'column', height: 400,
                                  //boxShadow: '1px 1px 2px #888888, -1px -1px 2px #888888',
                                  // boxShadow: '2px 2px 4px #888888, -2px -2px 4px #888888',
                                  boxShadow: '2px 4px 4px #888888',
