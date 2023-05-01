@@ -71,7 +71,7 @@ const Profile = () => {
                  marginLeft: 60,
                  marginRight: 60,
                  marginTop: 20,
-                 gap: 30
+                 gap: 30,
              }}>
             <div className="card"
                  style={{
@@ -93,10 +93,11 @@ const Profile = () => {
                 }}/>
                 <div className="card-body" style={{textAlign: "left", backgroundColor: "seashell"}}>
                     <h5 style={{fontSize: 25, fontWeight: 500}}>Dmitrii Kuzhilin</h5>
-                    <h6>React Front-End Developer</h6>
+                    <h6>React Frontend Developer</h6>
                     <h6>New York, NY, United States</h6>
-                    <p className="card-text">Some quick example text to build on the card title and make up the bulk
-                        of the card's content.</p>
+                    <p className="card-text">I am inspired by the idea of creating beautiful,
+                        functional interfaces that people will interact with and enjoy using.
+                    </p>
                 </div>
             </div>
             <div className="cards-right-container"
@@ -137,12 +138,16 @@ const Profile = () => {
 
                     ) : (
 
-                        <div className="weather-container" style={{display: "flex", flexDirection: "column"}}>
+                        <div className="weather-container" style={{display: "flex", flexDirection: "column",}}>
 
                             {weatherData.map((data, index) => (
                                 <div className="card" key={index}>
                                     <div className="weather-container"
-                                         style={{display: "flex", flexDirection: "column",}}>
+                                         style={{
+                                             display: "flex",
+                                             flexDirection: "column",
+                                             backgroundColor: "seashell"
+                                         }}>
                                         <div className="weather-item" style={{
                                             display: "flex",
                                             justifyContent: "space-between",
@@ -197,14 +202,11 @@ const Profile = () => {
                          width: 350, height: 200,
                          boxShadow: '2px 4px 4px #888888',
                      }}>
-                    <div className="card-body">
-                        <p className="card-text">Some quick example text to build
-                            of the card's content.</p>
-                        <hr/>
-                        <p className="card-text">Some quick example text to
-                            of the card's content.</p>
-
-                    </div>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1841337560213!2d-73.9881228881803!3d40.75797467126745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1682905229753!5m2!1sen!2sus"
+                        style={{border: 0, width: "100%", height: "200px"}} allowFullScreen="" loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade" title="Map of New York City">
+                    </iframe>
                 </div>
             </div>
         </div>

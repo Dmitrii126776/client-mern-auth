@@ -2,6 +2,7 @@ import animals from "./images/animals.PNG";
 import kanban from "./images/kanban.PNG";
 import backlog from "./images/backlog.PNG";
 import todolist_1 from "./images/todolist_1.PNG";
+import profile from "./images/profile.PNG";
 
 export const data = [
     {
@@ -27,5 +28,11 @@ export const data = [
         image: todolist_1,
         link: "/tasks",
         description: "TodoList connect with MongoDB through ExpressJS server for store data."
+    },
+    {
+        name: "Profile",
+        image: profile,
+        link: "/profile",
+        description: "You can see current weather data, which are fetched from the OpenWeather service"
     },
 ]
