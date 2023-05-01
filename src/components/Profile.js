@@ -97,6 +97,7 @@ const Profile = () => {
                     <h6>New York, NY, United States</h6>
                     <p className="card-text">I am inspired by the idea of creating beautiful,
                         functional interfaces that people will interact with and enjoy using.
+                        I like to create a Back-end side as well.
                     </p>
                 </div>
             </div>
