@@ -28,14 +28,14 @@ const Projects = () => {
                             <h5 className="card-title" style={{marginTop: 10}}>{el.name}</h5>
                             <img src={el.image} className="card-img-top" alt="..." style={{height: '50%'}}/>
                             <div className="card-body" style={{height: '50%'}}>
-                                <p style={{textAlign:"left"}} className="card-text">{el.description}</p>
+                                <p style={{textAlign: "left"}} className="card-text">{el.description}</p>
                                 <div className="card-links">
                                     <a href={`${el.link}`} target="_blank" rel="noopener noreferrer"
-                                       className="card-link">
+                                       className="card-link" style={{textDecoration: "none"}}>
                                         Live Here
                                     </a>
                                     <a href="https://github.com/Dmitrii126776" target="_blank" rel="noopener noreferrer"
-                                       className="card-link">
+                                       className="card-link" style={{textDecoration: "none"}}>
                                         GitHub
                                     </a>
                                     {/*<a href="mailto:kuzhilind@gmail.com" target="_blank" rel="noopener noreferrer"*/}

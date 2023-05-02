@@ -4,7 +4,6 @@ import CreateTaskModal from "./CreateTaskModel";
 
 const TasksList = (props) => {
     const {tasks, createTask, updateTask, deleteTask} = props
-    console.log(tasks)
     let completed = tasks.filter(el => !el.completed.status).length
     let uncompleted = tasks.filter(el => el.completed.status).length
     return (

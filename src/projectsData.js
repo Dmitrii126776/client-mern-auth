@@ -27,12 +27,14 @@ export const data = [
         name: "TodoList",
         image: todolist_1,
         link: "/tasks",
-        description: "TodoList connect with MongoDB through ExpressJS server for store data."
+        description: "TodoList connect with MongoDB through ExpressJS server for store data. " +
+            "All other pages also contain awesome Footer with links."
     },
     {
         name: "Profile",
         image: profile,
         link: "/profile",
-        description: "You can see current weather data, which are fetched from the OpenWeather service"
+        description: "You can see current weather data, which are fetched from the OpenWeather service " +
+            "and map of New York City"
     },
 ]
