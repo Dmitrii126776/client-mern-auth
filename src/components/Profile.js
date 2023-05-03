@@ -4,30 +4,10 @@ import circle from "../images/profile_circle.png";
 
 
 const Profile = () => {
-    // const [city, setCity] = useState('New York')
-    // const getWeather = async () => {
-    //     const url = `https://api.openweathermap.org/data/2.5/weather?q=${cities[0]}&appid=d3fea56d3ebc5e92b8d6af4a5cc7a22e&units=imperial`
-    //     const data = await fetch(url)
-    //         .then((res) => res.json())
-    //         .then((data) => data)
-    //     console.log(data)
-    // }
 
     const cities = ["New York", "Dallas", "San Francisco"]
     const [weatherData, setWeatherData] = useState([])
     const [loading, setLoading] = useState(true);
-    // useEffect(() => {
-    //     const getWeather = async () => {
-    //         const weatherPromises = cities.map(city => {
-    //             const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=03d545c26e25ff3b1d2a22524adb3f71&units=imperial`
-    //             return fetch(url).then(res => res.json())
-    //         })
-    //         const data = await Promise.all(weatherPromises)
-    //         setWeatherData(data)
-    //         console.log(data)
-    //     }
-    //     getWeather()
-    // }, [])
 
     useEffect(() => {
         const getWeather = async () => {
@@ -49,18 +29,6 @@ const Profile = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-
-    // const [weatherData, setWeatherData] = useState(null)
-    // useEffect(() => {
-    //     const getWeather = async () => {
-    //         const url = `https://api.openweathermap.org/data/2.5/weather?q=${cities[0]}&appid=d3fea56d3ebc5e92b8d6af4a5cc7a22e&units=imperial`
-    //         const data = await fetch(url).then((res) => res.json())
-    //         setWeatherData(data)
-    //         console.log(data)
-    //         console.log(weatherData)
-    //     }
-    //     getWeather()
-    // }, [])
 
     return (
         <div className="cards-container"
@@ -171,30 +139,7 @@ const Profile = () => {
                                     </div>
                                 </div>
                             ))}
-
-                            {/*<div className="weather-item"*/}
-                            {/*     style={{*/}
-                            {/*         display: "flex",*/}
-                            {/*         justifyContent: "space-between",*/}
-                            {/*         margin: 10,*/}
-                            {/*         alignItems: "center"*/}
-                            {/*     }}>*/}
-                            {/*    <h6>{weatherData?.name}, {weatherData?.sys?.country}</h6>*/}
-                            {/*    {weatherData && weatherData.weather && weatherData.weather[0] ?*/}
-                            {/*        <img style={{height: 50}}*/}
-                            {/*             src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`}*/}
-                            {/*             alt={weatherData.weather[0].description}*/}
-                            {/*        /> :*/}
-                            {/*        <img src="https://openweathermap.org/img/wn/02d@2x.png"*/}
-                            {/*             alt="cloud"*/}
-                            {/*        />*/}
-                            {/*    }*/}
-                            {/*    <h6>{weatherData && weatherData.weather && weatherData.weather.length > 0 ? weatherData.weather[0].main : "Main"}</h6>*/}
-                            {/*    <h6>{(weatherData?.main?.temp)?.toFixed()} &deg;F</h6>*/}
-                            {/*</div>*/}
-
                         </div>
-
                     )}
                 </div>
                 <div className="card"
