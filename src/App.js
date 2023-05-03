@@ -3,7 +3,6 @@ import './App.css';
 import React, {useContext, useEffect, useState} from 'react';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import Login from './pages/Login';
-import Welcome from './pages/Welcome';
 import Registration from "./pages/Registration";
 import axios from "axios";
 import UserContext from "./UserContext";
@@ -20,7 +19,6 @@ import Projects from "./components/Projects";
 import Profile from "./components/Profile";
 import Footer from "./components/Footer";
 
-
 function App() {
     const [email, setEmail] = useState('');
     const [firstname, setFirstName] = useState('')
@@ -33,10 +31,8 @@ function App() {
     const [animals, setAnimals] = useState([])
     const [card, setCard] = useState(null)
     const [loading, setLoading] = useState(true);
-    // const [animal, setAnimal] = useState({})
 
     const url = "https://server-mern-project.vercel.app"
-    // 'http://localhost:5050/logout'
 
     const priorities = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     const usersNames = users.map(el => el.firstname)
@@ -190,21 +186,6 @@ function App() {
             console.log(err)
         })
     }
-
-    // useEffect(() => {
-    //     const token = localStorage.getItem('token');
-    //     const userId = localStorage.getItem('id');
-    //     axios.get(`https://server-mern-project.vercel.app/users/${userId}`, {
-    //         headers: {Authorization: `Bearer ${token}`},
-    //     })
-    //         .then(response => {
-    //             setEmail(response.data.email);
-    //             setFirstName(response.data.firstname);
-    //         })
-    //         .catch(error => {
-    //             console.log(error)
-    //         });
-    // }, [])
 
     useEffect(() => {
         const cardId = localStorage.getItem('cardId');

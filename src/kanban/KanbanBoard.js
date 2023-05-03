@@ -36,11 +36,6 @@ const KanbanBoard = (props) => {
         navigate(`/kanban/card/${id}`)
     }
 
-    // const moveToCard = (id) => {
-    //     getCardById(id)
-    //     window.open(`/kanban/card/${id}`, "_blank");
-    // }
-
     const dragOverHandler = (e) => {
         e.preventDefault()
         if (e.target.className === 'item') {
@@ -60,7 +55,6 @@ const KanbanBoard = (props) => {
     }
     const dropHandler = (e, board, item) => {
         e.preventDefault()
-        console.log(currentItem)
         const currentIndex = currentBoard.cards.indexOf(currentItem)
         currentBoard.cards.splice(currentIndex, 1)
         const dropIndex = board.cards.indexOf(item)
@@ -79,7 +73,6 @@ const KanbanBoard = (props) => {
     }
 
     const updateCardStatus = (id, newStatus) => {
-        console.log(newStatus)
         axios.patch(`https://server-mern-project.vercel.app/cards/${id}`, newStatus)
             .then(res => {
                 getCards()
@@ -100,12 +93,9 @@ const KanbanBoard = (props) => {
                 cards: cards.filter((card) => card.status === statusCard.status),
             })),
         ];
-
-        console.log("This is a message from console");
-        console.log(filteredCards);
+       // console.log("This is a message from console");
         setBoards(filteredCards);
     }, [cards, statusesCards]);
-
 
     return (
         <div>

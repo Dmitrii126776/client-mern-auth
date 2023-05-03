@@ -2,16 +2,8 @@ import React, {useEffect, useState} from 'react';
 import {Link, useNavigate} from "react-router-dom";
 
 const KanbanCard = (props) => {
-    // const {card, usersNames, priorities, arrayStatuses} = props
-    // console.log(card)
-    // const [nameCardInput, setNameCardInput] = useState(card.name)
-    // const [assigneeInput, setAssigneeInput] = useState(card.assignee)
-    // const [priorityInput, setPriorityInput] = useState(card.priority)
-    // const [statusInput, setStatusInput] = useState(card.status)
-    // const [descriptionInput, setDescriptionInput] = useState(card.description)
 
     const {card, usersNames, priorities, arrayStatuses, updateCard} = props;
-    console.log(card)
     const [nameCardInput, setNameCardInput] = useState('');
     const [assigneeInput, setAssigneeInput] = useState('');
     const [priorityInput, setPriorityInput] = useState('');
@@ -48,18 +40,6 @@ const KanbanCard = (props) => {
         }
     }, [card]);
 
-    // useEffect(() => {
-    //     localStorage.setItem(
-    //         'cardState',
-    //         JSON.stringify({
-    //             name: nameCardInput,
-    //             assignee: assigneeInput,
-    //             priority: priorityInput,
-    //             status: statusInput,
-    //             description: descriptionInput
-    //         })
-    //     );
-    // }, [nameCardInput, assigneeInput, priorityInput, statusInput, descriptionInput]);
     return (
         <div>
             <nav className="navbar navbar-expand-lg" style={{marginTop: 10}}>
@@ -83,26 +63,6 @@ const KanbanCard = (props) => {
                     </div>
                 </div>
             </nav>
-
-            {/*<div>*/}
-            {/*    {card ? (*/}
-            {/*        <div key={card.id}>*/}
-            {/*            <ul>*/}
-            {/*                <li> {card.assignee}</li>*/}
-
-            {/*                <li> {card.id}</li>*/}
-            {/*                <li> {card.taskNumber}</li>*/}
-            {/*                <li> {card.name}</li>*/}
-            {/*                <li> {card.description}</li>*/}
-            {/*                <li> {card.status}</li>*/}
-            {/*                <li> {card.priority}</li>*/}
-            {/*            </ul>*/}
-            {/*        </div>*/}
-            {/*    ) : (*/}
-            {/*        <p>No card found.</p>*/}
-            {/*    )}*/}
-            {/*</div>*/}
-
             <div>
                 {card ? (
                     <div className="container-fluid" style={{marginTop: 20}}>
@@ -145,8 +105,6 @@ const KanbanCard = (props) => {
                     <p>No card found.</p>
                 )}
             </div>
-
-
         </div>
     );
 };

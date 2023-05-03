@@ -12,7 +12,6 @@ import Radio from "@mui/material/Radio";
 
 const AnimalsBoard = (props) => {
     const {animals, getAnimalById, loading} = props;
-    console.log(animals)
 
     const [selectedAnimal, setSelectedAnimal] = useState(null);
     const [valueAnimal, setValueAnimal] = useState('all');

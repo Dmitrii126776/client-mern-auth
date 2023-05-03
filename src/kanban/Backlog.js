@@ -12,11 +12,8 @@ import {FilterMatchMode, FilterOperator} from "primereact/api";
 import {InputText} from "primereact/inputtext";
 import {Button} from 'primereact/button';
 
-
 const Backlog = (props) => {
     const {cards, arrayStatuses, priorities, usersNames, createNewCard, getCardById} = props
-    console.log(cards)
-    console.log(arrayStatuses)
     const [selectedProduct, setSelectedProduct] = useState(null);
     const toast = useRef(null);
     const [statuses] = useState(arrayStatuses);
@@ -80,12 +77,6 @@ const Backlog = (props) => {
         const id = event.data._id
         getCardById(id)
         window.open(`/kanban/card/${id}`, "_blank");
-        // toast.current.show({
-        //     severity: 'info',
-        //     summary: 'Product Selected',
-        //     detail: `Name: ${event.data.name}`,
-        //     life: 3000
-        // });
     };
 
     useEffect(() => {
@@ -132,9 +123,7 @@ const Backlog = (props) => {
                     <Column field="assignee" header="Assignee" filter filterPlaceholder="Search by name" sortable
                             style={{width: '15%'}}></Column>
                     <Column field="priority" header="Priority" sortable style={{width: '5%'}}></Column>
-                    {/*<Column field="status" header="Status" sortable style={{width: '5%'}}></Column>*/}
                     <Column field="status" header="Status" filterMenuStyle={{width: '14rem'}}
-                        // style={{ minWidth: '12rem' }}
                             body={statusBodyTemplate}
                             sortable style={{width: '15%'}}
                             filter filterElement={statusFilterTemplate}/>
