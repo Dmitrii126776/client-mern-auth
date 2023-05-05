@@ -1,12 +1,12 @@
 import React from 'react';
 import retro from '../images/retrosupply.jpg';
 import Typed from 'react-typed';
-const resumePDF = require('../document/Dmitrii_Kuzhilin_resume.pdf');
+const resumePDF = require('../document/Dmitrii_Kuzhilin_developer_2023.docx');
 const Header = () => {
     const downloadResume = () => {
         const link = document.createElement('a');
         link.href = resumePDF;
-        link.download = 'Dmitrii_Kuzhilin_resume.pdf';
+        link.download = 'Dmitrii_Kuzhilin_developer_2023.docx';
         link.target = '_blank'; // open link in new tab
         link.click();
     };
@@ -22,7 +22,7 @@ const Header = () => {
                     >Get my CV</button>
                     <Typed
                         className="typed-text"
-                        strings={["React Javascript", "Mongo ExpressJS", "Bootstrap Node.js", "Material-UI Redux"]}
+                        strings={["React JavaScript", "MongoDB ExpressJS", "Bootstrap Node.js", "Material-UI Redux", "TypeScript Next.js"]}
                         typeSpeed={40}
                         backSpeed={60}
                         loop
