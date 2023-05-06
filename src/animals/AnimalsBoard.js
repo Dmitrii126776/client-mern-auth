@@ -153,6 +153,7 @@ const AnimalsBoard = (props) => {
         <div className="container-fluid">
             <div>
                 <h1>Find Your Animal</h1>
+                <hr/>
             </div>
             <div className="container-fluid d-flex justify-content-between align-items-center">
                 <div style={{marginLeft: 20}}>
@@ -199,7 +200,7 @@ const AnimalsBoard = (props) => {
                     </FormControl>
                 </div>
             </div>
-
+            <hr/>
             <div style={{margin: 20}} className="container-fluid d-flex justify-content-between align-items-center">
                 <div>
                     <Autocomplete
