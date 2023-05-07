@@ -87,6 +87,14 @@ const Layout = (props) => {
                                     Kanban
                                 </a>
                             </li>
+                            <li className="nav-item">
+                                <a
+                                    className={`nav-link ${activeLink === "/profile" ? "active" : ""}`}
+                                    href="/profile"
+                                >
+                                    Profile
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <Dropdown isOpen={dropdownOpen} toggle={toggle}>
