@@ -61,11 +61,13 @@ const Profile = () => {
                 }}/>
                 <div className="card-body" style={{textAlign: "left", backgroundColor: "seashell"}}>
                     <h5 style={{fontSize: 25, fontWeight: 500}}>Dmitrii Kuzhilin</h5>
-                    <h6>React Frontend Developer</h6>
+                    {/*<h6>React Front-end Developer</h6>*/}
                     <h6>New York, NY, United States</h6>
-                    <p className="card-text">I am inspired by the idea of creating beautiful,
+                    <p className="card-text">React Front-end Developer with 5+ years of experience in Agile development,
+                        skilled in JavaScript, TypeScript, React, Redux, and Node.js
+                        I am inspired by the idea of creating beautiful,
                         functional interfaces that people will interact with and enjoy using.
-                        I like to create a Back-end side as well.
+                        I like to create a Back-end side using ExpressJS and MongoDB as well.
                     </p>
                 </div>
             </div>
