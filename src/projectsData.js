@@ -1,8 +1,8 @@
-import animals from "./images/animals.PNG";
-import kanban from "./images/kanban.PNG";
-import backlog from "./images/backlog.PNG";
+import animals from "./images/animals.gif";
+import kanban from "./images/kanban_long.gif";
+import backlog from "./images/backlog.gif";
 import todolist_1 from "./images/todolist_1.PNG";
-import profile from "./images/profile.PNG";
+import profile from "./images/profile.gif";
 
 export const data = [
     {
