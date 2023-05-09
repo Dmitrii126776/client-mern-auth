@@ -20,7 +20,7 @@ const Projects = () => {
                                 <div className="card-links">
                                     <a href={`${el.link}`} target="_blank" rel="noopener noreferrer"
                                        className="card-link" style={{textDecoration: "none"}}>
-                                        Live Here
+                                        Website
                                     </a>
                                     <a href="https://github.com/Dmitrii126776" target="_blank" rel="noopener noreferrer"
                                        className="card-link" style={{textDecoration: "none"}}>
