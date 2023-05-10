@@ -1,7 +1,7 @@
 import animals from "./images/animals.gif";
 import kanban from "./images/kanban_long.gif";
 import backlog from "./images/backlog.gif";
-import todolist_1 from "./images/todolist_1.PNG";
+import todolist from "./images/todolist.gif";
 import profile from "./images/profile.gif";
 
 export const data = [
@@ -25,7 +25,7 @@ export const data = [
     },
     {
         name: "TodoList",
-        image: todolist_1,
+        image: todolist,
         link: "/tasks",
         description: "TodoList connect with MongoDB through ExpressJS server for store data. " +
             "All other pages also contain awesome Footer with links."
