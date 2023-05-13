@@ -1,6 +1,5 @@
 import React from 'react';
 import retro from '../images/retrosupply.jpg';
-// import Typed from "react-typed"
 const resumePDF = require('../document/Dmitrii_Kuzhilin_developer_2023.docx');
 const Header = () => {
     const downloadResume = () => {
