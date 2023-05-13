@@ -1,7 +1,29 @@
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 import retro from '../images/retrosupply.jpg';
+
 const resumePDF = require('../document/Dmitrii_Kuzhilin_developer_2023.docx');
 const Header = () => {
+    const textRef = useRef(null);
+
+    function typeWriter(element, text, delay = 120) {
+        let i = 0;
+
+        function type() {
+            if (i < text.length) {
+                element.textContent += text.charAt(i);
+                i++;
+                setTimeout(type, delay);
+            }
+        }
+
+        type();
+    }
+
+    useEffect(() => {
+        const text = "React JS Redux TS MongoDB";
+        typeWriter(textRef.current, text);
+    }, []);
+
     const downloadResume = () => {
         const link = document.createElement('a');
         link.href = resumePDF;
@@ -18,10 +40,10 @@ const Header = () => {
                     <button className="btn btn-secondary btn-lg"
                             type="button" style={{marginTop: 20}}
                             onClick={downloadResume}
-                    >Get my CV</button>
-                    <h2>JavaScript React TypeScript</h2>
-
-
+                    >Get my CV
+                    </button>
+                    <h2 ref={textRef} className="typed-text">
+                    </h2>
                     {/*<Typed*/}
                     {/*    className="typed-text"*/}
                     {/*    strings={["React JavaScript", "MongoDB ExpressJS", "Bootstrap Node.js", "Material-UI Redux", "TypeScript Next.js"]}*/}
