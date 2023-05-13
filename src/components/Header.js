@@ -5,7 +5,7 @@ const resumePDF = require('../document/Dmitrii_Kuzhilin_developer_2023.docx');
 const Header = () => {
     const textRef = useRef(null);
 
-    function typeWriter(element, text, delay = 120) {
+    function typeWriter(element, text, delay = 100) {
         let i = 0;
 
         function type() {
@@ -20,7 +20,7 @@ const Header = () => {
     }
 
     useEffect(() => {
-        const text = "React JS Redux TS MongoDB";
+        const text = "React JavaScript Redux TypeScript MongoDB Bootstrap Node.js Material-UI ExpressJS";
         typeWriter(textRef.current, text);
     }, []);
 
