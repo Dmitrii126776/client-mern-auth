@@ -229,7 +229,7 @@ aside {
 
 .typed-text {
     display: inline-block;
-    border-right: 0.1em solid orange;
+    /*border-right: 0.1em solid orange;*/
     margin-right: 4px;
     font-size: 50px;
     white-space: nowrap;
