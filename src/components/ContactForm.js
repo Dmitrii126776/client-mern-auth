@@ -3,6 +3,7 @@ import {Modal, ModalHeader, ModalBody} from 'reactstrap';
 import {useForm, ValidationError} from "@formspree/react";
 
 function ContactForm({modal, toggle}) {
+
     const [state, handleSubmit] = useForm("mlekvbpw");
     const [address, setAddress] = useState('')
     const [message, setMessage] = useState('')
