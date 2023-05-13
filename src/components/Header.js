@@ -22,6 +22,7 @@ const Header = () => {
                     >Get my CV</button>
                     <h2>JavaScript React TypeScript</h2>
 
+
                     {/*<Typed*/}
                     {/*    className="typed-text"*/}
                     {/*    strings={["React JavaScript", "MongoDB ExpressJS", "Bootstrap Node.js", "Material-UI Redux", "TypeScript Next.js"]}*/}
