@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {Modal, ModalHeader, ModalBody} from 'reactstrap';
 import {useForm, ValidationError} from '@formspree/react';
 
@@ -6,16 +6,24 @@ function ContactForm({modal, toggle}) {
     const [state, handleSubmit] = useForm('mlekvbpw');
     const [address, setAddress] = useState('');
     const [message, setMessage] = useState('');
-    const [showAlert, setShowAlert] = useState(false);
+    // const [showAlert, setShowAlert] = useState(false);
 
-    useEffect(() => {
-        if (state.succeeded) {
-            setShowAlert(true);
-            setTimeout(() => {
-                setShowAlert(false);
-            }, 3000);
-        }
-    }, [state.succeeded]);
+    if (state.succeeded) {
+        return <div className="alert alert-success" role="alert">
+            <strong>Your email send successfully!</strong>
+            <button style={{marginLeft: "10px"}} type="button" className="btn-close" data-bs-dismiss="alert"
+                    aria-label="Close"></button>
+        </div>
+    }
+
+    // useEffect(() => {
+    //     if (state.succeeded) {
+    //         setShowAlert(true);
+    //         setTimeout(() => {
+    //             setShowAlert(false);
+    //         }, 3000);
+    //     }
+    // }, [state.succeeded]);
 
     const handleCancel = () => {
         setAddress('');
@@ -76,11 +84,11 @@ function ContactForm({modal, toggle}) {
                     </form>
                 </ModalBody>
             </Modal>
-            {showAlert && (
-                <div className="alert alert-success" role="alert">
-                    <strong>Your email send successfully!</strong>
-                </div>
-            )}
+            {/*{showAlert && (*/}
+            {/*    <div className="alert alert-success" role="alert">*/}
+            {/*        <strong>Your email send successfully!</strong>*/}
+            {/*    </div>*/}
+            {/*)}*/}
         </div>
     );
 }
