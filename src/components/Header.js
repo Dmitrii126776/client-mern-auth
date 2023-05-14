@@ -20,7 +20,7 @@ const Header = () => {
     }
 
     useEffect(() => {
-        const text = "React JavaScript Redux TypeScript MongoDB Bootstrap Node.js Material-UI ExpressJS";
+        const text = "React JavaScript Redux MongoDB Node.js Bootstrap TypeScript Material-UI ExpressJS";
         typeWriter(textRef.current, text);
     }, []);
 
