@@ -45,7 +45,7 @@ function ContactForm({modal, toggle}) {
                     <form onSubmit={handleSubmitForm}>
                         <div className="input-group mb-3">
               <span className="input-group-text" id="basic-addon1">
-                Your Email:
+                Email:
               </span>
                             <input
                                 id="email"
@@ -54,7 +54,7 @@ function ContactForm({modal, toggle}) {
                                 value={address}
                                 onChange={(e) => setAddress(e.target.value)}
                                 className="form-control"
-                                placeholder="type your email address ..."
+                                placeholder="your email address ..."
                             />
                         </div>
                         <ValidationError prefix="Email" field="email" errors={state.errors}/>
@@ -63,7 +63,7 @@ function ContactForm({modal, toggle}) {
                             <textarea
                                 id="message"
                                 name="message"
-                                placeholder="type your message ..."
+                                placeholder="your message ..."
                                 className="form-control"
                                 aria-label="With textarea"
                                 value={message}
