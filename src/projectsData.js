@@ -3,6 +3,7 @@ import kanban from "./images/kanban_long.gif";
 import backlog from "./images/backlog.gif";
 import todolist from "./images/todolist.gif";
 import profile from "./images/profile.gif";
+import todots from "./images/todots.gif";
 
 export const data = [
     {
@@ -36,5 +37,11 @@ export const data = [
         link: "/profile",
         description: "You can see current weather data, which are fetched from the OpenWeather service " +
             "and map of New York City"
+    },
+    {
+        name: "TodoList",
+        image: todots,
+        link: "https://ts-todo-react.netlify.app/",
+        description: "At this App I use TypeScript, Bootstrap. All data store into Local Storage"
     },
 ]
