@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {useLocation, useNavigate} from "react-router-dom";
 import {Dropdown, DropdownToggle, DropdownMenu, DropdownItem} from "reactstrap";
 import {Avatar} from "antd";
+import CountDownTime from "./CountDownTime";
 
 const Layout = (props) => {
     const {email, firstname, logout, children} = props;
@@ -9,7 +10,7 @@ const Layout = (props) => {
 
     const navigate = useNavigate();
     const handleLogout = () => {
-       // logout();
+        // logout();
         navigate("/profile");
     };
 
@@ -25,7 +26,7 @@ const Layout = (props) => {
     }, [location]);
     // hidden={!email}
     return (
-        <div >
+        <div>
             <nav
                 className="navbar fixed-top navbar-expand-lg bg-light">
                 <div className="container-fluid">
@@ -112,7 +113,7 @@ const Layout = (props) => {
                     </Dropdown>
                 </div>
             </nav>
-            <div style={{ paddingTop: '60px' }}>
+            <div style={{paddingTop: '60px'}}>
                 {children}
             </div>
         </div>

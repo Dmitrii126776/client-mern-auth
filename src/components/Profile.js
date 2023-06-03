@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import profile from "../images/profile.jpg";
 import circle from "../images/profile_circle.png";
+import CountDownTime from "./CountDownTime";
 
 
 const Profile = () => {
@@ -49,6 +50,9 @@ const Profile = () => {
                      position: 'relative', // Add position property to the card
                  }}>
                 <img src={profile} className="card-img-top" alt="profile" style={{height: "215px"}}/>
+                <div style={{position: 'absolute', top: '3%', left: '3%', color: "white"}}>
+                    <CountDownTime/>
+                </div>
                 <img src={circle} className="card-img-top" alt="circle" style={{
                     height: "150px",
                     width: "150px",

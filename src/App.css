@@ -247,3 +247,10 @@ aside {
 /*    from, to { border-color: transparent }*/
 /*    50% { border-color: orange }*/
 /*}*/
+
+.countdown__item-separator::after {
+    content: ":";
+    font-size: 36px;
+    color: white; /* Adjust the color of the dots */
+    /*margin: 0 5px; !* Adjust the margin as per your preference *!*/
+}
