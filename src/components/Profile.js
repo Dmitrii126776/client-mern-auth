@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import profile from "../images/profile.jpg";
-import circle from "../images/profile_circle.png";
+import profile from "../images/new-profile.jpg";
+import circle from "../images/smile.png";
 import CountDownTime from "./CountDownTime";
 
 
@@ -64,7 +64,7 @@ const Profile = () => {
                     borderRadius: '50%', // Make the circle image round
                 }}/>
                 <div className="card-body" style={{textAlign: "left", backgroundColor: "seashell"}}>
-                    <h5 style={{fontSize: 25, fontWeight: 500}}>Dmitrii Kuzhilin</h5>
+                    <h5 style={{fontSize: 25, fontWeight: 500}}>Dima Kuzhilin</h5>
                     {/*<h6>React Front-end Developer</h6>*/}
                     <h6>New York, NY, United States</h6>
                     <p className="card-text">React Front-end Developer with 5+ years of experience in Agile development,
