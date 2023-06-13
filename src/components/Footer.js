@@ -54,12 +54,12 @@ const Footer = () => {
                     <li className="nav-item"
                         style={{display: 'flex', alignItems: 'center'}}>
                         <span className="linkedin">
-                             <a href="https://www.linkedin.com/in/dmitrii-kuzhilin"
+                             <a href="https://www.linkedin.com/in/dima-kuzhilin"
                                 target="_blank" rel="noopener noreferrer">
                               <FontAwesomeIcon icon={faLinkedin} color="white"/>
                              </a>
                         <a className="navbar-brand text-center footer-item"
-                           href="https://www.linkedin.com/in/dmitrii-kuzhilin"
+                           href="https://www.linkedin.com/in/dima-kuzhilin"
                            target="_blank" rel="noopener noreferrer" style={{padding: 0}}>LinkedIn</a>
                         </span>
                     </li>
