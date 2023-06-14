@@ -14,10 +14,10 @@ import Loader from "../components/Loader";
 const AnimalsBoard = (props) => {
     const {animals, getAnimalById, loading} = props;
 
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleImageLoad = () => {
-        setIsLoading(false);
+        setIsLoading(true);
     };
 
     const [selectedAnimal, setSelectedAnimal] = useState(null);
