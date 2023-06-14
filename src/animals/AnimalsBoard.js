@@ -14,12 +14,6 @@ import Loader from "../components/Loader";
 const AnimalsBoard = (props) => {
     const {animals, getAnimalById, loading} = props;
 
-    const [isLoading, setIsLoading] = useState(false);
-
-    const handleImageLoad = () => {
-        setIsLoading(true);
-    };
-
     const [selectedAnimal, setSelectedAnimal] = useState(null);
     const [valueAnimal, setValueAnimal] = useState('all');
     const [valueGender, setValueGender] = useState('all');
@@ -229,7 +223,10 @@ const AnimalsBoard = (props) => {
 
             <div>
                 {loading ? (
-                    <p>Loading...</p>
+                    <div>
+                        <Loader/>
+                        <p>Loading...</p>
+                    </div>
                 ) : (
                     <div>
                         {displayedAnimals.length === 0 ? (
@@ -247,18 +244,7 @@ const AnimalsBoard = (props) => {
                                             marginBottom: '5px',
                                         }}
                                              onClick={() => moveToAnimal(el._id)}>
-
-                                            {
-                                                isLoading ? (
-                                                    <div className="loader-wrapper">
-                                                        <Loader/>
-                                                    </div>
-                                                ) : (
-                                                    <img src={el.photos[0]} onLoad={handleImageLoad}
-                                                         className="card-img-top" alt="..."/>
-                                                )}
-
-
+                                            <img src={el.photos[0]} className="card-img-top" alt="..."/>
                                             <div className="card-body">
                                                 <h5 className="card-title">{el.name}</h5>
                                                 <h6 className="card-text">{el.type}</h6>
