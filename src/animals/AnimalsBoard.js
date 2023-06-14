@@ -8,10 +8,17 @@ import FormLabel from "@mui/material/FormLabel";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio from "@mui/material/Radio";
+import Loader from "../components/Loader";
 
 
 const AnimalsBoard = (props) => {
     const {animals, getAnimalById, loading} = props;
+
+    const [isLoading, setIsLoading] = useState(true);
+
+    const handleImageLoad = () => {
+        setIsLoading(false);
+    };
 
     const [selectedAnimal, setSelectedAnimal] = useState(null);
     const [valueAnimal, setValueAnimal] = useState('all');
@@ -240,7 +247,18 @@ const AnimalsBoard = (props) => {
                                             marginBottom: '5px',
                                         }}
                                              onClick={() => moveToAnimal(el._id)}>
-                                            <img src={el.photos[0]} className="card-img-top" alt="..."/>
+
+                                            {
+                                                isLoading ? (
+                                                    <div className="loader-wrapper">
+                                                        <Loader/>
+                                                    </div>
+                                                ) : (
+                                                    <img src={el.photos[0]} onLoad={handleImageLoad}
+                                                         className="card-img-top" alt="..."/>
+                                                )}
+
+
                                             <div className="card-body">
                                                 <h5 className="card-title">{el.name}</h5>
                                                 <h6 className="card-text">{el.type}</h6>
