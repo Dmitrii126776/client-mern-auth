@@ -19,7 +19,7 @@ const Profile = () => {
                         fetch(url)
                             .then(res => res.json())
                             .then(data => resolve(data))
-                    }, index * 3000);
+                    }, index * 2000);
                 });
             });
             const data = await Promise.all(weatherPromises);
