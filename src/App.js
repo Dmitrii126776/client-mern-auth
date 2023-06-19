@@ -89,35 +89,35 @@ function App() {
         })
     }
 
-    // const getCards = () => {
-    //     axios.get(`https://server-mern-project.vercel.app/cards`)
-    //         .then(res => {
-    //             //  console.log(res.data)
-    //             setCards(res.data)
-    //         }).catch(err => {
-    //         console.log(err)
-    //     })
-    // }
-
     const getCards = () => {
-        const cachedCards = localStorage.getItem('cards');
+        axios.get(`https://server-mern-project.vercel.app/cards`)
+            .then(res => {
+                //  console.log(res.data)
+                setCards(res.data)
+            }).catch(err => {
+            console.log(err)
+        })
+    }
 
-        if (cachedCards) {
-            setCards(JSON.parse(cachedCards));
-            setLoading(false);
-        } else {
-            axios
-                .get(`${url}/cards`)
-                .then((res) => {
-                    setCards(res.data);
-                    setLoading(false);
-                    localStorage.setItem('cards', JSON.stringify(res.data));
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
-        }
-    };
+    // const getCards = () => {
+    //     const cachedCards = localStorage.getItem('cards');
+    //
+    //     if (cachedCards) {
+    //         setCards(JSON.parse(cachedCards));
+    //         setLoading(false);
+    //     } else {
+    //         axios
+    //             .get(`${url}/cards`)
+    //             .then((res) => {
+    //                 setCards(res.data);
+    //                 setLoading(false);
+    //                 localStorage.setItem('cards', JSON.stringify(res.data));
+    //             })
+    //             .catch((err) => {
+    //                 console.log(err);
+    //             });
+    //     }
+    // };
 
     // const getAnimals = () => {
     //     axios.get(`https://server-mern-project.vercel.app/animals`)
