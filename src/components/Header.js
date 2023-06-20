@@ -1,7 +1,7 @@
 import React, {useEffect, useRef} from 'react';
 import retro from '../images/retrosupply.jpg';
 
-const resumePDF = require('../document/Dmitrii_Kuzhilin_developer_2023.docx');
+const resumePDF = require('../document/Dima_Kuzhilin_resume.pdf');
 const Header = () => {
     const textRef = useRef(null);
 
@@ -27,7 +27,7 @@ const Header = () => {
     const downloadResume = () => {
         const link = document.createElement('a');
         link.href = resumePDF;
-        link.download = 'Dmitrii_Kuzhilin_developer_2023.docx';
+        link.download = 'Dima_Kuzhilin_resume.pdf';
         link.target = '_blank'; // open link in new tab
         link.click();
     };
