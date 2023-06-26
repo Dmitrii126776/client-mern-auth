@@ -1,11 +1,51 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Task from "./Task";
 import CreateTaskModal from "./CreateTaskModel";
+import axios from "axios";
 
-const TasksList = (props) => {
-    const {tasks, createTask, updateTask, deleteTask} = props
+const TasksList = () => {
+    const [tasks, setTasks] = useState([])
+
     let completed = tasks.filter(el => !el.completed.status).length
     let uncompleted = tasks.filter(el => el.completed.status).length
+    const getTasks = () => {
+        axios.get(`https://server-mern-project.vercel.app/tasks`)
+            .then(res => {
+                //  console.log(res.data)
+                setTasks(res.data)
+            }).catch(err => {
+            console.log(err)
+        })
+    }
+    const createTask = (newTask) => {
+        axios.post(`https://server-mern-project.vercel.app/tasks`, newTask)
+            .then(res => {
+                getTasks()
+            }).catch(err => {
+            console.log(err)
+        })
+    }
+    const updateTask = (id, updatedTask) => {
+        axios.patch(`https://server-mern-project.vercel.app/tasks/${id}`, updatedTask)
+            .then(res => {
+                getTasks()
+            }).catch(err => {
+            console.log(err)
+        })
+    }
+    const deleteTask = (id) => {
+        axios.delete(`https://server-mern-project.vercel.app/tasks/${id}`)
+            .then(res => {
+                getTasks()
+            }).catch(err => {
+            console.log(err)
+        })
+    }
+
+    useEffect(() => {
+        getTasks()
+    }, [])
+
     return (
         <div className="container-fluid">
             <div style={{margin: 15}} className="container-fluid d-flex justify-content-between align-items-center">

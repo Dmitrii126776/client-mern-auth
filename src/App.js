@@ -22,7 +22,6 @@ import Footer from "./components/Footer";
 function App() {
     const [email, setEmail] = useState('');
     const [firstname, setFirstName] = useState('')
-    const [tasks, setTasks] = useState([])
     const [taskNumber, setTaskNumber] = useState(0)
     const [number, setNumber] = useState('')
     const [users, setUsers] = useState([])
@@ -40,15 +39,6 @@ function App() {
 
     const user = useContext(UserContext)
 
-    const getTasks = () => {
-        axios.get(`${url}/tasks`)
-            .then(res => {
-                //  console.log(res.data)
-                setTasks(res.data)
-            }).catch(err => {
-            console.log(err)
-        })
-    }
     const getTaskNumber = () => {
         axios.get(`${url}/numbers`)
             .then(res => {
@@ -181,33 +171,6 @@ function App() {
         })
     }
 
-    const createTask = (newTask) => {
-        axios.post(`https://server-mern-project.vercel.app/tasks`, newTask)
-            .then(res => {
-                getTasks()
-            }).catch(err => {
-            console.log(err)
-        })
-    }
-
-    const updateTask = (id, updatedTask) => {
-        axios.patch(`https://server-mern-project.vercel.app/tasks/${id}`, updatedTask)
-            .then(res => {
-                getTasks()
-            }).catch(err => {
-            console.log(err)
-        })
-    }
-
-    const deleteTask = (id) => {
-        axios.delete(`https://server-mern-project.vercel.app/tasks/${id}`)
-            .then(res => {
-                getTasks()
-            }).catch(err => {
-            console.log(err)
-        })
-    }
-
     useEffect(() => {
         const cardId = localStorage.getItem('cardId');
         if (cardId) {
@@ -217,7 +180,6 @@ function App() {
 
 
     useEffect(() => {
-        getTasks()
         getTaskNumber()
         getUsers()
         getStatuses()
@@ -253,12 +215,7 @@ function App() {
                             firstname={firstname}
                             logout={logout}
                             email={email}/>}/>
-                        <Route path='/tasks' element={<TasksList
-                            tasks={tasks}
-                            createTask={createTask}
-                            updateTask={updateTask}
-                            deleteTask={deleteTask}
-                        />}/>
+                        <Route path='/tasks' element={<TasksList/>}/>
                         <Route path="/kanban" element={<KanbanBoard
                             cards={cards}
                             taskNumber={taskNumber}
