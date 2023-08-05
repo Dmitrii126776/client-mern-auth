@@ -8,9 +8,10 @@ const CountDownTime = () => {
         seconds: '00'
     });
     const [isBirthday, setIsBirthday] = useState(false);
+    const [isCountdownReady, setIsCountdownReady] = useState(false);
 
     useEffect(() => {
-        const endDate = new Date('2023-08-03T00:00:00-04:00').getTime();
+        const endDate = new Date('2023-09-25T00:00:00-04:00').getTime();
 
         const updateCountdown = () => {
             const now = new Date().getTime();
@@ -23,6 +24,7 @@ const CountDownTime = () => {
                 const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000).toString().padStart(2, '0');
 
                 setCountdown({days, hours, minutes, seconds});
+                setIsCountdownReady(true);
             } else {
                 setIsBirthday(true);
             }
@@ -37,20 +39,16 @@ const CountDownTime = () => {
 
     return (
         <div className="infographic-bookie__countdown">
-            {!isBirthday && (
-                <h4>Julia's Birthday - 03 August</h4>
+            {isCountdownReady && !isBirthday && (
+                <h4>Dima's Birthday - 25 September</h4>
             )}
-            {isBirthday ? (
-                <div>
-                    <h1>Happy birthday to you, dear Julia !!!</h1>
-                </div>
-            ) : (
-                <div className="countdown js-countdown d-flex  g-2">
+            {isCountdownReady && !isBirthday ? (
+                <div className="countdown js-countdown d-flex g-2">
                     <div className="countdown__item d-flex flex-column">
                         <span style={{fontSize: '36px', minWidth: '70px', maxHeight: '40px'}}
-                              className="countdown__time js-countdown-days ">{countdown.days}</span>
+                              className="countdown__time js-countdown-days">{countdown.days}</span>
                         <span className="countdown__text js-countdown-text">
-                             {countdown.days === '01' ? 'day' : 'days'}
+              {countdown.days === '01' ? 'day' : 'days'}
                         </span>
                     </div>
                     <div className="countdown__item-separator"></div>
@@ -77,6 +75,11 @@ const CountDownTime = () => {
                             {countdown.seconds === '00' ? 'second' : (countdown.seconds === '01' ? 'second' : 'seconds')}
                         </span>
                     </div>
+                </div>
+            ) : null}
+            {isBirthday && (
+                <div>
+                    <h1>Happy birthday to you, dear Dima !!!</h1>
                 </div>
             )}
         </div>
