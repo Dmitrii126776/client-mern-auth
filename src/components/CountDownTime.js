@@ -79,7 +79,7 @@ const CountDownTime = () => {
             ) : null}
             {isBirthday && (
                 <div>
-                    <h1>Happy birthday to you, dear Dima !!!</h1>
+                    <h1 style={{color: "wheat"}}>Happy birthday to you, dear Dima !!!</h1>
                 </div>
             )}
         </div>
