@@ -11,7 +11,7 @@ const CountDownTime = () => {
     const [isCountdownReady, setIsCountdownReady] = useState(false);
 
     useEffect(() => {
-        const endDate = new Date('2023-09-25T00:00:00-04:00').getTime();
+        const endDate = new Date('2023-09-30T00:00:00-04:00').getTime();
 
         const updateCountdown = () => {
             const now = new Date().getTime();
@@ -40,7 +40,7 @@ const CountDownTime = () => {
     return (
         <div className="infographic-bookie__countdown">
             {isCountdownReady && !isBirthday && (
-                <h4>Dima's Birthday - 25 September</h4>
+                <h4>Kitesurfing season ends in</h4>
             )}
             {isCountdownReady && !isBirthday ? (
                 <div className="countdown js-countdown d-flex g-2">
@@ -79,7 +79,7 @@ const CountDownTime = () => {
             ) : null}
             {isBirthday && (
                 <div>
-                    <h1 style={{color: "wheat"}}>Happy birthday to you, dear Dima !!!</h1>
+                    <h1 style={{color: "wheat"}}>Kitesurfing season closed :)</h1>
                 </div>
             )}
         </div>
