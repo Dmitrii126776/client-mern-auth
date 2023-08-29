@@ -244,7 +244,7 @@ const AnimalsBoard = (props) => {
                                             marginBottom: '5px',
                                         }}
                                              onClick={() => moveToAnimal(el._id)}>
-                                            <img src={el.photos[0]} loading="lazy" className="card-img-top" alt="..."/>
+                                            <img src={el.photos[0]} loading="lazy" className="card-img-top" alt="Loading ..."/>
                                             {/*{el.photos[0] ? (*/}
                                             {/*    <img*/}
                                             {/*        src={el.photos[0]}*/}
