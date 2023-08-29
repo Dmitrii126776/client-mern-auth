@@ -250,7 +250,7 @@ const AnimalsBoard = (props) => {
                                                     alt="..."
                                                     onLoad={() => setLoadingImage(false)} // Set loading state to false when image is loaded
                                                     onError={() => setLoadingImage(false)} // Set loading state to false when image fails to load
-                                                    style={{ opacity: loadingImage ? '0' : '1', transition: 'opacity 0.3s' }}
+                                                    style={{ opacity: loadingImage ? '0' : '1', transition: 'opacity 1s' }}
                                                 />
                                                 {loadingImage && (
                                                     <div
