@@ -13,7 +13,7 @@ import Loader from "../components/Loader";
 
 const AnimalsBoard = (props) => {
     const {animals, getAnimalById, loading} = props;
-
+    const [loadingImage, setLoadingImage] = useState(false);
     const [selectedAnimal, setSelectedAnimal] = useState(null);
     const [valueAnimal, setValueAnimal] = useState('all');
     const [valueGender, setValueGender] = useState('all');
@@ -239,25 +239,33 @@ const AnimalsBoard = (props) => {
                                         <div className="card p-0" style={{
                                             width: '100%',
                                             cursor: 'pointer',
-                                            //boxShadow: '-1px -1px 2px #888888',
                                             boxShadow: '2px 4px 4px #888888',
                                             marginBottom: '5px',
                                         }}
                                              onClick={() => moveToAnimal(el._id)}>
-                                            {/*<img src={el.photos[0]} className="card-img-top" alt="..."/>*/}
-                                            {el.photos[0] ? (
+                                            <div style={{ position: 'relative' }}>
                                                 <img
                                                     src={el.photos[0]}
                                                     className="card-img-top"
                                                     alt="..."
-                                                    // onLoad={() => handleImageLoad(index)}
+                                                    onLoad={() => setLoadingImage(false)} // Set loading state to false when image is loaded
+                                                    onError={() => setLoadingImage(false)} // Set loading state to false when image fails to load
+                                                    style={{ opacity: loadingImage ? '0' : '1', transition: 'opacity 0.3s' }}
                                                 />
-                                            ) : (
-                                                <div>
-                                                    <Loader/>
-                                                    <p>Loading Image...</p>
-                                                </div>
-                                            )}
+                                                {loadingImage && (
+                                                    <div
+                                                        style={{
+                                                            position: 'absolute',
+                                                            top: '50%',
+                                                            left: '50%',
+                                                            transform: 'translate(-50%, -50%)',
+                                                        }}
+                                                    >
+                                                        <Loader />
+                                                        <p>Loading Image...</p>
+                                                    </div>
+                                                )}
+                                            </div>
                                             <div className="card-body">
                                                 <h5 className="card-title">{el.name}</h5>
                                                 <h6 className="card-text">{el.type}</h6>
@@ -268,6 +276,7 @@ const AnimalsBoard = (props) => {
                                     </div>
                                 ))}
                             </div>
+
                         )}
                     </div>
                 )}
