@@ -244,19 +244,19 @@ const AnimalsBoard = (props) => {
                                             marginBottom: '5px',
                                         }}
                                              onClick={() => moveToAnimal(el._id)}>
-                                            <img src={el.photos[0]} className="card-img-top" loading="lazy" alt="..."/>
-                                            {/*{el.photos[0] ? (*/}
-                                            {/*    <img*/}
-                                            {/*        src={el.photos[0]}*/}
-                                            {/*        className="card-img-top"*/}
-                                            {/*        alt="..."*/}
-                                            {/*    />*/}
-                                            {/*) : (*/}
-                                            {/*    <div>*/}
-                                            {/*        <Loader/>*/}
-                                            {/*        <p>Loading Image...</p>*/}
-                                            {/*    </div>*/}
-                                            {/*)}*/}
+                                            {/*<img src={el.photos[0]} className="card-img-top" alt="..."/>*/}
+                                            {el.photos[0] ? (
+                                                <img
+                                                    src={el.photos[0]}
+                                                    className="card-img-top"
+                                                    alt="..."
+                                                />
+                                            ) : (
+                                                <div>
+                                                    <Loader/>
+                                                    <p>Loading Image...</p>
+                                                </div>
+                                            )}
                                             <div className="card-body">
                                                 <h5 className="card-title">{el.name}</h5>
                                                 <h6 className="card-text">{el.type}</h6>
