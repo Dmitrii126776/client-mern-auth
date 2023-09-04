@@ -59,18 +59,31 @@ const KanbanBoard = (props) => {
         currentBoard.cards.splice(currentIndex, 1)
         const dropIndex = board.cards.indexOf(item)
         board.cards.splice(dropIndex + 1, 0, currentItem)
-        setBoards(boards.map(b => {
-            if (b.id === board.id) {
-                return board;
-            }
-            if (b.id === currentBoard.id) {
-                return currentBoard;
-            }
-            return b;
-        }))
+        setBoards([...boards]);
+        // setBoards(boards.map(b => {
+        //     if (b.id === board.id) {
+        //         return board;
+        //     }
+        //     if (b.id === currentBoard.id) {
+        //         return currentBoard;
+        //     }
+        //     return b;
+        // }))
         const newStatus = {status: board.status}
         updateCardStatus(currentItem._id, newStatus)
     }
+
+    const dropOnEmptyHandler = (e, board) => {
+        e.preventDefault();
+        if (!board.cards.includes(currentItem)) {
+            board.cards.push(currentItem);
+            const currentIndex = currentBoard.cards.indexOf(currentItem);
+            currentBoard.cards.splice(currentIndex, 1);
+            setBoards([...boards]); // Update the state to trigger a re-render
+            const newStatus = {status: board.status};
+            updateCardStatus(currentItem._id, newStatus);
+        }
+    };
 
     const updateCardStatus = (id, newStatus) => {
         axios.patch(`https://server-mern-project.vercel.app/cards/${id}`, newStatus)
@@ -93,7 +106,7 @@ const KanbanBoard = (props) => {
                 cards: cards.filter((card) => card.status === statusCard.status),
             })),
         ];
-       // console.log("This is a message from console");
+        // console.log("This is a message from console");
         setBoards(filteredCards);
     }, [cards, statusesCards]);
 
@@ -123,7 +136,12 @@ const KanbanBoard = (props) => {
             </nav>
             <div className="kanban-container">
                 {boards.map((board, i) => (
-                    <div className="board" key={board.id}>
+                    <div
+                        onDragOver={(e) => dragOverHandler(e)}
+                        onDrop={(e) => dropOnEmptyHandler(e, board)}
+                        className="board"
+                        key={board.id}
+                    >
                         <div className="board-title">{capitalizeFirstLetter(board.status)}</div>
                         {board.cards.map((item) => (
                             <div
