@@ -59,16 +59,16 @@ const KanbanBoard = (props) => {
         currentBoard.cards.splice(currentIndex, 1)
         const dropIndex = board.cards.indexOf(item)
         board.cards.splice(dropIndex + 1, 0, currentItem)
-        setBoards([...boards]);
-        // setBoards(boards.map(b => {
-        //     if (b.id === board.id) {
-        //         return board;
-        //     }
-        //     if (b.id === currentBoard.id) {
-        //         return currentBoard;
-        //     }
-        //     return b;
-        // }))
+       // setBoards([...boards]);
+        setBoards(boards.map(b => {
+            if (b.id === board.id) {
+                return board;
+            }
+            if (b.id === currentBoard.id) {
+                return currentBoard;
+            }
+            return b;
+        }))
         const newStatus = {status: board.status}
         updateCardStatus(currentItem._id, newStatus)
     }
