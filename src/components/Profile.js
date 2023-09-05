@@ -2,7 +2,8 @@ import React, {useEffect, useState} from 'react';
 import profile from "../images/new-profile.jpg";
 import circle from "../images/smile.png";
 import CountDownTime from "./CountDownTime";
-
+import {LazyLoadImage} from "react-lazy-load-image-component";
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const Profile = () => {
 
@@ -19,7 +20,7 @@ const Profile = () => {
                         fetch(url)
                             .then(res => res.json())
                             .then(data => resolve(data))
-                    }, index * 2000);
+                    }, index * 1000);
                 });
             });
             const data = await Promise.all(weatherPromises);
@@ -49,7 +50,10 @@ const Profile = () => {
                      boxShadow: '2px 4px 4px #888888',
                      position: 'relative', // Add position property to the card
                  }}>
-                <img src={profile} className="card-img-top" alt="profile" style={{height: "215px"}}/>
+                <LazyLoadImage
+                    loading="lazy"
+                    effect="blur"
+                    src={profile} className="card-img-top" alt="profile" style={{height: "215px"}}/>
                 <div style={{position: 'absolute', top: '3%', left: '3%', color: "white"}}>
                     <CountDownTime/>
                 </div>

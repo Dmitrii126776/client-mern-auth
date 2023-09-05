@@ -9,6 +9,8 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio from "@mui/material/Radio";
 import Loader from "../components/Loader";
+import {LazyLoadImage} from "react-lazy-load-image-component";
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 
 const AnimalsBoard = (props) => {
@@ -244,7 +246,15 @@ const AnimalsBoard = (props) => {
                                             marginBottom: '5px',
                                         }}
                                              onClick={() => moveToAnimal(el._id)}>
-                                            <img src={el.photos[0]} loading="lazy" className="card-img-top" alt="Loading ..."/>
+                                            <LazyLoadImage
+                                                src={el.photos[0]}
+                                                effect="blur"
+                                                loading="lazy"
+                                                className="card-img-top"
+                                                alt="Loading ..."
+                                                placeholderSrc={el.photos[0]}
+                                            />
+                                            {/*<img src={el.photos[0]} loading="lazy" className="card-img-top" alt="Loading ..."/>*/}
                                             {/*{el.photos[0] ? (*/}
                                             {/*    <img*/}
                                             {/*        src={el.photos[0]}*/}

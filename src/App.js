@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import React, {useContext, useEffect, useState} from 'react';
+import React, {lazy, Suspense, useContext, useEffect, useState} from 'react';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import Login from './pages/Login';
 import Registration from "./pages/Registration";
@@ -12,12 +12,15 @@ import KanbanBoard from "./kanban/KanbanBoard";
 import Layout from "./components/Layout";
 import Backlog from "./kanban/Backlog";
 import KanbanCard from "./kanban/KanbanCard";
-import AnimalsBoard from "./animals/AnimalsBoard";
+// import AnimalsBoard from "./animals/AnimalsBoard";
 import Animal from "./animals/Animal";
 import Header from "./components/Header";
 import Projects from "./components/Projects";
 import Profile from "./components/Profile";
 import Footer from "./components/Footer";
+import Loader from "./components/Loader";
+
+const AnimalsBoard = lazy(() => import('./animals/AnimalsBoard'))
 
 function App() {
     const [email, setEmail] = useState('');
@@ -216,21 +219,27 @@ function App() {
                             logout={logout}
                             email={email}/>}/>
                         <Route path='/tasks' element={<TasksList/>}/>
-                        <Route path="/kanban" element={<KanbanBoard
-                            cards={cards}
-                            taskNumber={taskNumber}
-                            users={users}
-                            updateTaskNumber={updateTaskNumber}
-                            setCards={setCards}
-                            createNewCard={createNewCard}
-                            getCards={getCards}
-                            getCardById={getCardById}
-                            deleteCard={deleteCard}
-                            usersNames={usersNames}
-                            priorities={priorities}
-                            arrayStatuses={arrayStatuses}
-                            number={number}
-                        />}/>
+                        <Route path="/kanban" element={
+                            <Suspense fallback={<div>
+                                <Loader/>
+                            </div>}>
+                                <KanbanBoard
+                                    cards={cards}
+                                    taskNumber={taskNumber}
+                                    users={users}
+                                    updateTaskNumber={updateTaskNumber}
+                                    setCards={setCards}
+                                    createNewCard={createNewCard}
+                                    getCards={getCards}
+                                    getCardById={getCardById}
+                                    deleteCard={deleteCard}
+                                    usersNames={usersNames}
+                                    priorities={priorities}
+                                    arrayStatuses={arrayStatuses}
+                                    number={number}
+                                />
+                            </Suspense>
+                        }/>
                         <Route path="/kanban/backlog" element={<Backlog
                             cards={cards}
                             usersNames={usersNames}
@@ -246,11 +255,18 @@ function App() {
                             arrayStatuses={arrayStatuses}
                             updateCard={updateCard}
                         />}/>
-                        <Route path="/animals" element={<AnimalsBoard
-                            loading={loading}
-                            animals={animals}
-                            getAnimalById={getAnimalById}
-                        />}/>
+                        <Route path="/animals" element={
+                            <Suspense fallback={<div>
+                                <Loader/>
+                            </div>}>
+                                <AnimalsBoard
+                                    loading={loading}
+                                    animals={animals}
+                                    getAnimalById={getAnimalById}
+                                />
+                            </Suspense>
+
+                        }/>
                         <Route path="/animals/animal/:id" element={<Animal
                             animal={animal}
                         />}/>

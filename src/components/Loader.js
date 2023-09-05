@@ -3,8 +3,9 @@ import {CircularProgress} from "@mui/material";
 
 const Loader = () => {
     return (
-        <div>
+        <div className="min-vh-100">
             <CircularProgress disableShrink/>
+            <p>Loading...</p>
         </div>
     );
 };
