@@ -31,7 +31,7 @@
 /*}*/
 
 .board {
-    min-width: 300px;
+    min-width: 200px;
     border: 1px solid lightgray;
     padding: 20px 10px;
     border-radius: 12px;
