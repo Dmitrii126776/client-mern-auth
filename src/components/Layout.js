@@ -2,7 +2,6 @@ import React, {useEffect, useState} from "react";
 import {useLocation, useNavigate} from "react-router-dom";
 import {Dropdown, DropdownToggle, DropdownMenu, DropdownItem} from "reactstrap";
 import {Avatar} from "antd";
-import CountDownTime from "./CountDownTime";
 
 const Layout = (props) => {
     const {email, firstname, logout, children} = props;
