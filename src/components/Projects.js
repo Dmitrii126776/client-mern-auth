@@ -18,11 +18,11 @@ const Projects = () => {
                             <div className="card-body" style={{height: '50%'}}>
                                 <p style={{textAlign: "left"}} className="card-text">{el.description}</p>
                                 <div className="card-links">
-                                    <a href={`${el.link}`} target="-_blank" rel="noopener noreferrer"
+                                    <a href={`${el.link}`} target="_blank" rel="noopener noreferrer"
                                        className="card-link" style={{textDecoration: "none"}}>
                                         Website
                                     </a>
-                                    <a href="https://github.com/Dmitrii126776" target="-_blank" rel="noopener noreferrer"
+                                    <a href="https://github.com/Dmitrii126776" target="_blank" rel="noopener noreferrer"
                                        className="card-link" style={{textDecoration: "none"}}>
                                         GitHub
                                     </a>
