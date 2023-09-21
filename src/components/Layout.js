@@ -108,7 +108,7 @@ const Layout = (props) => {
                             <DropdownItem>{firstname}</DropdownItem>
                             <DropdownItem>{email}</DropdownItem>
                             <DropdownItem>
-                                <a href="https://dima-kuzhilin-portfolio.netlify.app/" target="-_blank"
+                                <a href="https://dima-kuzhilin-portfolio.netlify.app/" target="_blank"
                                    className="nav-link"> Portfolio
                                 </a>
                             </DropdownItem>
