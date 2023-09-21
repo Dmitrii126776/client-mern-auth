@@ -42,12 +42,12 @@ const Footer = () => {
                         style={{display: 'flex', alignItems: 'center', marginLeft: 50, marginRight: 50}}>
                         <span className="github">
                          <a href="https://github.com/Dmitrii126776"
-                            target="_blank" rel="noopener noreferrer">
+                            target="-_blank" rel="noopener noreferrer">
                            <FontAwesomeIcon icon={faGithub} color="white" style={{padding: 0}}/>
                         </a>
                         <a className="navbar-brand text-center footer-item"
                            href="https://github.com/Dmitrii126776"
-                           target="_blank" rel="noopener noreferrer" style={{padding: 0}}>My GitHub
+                           target="-_blank" rel="noopener noreferrer" style={{padding: 0}}>My GitHub
                           </a>
                         </span>
                     </li>
@@ -55,12 +55,12 @@ const Footer = () => {
                         style={{display: 'flex', alignItems: 'center'}}>
                         <span className="linkedin">
                              <a href="https://www.linkedin.com/in/dima-kuzhilin"
-                                target="_blank" rel="noopener noreferrer">
+                                target="-_blank" rel="noopener noreferrer">
                               <FontAwesomeIcon icon={faLinkedin} color="white"/>
                              </a>
                         <a className="navbar-brand text-center footer-item"
                            href="https://www.linkedin.com/in/dima-kuzhilin"
-                           target="_blank" rel="noopener noreferrer" style={{padding: 0}}>LinkedIn</a>
+                           target="-_blank" rel="noopener noreferrer" style={{padding: 0}}>LinkedIn</a>
                         </span>
                     </li>
                 </ul>
