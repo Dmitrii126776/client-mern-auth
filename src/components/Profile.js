@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import profile from "../images/new-profile.jpg";
+import profile from "../images/profile.jpg";
 import circle from "../images/smile.png";
 import CountDownTime from "./CountDownTime";
 import {LazyLoadImage} from "react-lazy-load-image-component";
