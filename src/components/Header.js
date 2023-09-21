@@ -27,8 +27,8 @@ const Header = () => {
     const downloadResume = () => {
         const link = document.createElement('a');
         link.href = resumePDF;
-        link.download = 'Dima_Kuzhilin_resume.pdf';
-        link.target = '_blank'; // open link in new tab
+       // link.download = 'Dima_Kuzhilin_resume.pdf';
+        link.target = '-_blank'; // open link in new tab
         link.click();
     };
 
