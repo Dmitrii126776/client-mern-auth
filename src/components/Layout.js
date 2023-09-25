@@ -27,7 +27,7 @@ const Layout = (props) => {
     return (
         <div>
             <nav
-                className="navbar fixed-top navbar-expand-lg bg-light">
+                className="navbar fixed-top navbar-expand-lg navbar-color">
                 <div className="container-fluid">
                     <button
                         style={{marginLeft: '30px'}}
@@ -108,7 +108,7 @@ const Layout = (props) => {
                             <DropdownItem>{firstname}</DropdownItem>
                             <DropdownItem>{email}</DropdownItem>
                             <DropdownItem>
-                                <a href="https://dima-kuzhilin-portfolio.netlify.app/" target="_blank"
+                                <a href="https://dima-kuzhilin-portfolio.netlify.app/" target="_blank" rel="noopener noreferrer"
                                    className="nav-link"> Portfolio
                                 </a>
                             </DropdownItem>

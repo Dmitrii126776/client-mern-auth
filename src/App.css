@@ -87,8 +87,13 @@ aside {
     margin-right: 20px;
 }
 
+.navbar-color {
+    background: rgba(255, 255, 255, 0.6) !important;
+}
+
 .nav-link {
     margin-right: 20px;
+    color: black;
 }
 
 .active {
@@ -192,6 +197,11 @@ aside {
         margin-left: 0 !important;
         margin-top: 10px;
     }
+
+    .navbar-color {
+        background: rgba(255, 255, 255, 0.9) !important;
+    }
+
 }
 
 /*@media (max-width: 768px) {*/
