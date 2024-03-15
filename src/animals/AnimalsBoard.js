@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Autocomplete, {createFilterOptions} from '@mui/material/Autocomplete';
@@ -11,10 +11,29 @@ import Radio from "@mui/material/Radio";
 import Loader from "../components/Loader";
 import {LazyLoadImage} from "react-lazy-load-image-component";
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import axios from "axios";
 
 
 const AnimalsBoard = (props) => {
-    const {animals, getAnimalById, loading} = props;
+    const {getAnimalById} = props;
+
+    const [animals, setAnimals] = useState([])
+    const [loading, setLoading] = useState(true);
+
+    const getAnimals = () => {
+        axios.get(`https://server-mern-project.vercel.app/animals`)
+            .then(res => {
+                // console.log(res.data)
+                setAnimals(res.data)
+                setLoading(false);
+            }).catch(err => {
+            console.log(err)
+        })
+    }
+    useEffect(() => {
+        getAnimals()
+    }, [])
+
 
     const [selectedAnimal, setSelectedAnimal] = useState(null);
     const [valueAnimal, setValueAnimal] = useState('all');

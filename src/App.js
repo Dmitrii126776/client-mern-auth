@@ -30,9 +30,9 @@ function App() {
     const [users, setUsers] = useState([])
     const [statuses, setStatuses] = useState([])
     const [cards, setCards] = useState([])
-    const [animals, setAnimals] = useState([])
     const [card, setCard] = useState(null)
-    const [loading, setLoading] = useState(true);
+    // const [animals, setAnimals] = useState([])
+    // const [loading, setLoading] = useState(true);
 
     const url = "https://server-mern-project.vercel.app"
 
@@ -92,16 +92,16 @@ function App() {
         })
     }
 
-    const getAnimals = () => {
-        axios.get(`https://server-mern-project.vercel.app/animals`)
-            .then(res => {
-                // console.log(res.data)
-                setAnimals(res.data)
-                setLoading(false);
-            }).catch(err => {
-            console.log(err)
-        })
-    }
+    // const getAnimals = () => {
+    //     axios.get(`https://server-mern-project.vercel.app/animals`)
+    //         .then(res => {
+    //             // console.log(res.data)
+    //             setAnimals(res.data)
+    //             setLoading(false);
+    //         }).catch(err => {
+    //         console.log(err)
+    //     })
+    // }
 
     // const getAnimals = () => {
     //     const cachedAnimals = localStorage.getItem('animals');
@@ -123,7 +123,8 @@ function App() {
     //     }
     // };
 
-    const [animal, setAnimal] = useState({})
+    const [animal, setAnimal] = useState({});
+
     const getAnimalById = (id) => {
         axios.get(`${url}/animals/${id}`)
             .then(res => {
@@ -187,7 +188,7 @@ function App() {
         getUsers()
         getStatuses()
         getCards()
-        getAnimals()
+        // getAnimals()
     }, [])
 
 
@@ -214,7 +215,7 @@ function App() {
                         <Route path="/login" element={<Login/>}/>
                         <Route path="/registration" element={<Registration/>}/>
                         <Route path="/home" element={<Home
-                            animals={animals}
+                            // animals={animals}
                             firstname={firstname}
                             logout={logout}
                             email={email}/>}/>
@@ -260,8 +261,8 @@ function App() {
                                 <Loader/>
                             </div>}>
                                 <AnimalsBoard
-                                    loading={loading}
-                                    animals={animals}
+                                    // loading={loading}
+                                    // animals={animals}
                                     getAnimalById={getAnimalById}
                                 />
                             </Suspense>
