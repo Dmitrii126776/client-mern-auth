@@ -15,8 +15,7 @@ const KanbanBoard = (props) => {
         getCardById,
         usersNames,
         priorities,
-        arrayStatuses,
-        taskNumber, updateTaskNumber, number
+        arrayStatuses
     } = props;
 
     const statusesCards = useMemo(() => [
@@ -59,7 +58,7 @@ const KanbanBoard = (props) => {
         currentBoard.cards.splice(currentIndex, 1)
         const dropIndex = board.cards.indexOf(item)
         board.cards.splice(dropIndex + 1, 0, currentItem)
-       // setBoards([...boards]);
+        // setBoards([...boards]);
         setBoards(boards.map(b => {
             if (b.id === board.id) {
                 return board;
@@ -128,8 +127,7 @@ const KanbanBoard = (props) => {
                         </li>
                     </ul>
                     <div className="d-flex justify-content-center flex-grow-1">
-                        <CreateModal taskNumber={taskNumber} updateTaskNumber={updateTaskNumber} number={number}
-                                     createNewCard={createNewCard} arrayStatuses={arrayStatuses}
+                        <CreateModal createNewCard={createNewCard} arrayStatuses={arrayStatuses}
                                      priorities={priorities} usersNames={usersNames}/>
                     </div>
                 </div>

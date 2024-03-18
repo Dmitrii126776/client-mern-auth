@@ -1,16 +1,44 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
+import axios from "axios";
 
 
 function CreateModal(props) {
-    const {priorities, usersNames, arrayStatuses, createNewCard, taskNumber, updateTaskNumber, number} = props
+    const {priorities, usersNames, arrayStatuses, createNewCard} = props
+    const url = "https://server-mern-project.vercel.app"
 
+    const [taskNumber, setTaskNumber] = useState(0)
+    const [number, setNumber] = useState('')
     const [modal, setModal] = useState(false);
     const [nameCardInput, setNameCardInput] = useState('')
     const [descriptionInput, setDescriptionInput] = useState('')
     const [assigneeInput, setAssigneeInput] = useState(usersNames[0])
     const [priorityInput, setPriorityInput] = useState(priorities[0])
     const [statusInput, setStatusInput] = useState(arrayStatuses[0])
+
+    const getTaskNumber = () => {
+        axios.get(`${url}/numbers`)
+            .then(res => {
+                setTaskNumber(res.data[0].numberTask)
+                setNumber(res.data[0]._id)
+            })
+            .catch(err => {
+                console.log("Error retrieving task number:", err);
+            })
+    }
+
+    const updateTaskNumber = (id, nextTaskNumber) => {
+        axios.patch(`https://server-mern-project.vercel.app/numbers/${id}`, nextTaskNumber)
+            .then(res => {
+                getTaskNumber()
+            }).catch(err => {
+            console.log(err)
+        })
+    }
+
+    useEffect(() => {
+        getTaskNumber()
+    }, [])
 
     const createTask = () => {
         const newTaskNumber = `TC-${taskNumber}`
