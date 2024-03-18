@@ -1,9 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import {Link, useNavigate} from "react-router-dom";
+import axios from "axios";
 
 const KanbanCard = (props) => {
-
-    const {card, usersNames, priorities, arrayStatuses, updateCard} = props;
+    const {card, updateCard} = props;
+    const priorities = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    const arrayStatuses = ["new", "active", "review", "closed"];
+    const [users, setUsers] = useState([])
+    const usersNames = users.map(el => el.firstname)
     const [nameCardInput, setNameCardInput] = useState('');
     const [assigneeInput, setAssigneeInput] = useState('');
     const [priorityInput, setPriorityInput] = useState('');
@@ -21,6 +25,19 @@ const KanbanCard = (props) => {
         updateCard(card.id, updatedCard)
         navigate('/kanban')
     }
+
+    useEffect(() => {
+        const getUsers = () => {
+            axios.get(`https://server-mern-project.vercel.app/users`)
+                .then(res => {
+                    //  console.log(res.data)
+                    setUsers(res.data)
+                }).catch(err => {
+                console.log(err)
+            })
+        }
+        getUsers()
+    }, [])
 
     useEffect(() => {
         const storedData = localStorage.getItem('cardItem');
@@ -41,7 +58,7 @@ const KanbanCard = (props) => {
     }, [card]);
 
     return (
-        <div style={{height:450}}>
+        <div style={{height: 450}}>
             <nav className="navbar navbar-expand-lg" style={{marginTop: 10}}>
                 <div className="container-fluid d-flex justify-content-between align-items-center">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0" style={{marginLeft: "100px"}}>

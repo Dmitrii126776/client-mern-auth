@@ -4,9 +4,13 @@ import axios from "axios";
 
 
 function CreateModal(props) {
-    const {priorities, usersNames, arrayStatuses, createNewCard} = props
+    const {priorities, createNewCard} = props
     const url = "https://server-mern-project.vercel.app"
 
+    const [statuses, setStatuses] = useState([])
+    const arrayStatuses = statuses.map(el => el.title)
+    const [users, setUsers] = useState([])
+    const usersNames = users.map(el => el.firstname)
     const [taskNumber, setTaskNumber] = useState(0)
     const [number, setNumber] = useState('')
     const [modal, setModal] = useState(false);
@@ -28,7 +32,7 @@ function CreateModal(props) {
     }
 
     const updateTaskNumber = (id, nextTaskNumber) => {
-        axios.patch(`https://server-mern-project.vercel.app/numbers/${id}`, nextTaskNumber)
+        axios.patch(`${url}/numbers/${id}`, nextTaskNumber)
             .then(res => {
                 getTaskNumber()
             }).catch(err => {
@@ -36,8 +40,30 @@ function CreateModal(props) {
         })
     }
 
+    const getStatuses = () => {
+        axios.get(`${url}/statuses`)
+            .then(res => {
+                //  console.log(res.data)
+                setStatuses(res.data)
+            }).catch(err => {
+            console.log(err)
+        })
+    }
+
+    const getUsers = () => {
+        axios.get(`${url}/users`)
+            .then(res => {
+                //  console.log(res.data)
+                setUsers(res.data)
+            }).catch(err => {
+            console.log(err)
+        })
+    }
+
     useEffect(() => {
         getTaskNumber()
+        getStatuses()
+        getUsers()
     }, [])
 
     const createTask = () => {

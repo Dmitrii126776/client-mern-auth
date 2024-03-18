@@ -25,8 +25,6 @@ const AnimalsBoard = lazy(() => import('./animals/AnimalsBoard'))
 function App() {
     const [email, setEmail] = useState('');
     const [firstname, setFirstName] = useState('')
-    const [users, setUsers] = useState([])
-    const [statuses, setStatuses] = useState([])
     const [cards, setCards] = useState([])
     const [card, setCard] = useState(null)
     // const [animals, setAnimals] = useState([])
@@ -34,31 +32,7 @@ function App() {
 
     const url = "https://server-mern-project.vercel.app"
 
-    const priorities = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    const usersNames = users.map(el => el.firstname)
-    const arrayStatuses = statuses.map(el => el.title)
-
     const user = useContext(UserContext)
-
-    const getStatuses = () => {
-        axios.get(`https://server-mern-project.vercel.app/statuses`)
-            .then(res => {
-                //  console.log(res.data)
-                setStatuses(res.data)
-            }).catch(err => {
-            console.log(err)
-        })
-    }
-
-    const getUsers = () => {
-        axios.get(`https://server-mern-project.vercel.app/users`)
-            .then(res => {
-                //  console.log(res.data)
-                setUsers(res.data)
-            }).catch(err => {
-            console.log(err)
-        })
-    }
 
     const getCards = () => {
         axios.get(`https://server-mern-project.vercel.app/cards`)
@@ -162,8 +136,6 @@ function App() {
 
 
     useEffect(() => {
-        getUsers()
-        getStatuses()
         getCards()
         // getAnimals()
     }, [])
@@ -203,31 +175,20 @@ function App() {
                             </div>}>
                                 <KanbanBoard
                                     cards={cards}
-                                    users={users}
-                                    setCards={setCards}
                                     createNewCard={createNewCard}
                                     getCards={getCards}
                                     getCardById={getCardById}
                                     deleteCard={deleteCard}
-                                    usersNames={usersNames}
-                                    priorities={priorities}
-                                    arrayStatuses={arrayStatuses}
                                 />
                             </Suspense>
                         }/>
                         <Route path="/kanban/backlog" element={<Backlog
                             cards={cards}
-                            usersNames={usersNames}
-                            priorities={priorities}
-                            arrayStatuses={arrayStatuses}
                             createNewCard={createNewCard}
                             getCardById={getCardById}
                         />}/>
                         <Route path="/kanban/card/:id" element={<KanbanCard
                             card={card}
-                            usersNames={usersNames}
-                            priorities={priorities}
-                            arrayStatuses={arrayStatuses}
                             updateCard={updateCard}
                         />}/>
                         <Route path="/animals" element={

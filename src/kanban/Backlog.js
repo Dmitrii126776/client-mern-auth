@@ -13,10 +13,11 @@ import {InputText} from "primereact/inputtext";
 import {Button} from 'primereact/button';
 
 const Backlog = (props) => {
-    const {cards, arrayStatuses, priorities, usersNames, createNewCard, getCardById} = props
+    const {cards, createNewCard, getCardById} = props
+    const priorities = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     const [selectedProduct, setSelectedProduct] = useState(null);
     const toast = useRef(null);
-    const [statuses] = useState(arrayStatuses);
+    const [statuses] = useState(["new", "active", "review", "closed"]);
     const [globalFilterValue, setGlobalFilterValue] = useState('');
     const [filters, setFilters] = useState(null)
 
@@ -104,8 +105,8 @@ const Backlog = (props) => {
                         </li>
                     </ul>
                     <div className="d-flex justify-content-center flex-grow-1">
-                        <CreateModal createNewCard={createNewCard} arrayStatuses={arrayStatuses}
-                                     priorities={priorities} usersNames={usersNames}/>
+                        <CreateModal createNewCard={createNewCard}
+                                     priorities={priorities}/>
                     </div>
                 </div>
             </nav>
