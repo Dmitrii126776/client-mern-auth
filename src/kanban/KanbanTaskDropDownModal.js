@@ -24,30 +24,29 @@ function KanbanTaskDropDownModal(props) {
     const updateToggle = () => setUpdateModal(!updateModal);
 
     return (
-        <div className="d-flex">
-            <Dropdown isOpen={dropdownOpen} toggle={toggle} style={{color: "gray"}}>
+        <div className="d-flex" data-testid="dropdown-actions">
+            <Dropdown isOpen={dropdownOpen} toggle={toggle} style={{ color: "gray" }}>
                 <DropdownToggle caret>Actions</DropdownToggle>
                 <DropdownMenu>
                     <DropdownItem>
-                        <div className="btn-sm" color="danger" onClick={deleteToggle}>
-                          <span style={{fontSize: 18, color: "red"}}>
-                                        Delete <i className="fas fa-trash"></i>
-                           </span>
+                        <div className="btn-sm" color="danger" onClick={deleteToggle} data-testid="delete-action">
+                        <span style={{ fontSize: 18, color: "red" }}>
+                            Delete <i className="fas fa-trash"></i>
+                        </span>
                         </div>
                         <DeleteKanbanTaskModal
                             deleteCard={deleteCard}
-                            task={task} modal={deleteModal} toggle={deleteToggle}/>
+                            task={task} modal={deleteModal} toggle={deleteToggle} />
                     </DropdownItem>
                     <DropdownItem>
-                        <div className="btn-sm" onClick={() => moveToCard(task._id)}>
-                           <span style={{fontSize: 18, color: "black"}}>
-                               Update <i className="fas fa-pencil-alt"></i>
-                           </span>
+                        <div className="btn-sm" onClick={() => moveToCard(task._id)} data-testid="update-action">
+                        <span style={{ fontSize: 18, color: "black" }}>
+                            Update <i className="fas fa-pencil-alt"></i>
+                        </span>
                         </div>
                         <UpdateKanbanTaskModal getCardById={getCardById} task={task} modal={updateModal}
-                                               toggle={updateToggle}/>
+                                               toggle={updateToggle} />
                     </DropdownItem>
-
                 </DropdownMenu>
             </Dropdown>
         </div>

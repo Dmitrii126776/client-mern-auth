@@ -27,22 +27,29 @@ const Layout = (props) => {
     return (
         <div>
             <nav
-                className="navbar fixed-top navbar-expand-lg navbar-color">
+                className="navbar fixed-top navbar-expand-lg navbar-color"
+                data-testid="navbar"
+            >
                 <div className="container-fluid">
                     <button
                         style={{marginLeft: '30px'}}
                         className="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                        aria-expanded="false" aria-label="Toggle navigation"
+                        data-testid="navbar-toggler"
+                    >
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0"
-                            style={{marginRight: "50px", marginLeft: "30px"}}>
+                            style={{marginRight: "50px", marginLeft: "30px"}}
+                            data-testid="navbar-nav"
+                        >
                             <li className="nav-item">
                                 <a
                                     className={`nav-link ${activeLink === "/" ? "active" : ""}`}
                                     href="/"
+                                    data-testid="nav-link-welcome"
                                 >
                                     Welcome
                                 </a>
@@ -59,6 +66,7 @@ const Layout = (props) => {
                                 <a
                                     className={`nav-link ${activeLink === "/projects" ? "active" : ""}`}
                                     href="/projects"
+                                    data-testid="nav-link-projects"
                                 >
                                     Projects
                                 </a>
@@ -67,6 +75,7 @@ const Layout = (props) => {
                                 <a
                                     className={`nav-link ${activeLink === "/animals" ? "active" : ""}`}
                                     href="/animals"
+                                    data-testid="nav-link-animals"
                                 >
                                     Animals
                                 </a>
@@ -75,6 +84,7 @@ const Layout = (props) => {
                                 <a
                                     className={`nav-link ${activeLink === "/tasks" ? "active" : ""}`}
                                     href="/tasks"
+                                    data-testid="nav-link-todolist"
                                 >
                                     TodoList
                                 </a>
@@ -83,6 +93,7 @@ const Layout = (props) => {
                                 <a
                                     className={`nav-link ${activeLink === "/kanban" ? "active" : ""}`}
                                     href="/kanban"
+                                    data-testid="nav-link-kanban"
                                 >
                                     Kanban
                                 </a>
@@ -91,6 +102,7 @@ const Layout = (props) => {
                                 <a
                                     className={`nav-link ${activeLink === "/profile" ? "active" : ""}`}
                                     href="/profile"
+                                    data-testid="nav-link-profile"
                                 >
                                     Profile
                                 </a>
@@ -98,7 +110,7 @@ const Layout = (props) => {
                         </ul>
                     </div>
                     <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-                        <DropdownToggle tag="a" className="dropdown-toggle mr-4">
+                        <DropdownToggle tag="a" className="dropdown-toggle mr-4" data-testid="dropdown-toggle">
                             <Avatar style={{backgroundColor: "lightblue"}}
                                     className="mr-2" size={32} src={require('../images/smile.png')}/>
                             {firstname}
@@ -108,16 +120,17 @@ const Layout = (props) => {
                             <DropdownItem>{firstname}</DropdownItem>
                             <DropdownItem>{email}</DropdownItem>
                             <DropdownItem>
-                                <a href="https://dima-kuzhilin-portfolio.netlify.app/" target="_blank" rel="noopener noreferrer"
-                                   className="nav-link"> Portfolio
+                                <a href="https://dima-kuzhilin-portfolio.netlify.app/" target="_blank"
+                                   rel="noopener noreferrer"
+                                   className="nav-link" data-testid="portfolio-link"> Portfolio
                                 </a>
                             </DropdownItem>
-                            <DropdownItem onClick={handleLogout}>Profile</DropdownItem>
+                            <DropdownItem onClick={handleLogout} data-testid="logout-link">Logout</DropdownItem>
                         </DropdownMenu>
                     </Dropdown>
                 </div>
             </nav>
-            <div style={{paddingTop: '60px'}}>
+            <div style={{paddingTop: '60px'}} data-testid="children-container">
                 {children}
             </div>
         </div>
