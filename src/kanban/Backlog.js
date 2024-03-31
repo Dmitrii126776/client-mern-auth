@@ -89,29 +89,31 @@ const Backlog = (props) => {
     return (
 
         <div>
-            <nav className="navbar navbar-expand-lg" style={{marginTop: 10, marginBottom: 10}}>
+            <nav className="navbar navbar-expand-lg" style={{marginTop: 10, marginBottom: 10}} data-testid="navbar">
                 <div className="container-fluid d-flex justify-content-between align-items-center">
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0" style={{marginLeft: "100px"}}>
+                    <ul className="navbar-nav me-auto mb-2 mb-lg-0" style={{marginLeft: "100px"}}
+                        data-testid="navbar-links">
                         <li className="nav-item">
-                            <Link to="/kanban" className="nav-link">
+                            <Link to="/kanban" className="nav-link" data-testid="nav-link-tasksboard">
                                 TasksBoard
                             </Link>
                         </li>
                         <li className="nav-item">
                             <Link to="/kanban/backlog" className="nav-link"
-                                  style={{color: "blue", textDecoration: "underline"}}>
+                                  style={{color: "blue", textDecoration: "underline"}}
+                                  data-testid="nav-link-backlog"
+                            >
                                 Backlog
                             </Link>
                         </li>
                     </ul>
-                    <div className="d-flex justify-content-center flex-grow-1">
-                        <CreateModal createNewCard={createNewCard}
-                                     priorities={priorities}/>
+                    <div className="d-flex justify-content-center flex-grow-1" data-testid="create-modal-container">
+                        <CreateModal createNewCard={createNewCard} priorities={priorities}/>
                     </div>
                 </div>
             </nav>
 
-            <div className="card container-fluid">
+            <div className="card container-fluid" data-testid="datatable-container">
                 <Toast ref={toast}/>
                 <DataTable value={cards} paginator rows={4} rowsPerPageOptions={[4, 6, 8]}
                            selectionMode="single" selection={selectedProduct} filters={filters}
@@ -119,16 +121,17 @@ const Backlog = (props) => {
                            onRowSelect={onRowSelect} showGridlines
                            tableStyle={{minWidth: '50rem'}}
                            globalFilterFields={['assignee', 'status', 'name', 'priority', 'taskNumber']} header={header}
-                           emptyMessage="No customers found.">
-                    <Column field="taskNumber" header="Task #" sortable style={{width: '15%'}}></Column>
+                           emptyMessage="No customers found." data-testid="datatable">
+                    <Column field="taskNumber" header="Task #" sortable style={{width: '15%'}}
+                            data-testid="column-tasknumber"></Column>
                     <Column field="assignee" header="Assignee" filter filterPlaceholder="Search by name" sortable
-                            style={{width: '15%'}}></Column>
-                    <Column field="priority" header="Priority" sortable style={{width: '5%'}}></Column>
+                            style={{width: '15%'}} data-testid="column-assignee"></Column>
+                    <Column field="priority" header="Priority" sortable style={{width: '5%'}}
+                            data-testid="column-priority"></Column>
                     <Column field="status" header="Status" filterMenuStyle={{width: '14rem'}}
-                            body={statusBodyTemplate}
-                            sortable style={{width: '15%'}}
-                            filter filterElement={statusFilterTemplate}/>
-                    <Column field="name" header="Title"></Column>
+                            body={statusBodyTemplate} sortable style={{width: '15%'}}
+                            filter filterElement={statusFilterTemplate} data-testid="column-status"/>
+                    <Column field="name" header="Title" data-testid="column-title"></Column>
                 </DataTable>
             </div>
 

@@ -95,49 +95,54 @@ function CreateModal(props) {
 
     return (
         <div>
-            <Button color="secondary" outline onClick={toggle}>
+            <Button color="secondary" outline onClick={toggle} data-testid="add-task-button">
                 AddNewTask
             </Button>
-            <Modal isOpen={modal} toggle={toggle}>
+            <Modal isOpen={modal} toggle={toggle} data-testid="create-task-modal">
                 <ModalHeader toggle={toggle}>Create Task Modal</ModalHeader>
                 <ModalBody>
                     <div className="input-group mb-3">
                         <span className="input-group-text" id="basic-addon1">TaskName</span>
                         <input value={nameCardInput} onChange={e => setNameCardInput(e.target.value)}
-                               type="text" className="form-control" placeholder="task name ..."/>
+                               type="text" className="form-control" placeholder="task name ..."
+                               data-testid="task-name-input"/>
                     </div>
                     <div className="input-group mb-3">
                         <span className="input-group-text" id="basic-addon1">Description</span>
                         <input value={descriptionInput} onChange={e => setDescriptionInput(e.target.value)}
-                               type="text" className="form-control" placeholder="description ..."/>
+                               type="text" className="form-control" placeholder="description ..."
+                               data-testid="task-description-input"/>
                     </div>
                     <div className="input-group mb-3">
                         <label className="input-group-text" htmlFor="inputGroupSelect01">Assignee</label>
                         <select value={assigneeInput} onChange={e => setAssigneeInput(e.target.value)}
-                                className="form-select" id="inputGroupSelect01">
+                                className="form-select" id="inputGroupSelect01"
+                                data-testid="task-assignee-select">
                             {usersNames.map((el, i) => (<option key={i} value={el}>{el}</option>))}
                         </select>
                     </div>
                     <div className="input-group mb-3">
                         <label className="input-group-text" htmlFor="inputGroupSelect01">Priority</label>
                         <select value={priorityInput} onChange={e => setPriorityInput(e.target.value)}
-                                className="form-select" id="inputGroupSelect01">
+                                className="form-select" id="inputGroupSelect01"
+                                data-testid="task-priority-select">
                             {priorities.map((el, i) => (<option key={i} value={el}>{el}</option>))}
                         </select>
                     </div>
                     <div className="input-group mb-3">
                         <label className="input-group-text" htmlFor="inputGroupSelect01">Status</label>
                         <select value={statusInput} onChange={e => setStatusInput(e.target.value)}
-                                className="form-select" id="inputGroupSelect01">
+                                className="form-select" id="inputGroupSelect01"
+                                data-testid="task-status-select">
                             {arrayStatuses.map((el, i) => (<option key={i} value={el}>{el}</option>))}
                         </select>
                     </div>
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="secondary" onClick={toggle}>
+                    <Button color="secondary" onClick={toggle} data-testid="cancel-task-button">
                         Cancel
                     </Button>{' '}
-                    <Button color="primary" onClick={createTask}
+                    <Button color="primary" onClick={createTask} data-testid="create-task-button"
                             disabled={nameCardInput === '' || descriptionInput === ''}>
                         Create
                     </Button>
