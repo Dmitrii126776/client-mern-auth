@@ -122,10 +122,9 @@ const Layout = (props) => {
                             <DropdownItem>
                                 <a href="https://dima-kuzhilin-portfolio.netlify.app/" target="_blank"
                                    rel="noopener noreferrer"
-                                   className="nav-link" data-testid="portfolio-link"> Portfolio
-                                </a>
+                                   className="nav-link" data-testid="portfolio-link">Portfolio</a>
                             </DropdownItem>
-                            <DropdownItem onClick={handleLogout} data-testid="logout-link">Logout</DropdownItem>
+                            <DropdownItem onClick={handleLogout} data-testid="profile-link">Profile</DropdownItem>
                         </DropdownMenu>
                     </Dropdown>
                 </div>

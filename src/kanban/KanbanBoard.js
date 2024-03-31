@@ -103,64 +103,67 @@ const KanbanBoard = (props) => {
 
     return (
         <div>
-            <nav className="navbar navbar-expand-lg" style={{marginTop: 10}}>
+            <nav className="navbar navbar-expand-lg" style={{ marginTop: 10 }} data-testid="navbar">
                 <div className="container-fluid d-flex justify-content-between align-items-center">
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0" style={{marginLeft: "100px"}}>
+                    <ul className="navbar-nav me-auto mb-2 mb-lg-0" style={{ marginLeft: "100px" }} data-testid="navbar-links">
                         <li className="nav-item">
                             <Link to="/kanban" className="nav-link"
-                                  style={{color: "blue", textDecoration: "underline"}}>
+                                  style={{ color: "blue", textDecoration: "underline" }}
+                                  data-testid="nav-link-tasksboard"
+                            >
                                 TasksBoard
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/kanban/backlog" className="nav-link">
+                            <Link to="/kanban/backlog" className="nav-link" data-testid="nav-link-backlog">
                                 Backlog
                             </Link>
                         </li>
                     </ul>
-                    <div className="d-flex justify-content-center flex-grow-1">
-                        <CreateModal createNewCard={createNewCard}
-                                     priorities={priorities}/>
+                    <div className="d-flex justify-content-center flex-grow-1" data-testid="create-modal-container">
+                        <CreateModal createNewCard={createNewCard} priorities={priorities} />
                     </div>
                 </div>
             </nav>
-            <div className="kanban-container">
+            <div className="kanban-container" data-testid="kanban-container">
                 {boards.map((board, i) => (
                     <div
                         onDragOver={(e) => dragOverHandler(e)}
                         onDrop={(e) => dropOnEmptyHandler(e, board)}
                         className="board"
                         key={board.id}
+                        data-testid={`board-${i}`}
                     >
                         <div className="board-title">{capitalizeFirstLetter(board.status)}</div>
-                        {board.cards.map((item) => (
+                        {board.cards.map((item, index) => (
                             <div
-                                onDragOver={e => dragOverHandler(e)}
-                                onDragLeave={e => dragLeaveHandler(e)}
-                                onDragStart={e => dragStartHandler(e, board, item)}
-                                onDragEnd={e => dragEndHandler(e)}
-                                onDrop={e => dropHandler(e, board, item)}
+                                onDragOver={(e) => dragOverHandler(e)}
+                                onDragLeave={(e) => dragLeaveHandler(e)}
+                                onDragStart={(e) => dragStartHandler(e, board, item)}
+                                onDragEnd={(e) => dragEndHandler(e)}
+                                onDrop={(e) => dropHandler(e, board, item)}
                                 draggable={true}
-                                className="item" key={item._id}>
+                                className="item"
+                                key={item._id}
+                                data-testid={`item-${index}`}
+                            >
                                 <div>
                                     <h6 onClick={() => moveToCard(item._id)}
-                                        style={{cursor: "pointer", textDecoration: "underline"}}
+                                        style={{ cursor: "pointer", textDecoration: "underline" }}
+                                        data-testid={`task-number-${index}`}
                                     >{item.taskNumber}</h6>
                                 </div>
-                                <h6>{item.name}</h6>
-                                <div style={{display: 'flex', alignItems: 'center', marginBottom: 10}}>
+                                <h6 data-testid={`task-name-${index}`}>{item.name}</h6>
+                                <div style={{ display: 'flex', alignItems: 'center', marginBottom: 10 }}>
                                     <span><strong>{item.assignee}</strong></span>
-                                    <span className="priority-dot" style={{marginLeft: 60}}>{item.priority}</span>
+                                    <span className="priority-dot" style={{ marginLeft: 60 }}>{item.priority}</span>
                                 </div>
-                                {/*<h6>{item._id}</h6>*/}
-                                <div style={{display: 'flex', alignItems: 'center'}}>
-                                    <span style={{marginRight: '10px'}}>State</span>
+                                <div style={{ display: 'flex', alignItems: 'center' }} data-testid={`task-status-${index}`}>
+                                    <span style={{ marginRight: '10px' }}>State</span>
                                     <span className={`status-dot status-dot-${item.status?.toLowerCase()}`}></span>
-                                    <span style={{flexGrow: 1}}>{item.status}</span>
+                                    <span style={{ flexGrow: 1 }}>{item.status}</span>
 
-                                    <KanbanTaskDropDownModal task={item} deleteCard={deleteCard}
-                                                             getCardById={getCardById}/>
-
+                                    <KanbanTaskDropDownModal task={item} deleteCard={deleteCard} getCardById={getCardById} />
                                 </div>
                             </div>
                         ))}
