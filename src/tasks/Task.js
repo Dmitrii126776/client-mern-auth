@@ -20,20 +20,22 @@ const Task = (props) => {
 
     return (
         <div>
-            <li className="list-group-item" style={{margin: 5, boxShadow: '1px 1px 1px #888888'}}>
+            <li className="list-group-item" style={{margin: 5, boxShadow: '1px 1px 1px #888888'}}
+                data-testid="task-item">
                 <div className="d-flex task-section"
                      style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
                     <div style={{display: 'flex', alignItems: 'center'}}>
                         <div style={{marginRight: '10px'}}>
-                            <input onChange={handleTaskCompleted} type={'checkbox'} checked={checkedTaskCompleted}/>
+                            <input onChange={handleTaskCompleted} data-testid="task-checkbox"
+                                   type={'checkbox'} checked={checkedTaskCompleted}/>
                         </div>
-                        <div style={{marginRight: '10px'}}>
+                        <div style={{marginRight: '10px'}} data-testid="task-created-date">
                             Created: {task.created.date}
                         </div>
                         <span style={{
                             marginLeft: '30px',
                             fontWeight: 'bold', textDecoration: checkedTaskCompleted ? 'line-through' : 'none'
-                        }}>
+                        }} data-testid="task-created-name">
                                    {task.name}
                          </span>
                     </div>
@@ -41,7 +43,7 @@ const Task = (props) => {
                     <div className="button-container"
                          style={{display: 'flex', alignItems: 'center', marginLeft: '10px'}}>
                         {checkedTaskCompleted ? (
-                            <div>Completed: {dateTaskCompleted}</div>
+                            <div data-testid="task-completed-date">Completed: {dateTaskCompleted}</div>
                         ) : (
                             <div style={{marginRight: '10px'}}>
                                 <UpdateTaskModal task={task} updateTask={updateTask}/>

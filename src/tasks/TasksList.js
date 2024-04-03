@@ -47,14 +47,14 @@ const TasksList = () => {
     }, [])
 
     return (
-        <div className="container-fluid">
+        <div className="container-fluid" data-testid="task-container">
             <div style={{margin: 15}} className="container-fluid d-flex justify-content-between align-items-center">
-                <h3>Uncompleted Tasks({completed}/{tasks.length})</h3>
+                <h3 data-testid="uncompleted-tasks-header">Uncompleted Tasks({completed}/{tasks.length})</h3>
                 <div className="d-flex justify-content-center flex-grow-1">
                     <CreateTaskModal createTask={createTask}/>
                 </div>
             </div>
-            <ul className='list-group' style={{listStyleType: 'none'}}>
+            <ul className='list-group' style={{listStyleType: 'none'}} data-testid="uncompleted-tasks-list">
                 {tasks.filter(el => !el.completed.status).map((el) => (<Task
                     tasks={tasks}
                     task={el}
@@ -64,9 +64,9 @@ const TasksList = () => {
                 />))}
             </ul>
             <div style={{margin: 15}} className="container-fluid text-lg-start">
-                <h3>Completed Tasks({uncompleted}/{tasks.length})</h3>
+                <h3 data-testid="completed-tasks-header">Completed Tasks({uncompleted}/{tasks.length})</h3>
             </div>
-            <ul className='list-group' style={{listStyleType: 'none'}}>
+            <ul className='list-group' style={{listStyleType: 'none'}} data-testid="completed-tasks-list">
                 {tasks.filter(el => el.completed.status).map((el) => (<Task
                     tasks={tasks}
                     task={el}

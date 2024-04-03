@@ -13,7 +13,7 @@ function DeleteTaskModal(props) {
 
     return (
         <div>
-            <Button className="btn btn-danger btn-sm half-size" onClick={toggle}>
+            <Button data-testid="update-task-button" className="btn btn-danger btn-sm half-size" onClick={toggle}>
                 Remove
             </Button>
             <Modal isOpen={modal} toggle={toggle}>
