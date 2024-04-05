@@ -132,7 +132,7 @@ const KanbanBoard = (props) => {
                         onDrop={(e) => dropOnEmptyHandler(e, board)}
                         className="board"
                         key={board.id}
-                        data-testid={`board-${i}`}
+                        data-testid={`board-${board.status}`}
                     >
                         <div className="board-title">{capitalizeFirstLetter(board.status)}</div>
                         {board.cards.map((item, index) => (
@@ -145,23 +145,24 @@ const KanbanBoard = (props) => {
                                 draggable={true}
                                 className="item"
                                 key={item._id}
-                                data-testid={`item-${index}`}
+                                data-testid="data-item"
+                                id={`${item._id}`}
                             >
                                 <div>
                                     <h6 onClick={() => moveToCard(item._id)}
                                         style={{ cursor: "pointer", textDecoration: "underline" }}
-                                        data-testid={`task-number-${index}`}
+                                        data-testid="task-number"
                                     >{item.taskNumber}</h6>
                                 </div>
-                                <h6 data-testid={`task-name-${index}`}>{item.name}</h6>
-                                <div style={{ display: 'flex', alignItems: 'center', marginBottom: 10 }}>
+                                <h6 data-testid="task-name">{item.name}</h6>
+                                <div data-testid="task-assignee" style={{ display: 'flex', alignItems: 'center', marginBottom: 10 }}>
                                     <span><strong>{item.assignee}</strong></span>
                                     <span className="priority-dot" style={{ marginLeft: 60 }}>{item.priority}</span>
                                 </div>
                                 <div style={{ display: 'flex', alignItems: 'center' }} data-testid={`task-status-${index}`}>
                                     <span style={{ marginRight: '10px' }}>State</span>
-                                    <span className={`status-dot status-dot-${item.status?.toLowerCase()}`}></span>
-                                    <span style={{ flexGrow: 1 }}>{item.status}</span>
+                                    <span data-testid="task-status-dot-color" className={`status-dot status-dot-${item.status?.toLowerCase()}`}></span>
+                                    <span data-testid="task-status"  style={{ flexGrow: 1 }}>{item.status}</span>
 
                                     <KanbanTaskDropDownModal task={item} deleteCard={deleteCard} getCardById={getCardById} />
                                 </div>
