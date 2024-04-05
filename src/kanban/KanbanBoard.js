@@ -151,18 +151,18 @@ const KanbanBoard = (props) => {
                                 <div>
                                     <h6 onClick={() => moveToCard(item._id)}
                                         style={{ cursor: "pointer", textDecoration: "underline" }}
-                                        data-testid="task-number"
+                                        data-testid="card-number"
                                     >{item.taskNumber}</h6>
                                 </div>
-                                <h6 data-testid="task-name">{item.name}</h6>
-                                <div data-testid="task-assignee" style={{ display: 'flex', alignItems: 'center', marginBottom: 10 }}>
-                                    <span><strong>{item.assignee}</strong></span>
-                                    <span className="priority-dot" style={{ marginLeft: 60 }}>{item.priority}</span>
+                                <h6 data-testid="card-name">{item.name}</h6>
+                                <div data-testid="card-assignee-group" style={{ display: 'flex', alignItems: 'center', marginBottom: 10 }}>
+                                    <span data-testid="card-assignee"><strong>{item.assignee}</strong></span>
+                                    <span data-testid="card-priority" className="priority-dot" style={{ marginLeft: 60 }}>{item.priority}</span>
                                 </div>
-                                <div style={{ display: 'flex', alignItems: 'center' }} data-testid={`task-status-${index}`}>
+                                <div style={{ display: 'flex', alignItems: 'center' }} data-testid="card-status-group">
                                     <span style={{ marginRight: '10px' }}>State</span>
-                                    <span data-testid="task-status-dot-color" className={`status-dot status-dot-${item.status?.toLowerCase()}`}></span>
-                                    <span data-testid="task-status"  style={{ flexGrow: 1 }}>{item.status}</span>
+                                    <span data-testid="card-status-dot-color" className={`status-dot status-dot-${item.status?.toLowerCase()}`}></span>
+                                    <span data-testid="card-status"  style={{ flexGrow: 1 }}>{item.status}</span>
 
                                     <KanbanTaskDropDownModal task={item} deleteCard={deleteCard} getCardById={getCardById} />
                                 </div>
