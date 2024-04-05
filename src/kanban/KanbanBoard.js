@@ -103,12 +103,13 @@ const KanbanBoard = (props) => {
 
     return (
         <div>
-            <nav className="navbar navbar-expand-lg" style={{ marginTop: 10 }} data-testid="navbar">
+            <nav className="navbar navbar-expand-lg" style={{marginTop: 10}} data-testid="navbar">
                 <div className="container-fluid d-flex justify-content-between align-items-center">
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0" style={{ marginLeft: "100px" }} data-testid="navbar-links">
+                    <ul className="navbar-nav me-auto mb-2 mb-lg-0" style={{marginLeft: "100px"}}
+                        data-testid="navbar-links">
                         <li className="nav-item">
                             <Link to="/kanban" className="nav-link"
-                                  style={{ color: "blue", textDecoration: "underline" }}
+                                  style={{color: "blue", textDecoration: "underline"}}
                                   data-testid="nav-link-tasksboard"
                             >
                                 TasksBoard
@@ -121,7 +122,7 @@ const KanbanBoard = (props) => {
                         </li>
                     </ul>
                     <div className="d-flex justify-content-center flex-grow-1" data-testid="create-modal-container">
-                        <CreateModal createNewCard={createNewCard} priorities={priorities} />
+                        <CreateModal createNewCard={createNewCard} priorities={priorities}/>
                     </div>
                 </div>
             </nav>
@@ -145,26 +146,29 @@ const KanbanBoard = (props) => {
                                 draggable={true}
                                 className="item"
                                 key={item._id}
-                                data-testid="data-item"
-                                id={`${item._id}`}
+                                data-testid={`data-item-${index}`}
                             >
                                 <div>
                                     <h6 onClick={() => moveToCard(item._id)}
-                                        style={{ cursor: "pointer", textDecoration: "underline" }}
+                                        style={{cursor: "pointer", textDecoration: "underline"}}
                                         data-testid="card-number"
                                     >{item.taskNumber}</h6>
                                 </div>
                                 <h6 data-testid="card-name">{item.name}</h6>
-                                <div data-testid="card-assignee-group" style={{ display: 'flex', alignItems: 'center', marginBottom: 10 }}>
+                                <div data-testid="card-assignee-group"
+                                     style={{display: 'flex', alignItems: 'center', marginBottom: 10}}>
                                     <span data-testid="card-assignee"><strong>{item.assignee}</strong></span>
-                                    <span data-testid="card-priority" className="priority-dot" style={{ marginLeft: 60 }}>{item.priority}</span>
+                                    <span data-testid="card-priority" className="priority-dot"
+                                          style={{marginLeft: 60}}>{item.priority}</span>
                                 </div>
-                                <div style={{ display: 'flex', alignItems: 'center' }} data-testid="card-status-group">
-                                    <span style={{ marginRight: '10px' }}>State</span>
-                                    <span data-testid="card-status-dot-color" className={`status-dot status-dot-${item.status?.toLowerCase()}`}></span>
-                                    <span data-testid="card-status"  style={{ flexGrow: 1 }}>{item.status}</span>
+                                <div style={{display: 'flex', alignItems: 'center'}} data-testid="card-status-group">
+                                    <span style={{marginRight: '10px'}}>State</span>
+                                    <span data-testid="card-status-dot-color"
+                                          className={`status-dot status-dot-${item.status?.toLowerCase()}`}></span>
+                                    <span data-testid="card-status" style={{flexGrow: 1}}>{item.status}</span>
 
-                                    <KanbanTaskDropDownModal task={item} deleteCard={deleteCard} getCardById={getCardById} />
+                                    <KanbanTaskDropDownModal task={item} deleteCard={deleteCard}
+                                                             getCardById={getCardById}/>
                                 </div>
                             </div>
                         ))}
