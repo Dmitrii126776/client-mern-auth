@@ -146,7 +146,7 @@ const KanbanBoard = (props) => {
                                 draggable={true}
                                 className="item"
                                 key={item._id}
-                                data-testid={`data-item-${index}`}
+                                data-testid="data-item"
                             >
                                 <div>
                                     <h6 onClick={() => moveToCard(item._id)}
