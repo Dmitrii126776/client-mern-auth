@@ -20,14 +20,15 @@ const Header = () => {
     }
 
     useEffect(() => {
-        const text = "React JavaScript Redux MongoDB Node.js Bootstrap TypeScript Material-UI ExpressJS";
+        // const text = "React JavaScript Redux MongoDB Node.js Bootstrap TypeScript Material-UI ExpressJS";
+        const text = "I create this App using React JavaScript ExpressJS MongoDB Bootstrap TypeScript Material-UI";
         typeWriter(textRef.current, text);
     }, []);
 
     const downloadResume = () => {
         const link = document.createElement('a');
         link.href = resumePDF;
-       // link.download = 'Dima_Kuzhilin_resume.pdf';
+        // link.download = 'Dima_Kuzhilin_resume.pdf';
         link.target = '-_blank'; // open link in new tab
         link.click();
     };
@@ -36,7 +37,8 @@ const Header = () => {
         <div>
             <div className="header-wrapper" style={{backgroundImage: `url(${retro})`}}>
                 <div className="main-info">
-                    <h2>I am React Front-end Developer</h2>
+                    {/*<h2>I am Software QA Automation Engineer</h2>*/}
+                    <h2>I am Software Development Engineer in Test</h2>
                     <button className="btn btn-secondary btn-lg"
                             type="button" style={{marginTop: 20}}
                             onClick={downloadResume}
@@ -54,7 +56,8 @@ const Header = () => {
                     <a href="/projects" className="btn btn-secondary btn-lg "
                        tabIndex="-1" role="button" style={{marginTop: 20}}
                     >My projects</a>
-                    <h2>At this App I use Back-end tools as well</h2>
+                    {/*<h2>At this App I use Back-end tools as well</h2>*/}
+                    <h2>I use this App to create Test Automation using Selenium, Cypress, and Playwright</h2>
                 </div>
             </div>
         </div>

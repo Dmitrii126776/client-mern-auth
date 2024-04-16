@@ -47,7 +47,7 @@ const TasksList = () => {
     }, [])
 
     return (
-        <div className="container-fluid" data-testid="task-container">
+        <div className="container-fluid min-vh-100" data-testid="task-container">
             <div style={{margin: 15}} className="container-fluid d-flex justify-content-between align-items-center">
                 <h3 data-testid="uncompleted-tasks-header">Uncompleted Tasks({completed}/{tasks.length})</h3>
                 <div className="d-flex justify-content-center flex-grow-1">

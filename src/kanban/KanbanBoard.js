@@ -126,7 +126,7 @@ const KanbanBoard = (props) => {
                     </div>
                 </div>
             </nav>
-            <div className="kanban-container" data-testid="kanban-container">
+            <div className="kanban-container min-vh-100" data-testid="kanban-container">
                 {boards.map((board, i) => (
                     <div
                         onDragOver={(e) => dragOverHandler(e)}

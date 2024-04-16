@@ -68,15 +68,19 @@ const Profile = () => {
                     borderRadius: '50%', // Make the circle image round
                 }}/>
                 <div className="card-body" style={{textAlign: "left", backgroundColor: "seashell"}}>
-                    <h5 style={{fontSize: 25, fontWeight: 500}}>Dima Kuzhilin</h5>
+                    <h5 style={{fontSize: 25, fontWeight: 500}}>Dmitrii Kuzhilin</h5>
                     {/*<h6>React Front-end Developer</h6>*/}
                     <h6>New York, NY, United States</h6>
-                    <p className="card-text">React Front-end Developer with 5+ years of experience in Agile development,
-                        skilled in JavaScript, TypeScript, React, Redux, and Node.js
-                        I am inspired by the idea of creating beautiful,
-                        functional interfaces that people will interact with and enjoy using.
-                        I like to create a Back-end side using ExpressJS and MongoDB as well.
+                    <p className="card-text">
+                        QA Automation Engineer with extensive of experience in Agile development,
+                        skilled in Selenium, Cypress, and Playwright.
+                        I am inspired by the idea of being a part of teams that create beautiful,
+                        functional interfaces where people can interact with and enjoy using.
+                        Committed to mentorship and elevation of teams,
+                        coupled with passion for coding in JavaScript, Java, and TypeScript.
                     </p>
+                        {/*functional interfaces that people will interact with and enjoy using.*/}
+                        {/*I am inspired by the idea of creating beautiful,*/}
                 </div>
             </div>
             <div className="cards-right-container"
