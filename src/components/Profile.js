@@ -72,12 +72,12 @@ const Profile = () => {
                     {/*<h6>React Front-end Developer</h6>*/}
                     <h6>New York, NY, United States</h6>
                     <p className="card-text">
-                        QA Automation Engineer with extensive of experience in Agile development,
+                        Software Engineer in Test with extensive experience in Agile development,
                         skilled in Selenium, Cypress, and Playwright.
                         I am inspired by the idea of being a part of teams that create beautiful,
-                        functional interfaces where people can interact with and enjoy using.
-                        Committed to mentorship and elevation of teams,
-                        coupled with passion for coding in JavaScript, Java, and TypeScript.
+                        functional interfaces that people can interact with and enjoy using.
+                        I am committed to mentorship and elevation of teams,
+                        coupled with a passion for coding in JavaScript, Java, and TypeScript.
                     </p>
                         {/*functional interfaces that people will interact with and enjoy using.*/}
                         {/*I am inspired by the idea of creating beautiful,*/}
