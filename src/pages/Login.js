@@ -23,7 +23,7 @@ const Login = () => {
                 //console.log(response.data)
                 const token = response.data.token;
                 const id = response.data.id
-                document.cookie = `token=${token}; max-age=2592000; path=/; httpOnly=true;`;
+                document.cookie = `token=${token}; max-age=2592000; path=/; secure; httpOnly=true;`;
                 localStorage.setItem('token', token);
                 localStorage.setItem('id', id);
                 user.setEmail(response.data.user.email)
