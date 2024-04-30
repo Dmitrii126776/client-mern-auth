@@ -25,8 +25,9 @@ const Home = (props) => {
         axios
             .get(`https://server-mern-project.vercel.app/animals`,
                 {
-                    headers:{
-                        Authorization: `Bearer ${localStorage.getItem('token')}`
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('token')}`,
+                        "Content-Type": "application/json"
                     }
                 })
             .then((res) => {
