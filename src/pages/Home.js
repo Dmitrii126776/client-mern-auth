@@ -23,7 +23,12 @@ const Home = (props) => {
 
     useEffect(() => {
         axios
-            .get(`https://server-mern-project.vercel.app/animals`)
+            .get(`https://server-mern-project.vercel.app/animals`,
+                {
+                    headers:{
+                        Authorization: `Bearer ${localStorage.getItem('token')}`
+                    }
+                })
             .then((res) => {
                 console.log(res.data);
                 const animals = res.data
