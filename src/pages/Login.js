@@ -18,9 +18,12 @@ const Login = () => {
         e.preventDefault()
 
         const data = {email, password, firstname}
-        axios.post('https://server-mern-project.vercel.app/login', data, {withCredentials: true})
+        axios.post('https://server-mern-project.vercel.app/login', JSON.stringify({
+            email,
+            password
+        }), {withCredentials: true})
             .then((response) => {
-                //console.log(response.data)
+                console.log(response.data)
                 const token = response.data.token;
                 const id = response.data.id
                 // document.cookie = `token=${token}; max-age=2592000; path=/; secure;`;
