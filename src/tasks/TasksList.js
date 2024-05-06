@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Task from "./Task";
 import CreateTaskModal from "./CreateTaskModel";
 import axios from "axios";
+import $api from "../http";
 
 const TasksList = () => {
     const [tasks, setTasks] = useState([])
@@ -9,9 +10,8 @@ const TasksList = () => {
     let completed = tasks.filter(el => !el.completed.status).length
     let uncompleted = tasks.filter(el => el.completed.status).length
     const getTasks = () => {
-        axios.get(`https://server-mern-project.vercel.app/tasks`)
+        $api.get(`https://server-mern-project.vercel.app/tasks`)
             .then(res => {
-                //  console.log(res.data)
                 setTasks(res.data)
             }).catch(err => {
             console.log(err)

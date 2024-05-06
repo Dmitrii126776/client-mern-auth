@@ -1,10 +1,11 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Avatar} from 'antd';
 import {Galleria} from 'primereact/galleria';
 import axios from 'axios';
+import AuthContext from "../providers/AuthContext";
 
-const Home = (props) => {
-    const {firstname} = props;
+const Home = () => {
+    const {user} = useContext(AuthContext);
     const [images, setImages] = useState(null);
     const responsiveOptions = [
         {
@@ -31,13 +32,9 @@ const Home = (props) => {
                     }
                 })
             .then((res) => {
-                console.log(res.data);
                 const animals = res.data
-                // const animals = result.reverse()
                 const photos = animals.map(animal => ({src: animal.mainPhoto, alt: animal.name}));
-
                 setImages(photos);
-                console.log(photos)
             })
             .catch((err) => {
                 console.log(err);
@@ -75,7 +72,7 @@ const Home = (props) => {
                         <div className="d-flex align-items-center mb-3">
                             <Avatar style={{backgroundColor: 'lightblue'}} className="mr-3" size={64}
                                     src={require('../images/sea-lion.jpg')}/>
-                            <h1 style={{display: 'block'}}>{firstname}</h1>
+                            <h1 style={{display: 'block'}}>{user?.firstname}</h1>
                         </div>
                     </div>
                     <div style={{marginLeft: 20, marginRight: 20}}>

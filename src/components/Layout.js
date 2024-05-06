@@ -1,16 +1,19 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {useLocation, useNavigate} from "react-router-dom";
 import {Dropdown, DropdownToggle, DropdownMenu, DropdownItem} from "reactstrap";
 import {Avatar} from "antd";
+import AuthContext from "../providers/AuthContext";
 
 const Layout = (props) => {
-    const {email, firstname, logout, children} = props;
+    const {user, setUser} = useContext(AuthContext);
+    const {firstname, logout, children} = props;
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
     const navigate = useNavigate();
     const handleLogout = () => {
-        // logout();
-        navigate("/profile");
+        logout();
+        setUser({})
+        navigate("/login");
     };
 
     const toggle = () => {
@@ -54,14 +57,14 @@ const Layout = (props) => {
                                     Welcome
                                 </a>
                             </li>
-                            {/*<li className="nav-item">*/}
-                            {/*    <a*/}
-                            {/*        className={`nav-link ${activeLink === "/home" ? "active" : ""}`}*/}
-                            {/*        href="/home"*/}
-                            {/*    >*/}
-                            {/*        Home*/}
-                            {/*    </a>*/}
-                            {/*</li>*/}
+                            <li className="nav-item">
+                                <a
+                                    className={`nav-link ${activeLink === "/home" ? "active" : ""}`}
+                                    href="/home"
+                                >
+                                    Home
+                                </a>
+                            </li>
                             <li className="nav-item">
                                 <a
                                     className={`nav-link ${activeLink === "/projects" ? "active" : ""}`}
@@ -117,14 +120,18 @@ const Layout = (props) => {
                             <span className="caret"></span>
                         </DropdownToggle>
                         <DropdownMenu>
-                            <DropdownItem>{firstname}</DropdownItem>
-                            <DropdownItem>{email}</DropdownItem>
+                            <DropdownItem>{user?.firstname}</DropdownItem>
+                            <DropdownItem>{user?.email}</DropdownItem>
+                            {/*<DropdownItem>{user?.id}</DropdownItem>*/}
                             <DropdownItem>
                                 <a href="https://dima-kuzhilin-portfolio.netlify.app/" target="_blank"
                                    rel="noopener noreferrer"
                                    className="nav-link" data-testid="portfolio-link">Portfolio</a>
                             </DropdownItem>
-                            <DropdownItem onClick={handleLogout} data-testid="profile-link">Profile</DropdownItem>
+                            <DropdownItem data-testid="profile-link">Profile</DropdownItem>
+                            <DropdownItem onClick={handleLogout} data-testid="logout-link">Logout</DropdownItem>
+                            <DropdownItem>
+                                <a className="nav-link" data-testid="login-link" href="/login">Login</a></DropdownItem>
                         </DropdownMenu>
                     </Dropdown>
                 </div>

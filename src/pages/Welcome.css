@@ -6,7 +6,8 @@
 }
 
 .welcome-container {
-    height: 100vh;
+    min-height:100vh;
+    /*height: 100vh;*/
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,6 +15,7 @@
 
 .welcome-content {
     max-width: 50%;
+    min-width: 175px;
     max-height: 100%;
     padding: 2rem;
     background-color: #fff;

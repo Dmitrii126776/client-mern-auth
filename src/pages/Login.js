@@ -1,33 +1,30 @@
 import React, {useContext, useState} from 'react';
 import {Button, Col, Form, FormGroup, Input, Label, Row} from "reactstrap";
 import axios from "axios";
-import UserContext from "../UserContext";
 import {useNavigate} from "react-router-dom";
 import './Welcome.css';
+import AuthContext from "../providers/AuthContext";
+
 
 const Login = () => {
+    const {setUser} = useContext(AuthContext);
     const [email, setEmail] = useState('')
-    const [firstname] = useState('')
     const [password, setPassword] = useState('')
     const [loginError, setLoginError] = useState(false);
 
     const navigate = useNavigate();
-    const user = useContext(UserContext)
 
     const loginUser = (e) => {
         e.preventDefault()
 
-        const data = {email, password, firstname}
+        const data = {email, password}
         axios.post('https://server-mern-project.vercel.app/login', data, {withCredentials: true})
             .then((response) => {
-                //console.log(response.data)
-                const token = response.data.token;
-                const id = response.data.id
-                // document.cookie = `token=${token}; max-age=2592000; path=/; secure;`;
+                const token = response.data.accessToken;
+                const id = response.data.user.id;
                 localStorage.setItem('token', token);
                 localStorage.setItem('id', id);
-                user.setEmail(response.data.user.email)
-                user.setFirstName(response.data.user.firstname)
+                setUser(response.data.user);
                 setEmail('')
                 setPassword('')
                 setLoginError(false)
@@ -41,7 +38,6 @@ const Login = () => {
             })
     }
 
-
     return (
         <div className="welcome-container welcome-background">
             <Form className="login-form welcome-content" action="src" onSubmit={e => loginUser(e)}>
@@ -50,7 +46,7 @@ const Login = () => {
                 <Row style={{margin: 20}}>
                     <Col md={10}>
                         <FormGroup>
-                            <Label> Sign in with you email address </Label>
+                            <Label>Email</Label>
                             <Input
                                 value={email} onChange={e => setEmail(e.target.value)}
                                 name="email" placeholder="email" type="email"
@@ -61,10 +57,10 @@ const Login = () => {
                 <Row style={{margin: 20}}>
                     <Col md={10}>
                         <FormGroup>
-                            <Label>Enter you password </Label>
+                            <Label>Password </Label>
                             <Input
                                 value={password} onChange={e => setPassword(e.target.value)}
-                                placeholder="password" type="password"
+                                placeholder="******" type="password"
                             />
                         </FormGroup>
                     </Col>
