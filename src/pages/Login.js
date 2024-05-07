@@ -24,6 +24,7 @@ const Login = () => {
                 const id = response.data.user.id;
                 localStorage.setItem('token', token);
                 localStorage.setItem('id', id);
+                // sessionStorage.setItem("logged", true);
                 setUser(response.data.user);
                 setEmail('')
                 setPassword('')

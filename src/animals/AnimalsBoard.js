@@ -177,129 +177,140 @@ const AnimalsBoard = (props) => {
                 <h1>Find Your Animal</h1>
                 <hr/>
             </div>
-            <div className="container-fluid d-flex justify-content-between align-items-center">
-                <div style={{marginLeft: 20}}>
-                    <FormControl>
-                        <FormLabel id="demo-row-radio-buttons-group-label">Animals</FormLabel>
-                        <RadioGroup
-                            value={valueAnimal} onChange={handleChangeAnimal}
-                            row aria-labelledby="demo-row-radio-buttons-group-label"
-                            name="row-radio-buttons-group"
-                        >
-                            <FormControlLabel value="all" control={<Radio/>} label="All"/>
-                            <FormControlLabel value="turtle" control={<Radio/>} label="Turtle"/>
-                            <FormControlLabel value="nudibranch" control={<Radio/>} label="Nudibranch"/>
-                            <FormControlLabel value="other" control={<Radio/>} label="Other"/>
-                        </RadioGroup>
-                    </FormControl>
-                </div>
-                <div>
-                    <FormControl>
-                        <FormLabel id="demo-row-radio-buttons-group-label">Gender</FormLabel>
-                        <RadioGroup
-                            value={valueGender} onChange={handleChangeGender}
-                            row aria-labelledby="demo-row-radio-buttons-group-label"
-                            name="row-radio-buttons-group"
-                        >
-                            <FormControlLabel value="all" control={<Radio/>} label="All"/>
-                            <FormControlLabel value="female" control={<Radio/>} label="Female"/>
-                            <FormControlLabel value="male" control={<Radio/>} label="Male"/>
 
-                        </RadioGroup>
-                    </FormControl>
-                </div>
+            {loading ? (
                 <div>
-                    <FormControl>
-                        <FormLabel id="demo-row-radio-buttons-group-label">Age</FormLabel>
-                        <RadioGroup
-                            value={valueAge} onChange={handleChangeAge}
-                            row aria-labelledby="demo-row-radio-buttons-group-label"
-                            name="row-radio-buttons-group"
-                        >
-                            <FormControlLabel value="sort" control={<Radio/>} label="Sort"/>
-
-                        </RadioGroup>
-                    </FormControl>
+                    <Loader/>
+                    <p>Loading...</p>
                 </div>
-            </div>
-            <hr/>
-            <div style={{margin: 20}} className="container-fluid d-flex justify-content-between align-items-center">
+            ) : (
                 <div>
-                    <Autocomplete
-                        id="filter-demo"
-                        options={uniqueSortedArray}
-                        getOptionLabel={(option) => option.name}
-                        filterOptions={filterOptions}
-                        sx={{width: 250}}
-                        renderInput={(params) => <TextField {...params} label="Find Animal by name"/>}
-                        noOptionsText={noOptionsText}
-                        value={selectedAnimal}
-                        onChange={(event, value) => setSelectedAnimal(value)}
-                    />
-                </div>
-                <div style={{marginRight: 30}}>
-                    <Button onClick={resetFilter} variant="outlined">Reset Filter</Button>
-                </div>
-            </div>
+                    <div className="container-fluid d-flex justify-content-between align-items-center">
+                        <div style={{marginLeft: 20}}>
+                            <FormControl>
+                                <FormLabel id="demo-row-radio-buttons-group-label">Animals</FormLabel>
+                                <RadioGroup
+                                    value={valueAnimal} onChange={handleChangeAnimal}
+                                    row aria-labelledby="demo-row-radio-buttons-group-label"
+                                    name="row-radio-buttons-group"
+                                >
+                                    <FormControlLabel value="all" control={<Radio/>} label="All"/>
+                                    <FormControlLabel value="turtle" control={<Radio/>} label="Turtle"/>
+                                    <FormControlLabel value="nudibranch" control={<Radio/>} label="Nudibranch"/>
+                                    <FormControlLabel value="other" control={<Radio/>} label="Other"/>
+                                </RadioGroup>
+                            </FormControl>
+                        </div>
+                        <div>
+                            <FormControl>
+                                <FormLabel id="demo-row-radio-buttons-group-label">Gender</FormLabel>
+                                <RadioGroup
+                                    value={valueGender} onChange={handleChangeGender}
+                                    row aria-labelledby="demo-row-radio-buttons-group-label"
+                                    name="row-radio-buttons-group"
+                                >
+                                    <FormControlLabel value="all" control={<Radio/>} label="All"/>
+                                    <FormControlLabel value="female" control={<Radio/>} label="Female"/>
+                                    <FormControlLabel value="male" control={<Radio/>} label="Male"/>
 
-            <div>
-                {loading ? (
-                    <div>
-                        <Loader/>
-                        <p>Loading...</p>
+                                </RadioGroup>
+                            </FormControl>
+                        </div>
+                        <div>
+                            <FormControl>
+                                <FormLabel id="demo-row-radio-buttons-group-label">Age</FormLabel>
+                                <RadioGroup
+                                    value={valueAge} onChange={handleChangeAge}
+                                    row aria-labelledby="demo-row-radio-buttons-group-label"
+                                    name="row-radio-buttons-group"
+                                >
+                                    <FormControlLabel value="sort" control={<Radio/>} label="Sort"/>
+
+                                </RadioGroup>
+                            </FormControl>
+                        </div>
                     </div>
-                ) : (
+                    <hr/>
+                    <div style={{margin: 20}}
+                         className="container-fluid d-flex justify-content-between align-items-center">
+                        <div>
+                            <Autocomplete
+                                id="filter-demo"
+                                options={uniqueSortedArray}
+                                getOptionLabel={(option) => option.name}
+                                filterOptions={filterOptions}
+                                sx={{width: 250}}
+                                renderInput={(params) => <TextField {...params} label="Find Animal by name"/>}
+                                noOptionsText={noOptionsText}
+                                value={selectedAnimal}
+                                onChange={(event, value) => setSelectedAnimal(value)}
+                            />
+                        </div>
+                        <div style={{marginRight: 30}}>
+                            <Button onClick={resetFilter} variant="outlined">Reset Filter</Button>
+                        </div>
+                    </div>
+
                     <div>
-                        {displayedAnimals.length === 0 ? (
-                            <h4 style={{color: 'red', marginTop: 50}}>Animals are not found, please change your search
-                                criteria.</h4>
-                        ) : (
-                            <div className="row">
-                                {displayedAnimals.map((el, index) => (
-                                    <div key={el._id} className="col-md-3 col-auto mb-2">
-                                        <div className="card p-0" style={{
-                                            width: '100%',
-                                            cursor: 'pointer',
-                                            //boxShadow: '-1px -1px 2px #888888',
-                                            boxShadow: '2px 4px 4px #888888',
-                                            marginBottom: '5px',
-                                        }}
-                                             onClick={() => moveToAnimal(el._id)}>
-                                            <LazyLoadImage
-                                                src={el.photos[0]}
-                                                effect="blur"
-                                                loading="lazy"
-                                                className="card-img-top"
-                                                alt="Loading ..."
-                                                placeholderSrc={el.photos[0]}
-                                            />
-                                            {/*<img src={el.photos[0]} loading="lazy" className="card-img-top" alt="Loading ..."/>*/}
-                                            {/*{el.photos[0] ? (*/}
-                                            {/*    <img*/}
-                                            {/*        src={el.photos[0]}*/}
-                                            {/*        className="card-img-top"*/}
-                                            {/*        alt="..."*/}
-                                            {/*    />*/}
-                                            {/*) : (*/}
-                                            {/*    <div>*/}
-                                            {/*        <Loader/>*/}
-                                            {/*        <p>Loading Image...</p>*/}
-                                            {/*    </div>*/}
-                                            {/*)}*/}
-                                            <div className="card-body">
-                                                <h5 className="card-title">{el.name}</h5>
-                                                <h6 className="card-text">{el.type}</h6>
-                                                <h6 className="card-text">{el.age}, {el.sex}</h6>
+                        {/*{loading ? (*/}
+                        {/*    <div>*/}
+                        {/*        <Loader/>*/}
+                        {/*        <p>Loading...</p>*/}
+                        {/*    </div>*/}
+                        {/*) : (*/}
+                        <div>
+                            {displayedAnimals.length === 0 ? (
+                                <h4 style={{color: 'red', marginTop: 50}}>Animals are not found, please change your
+                                    search
+                                    criteria.</h4>
+                            ) : (
+                                <div className="row">
+                                    {displayedAnimals.map((el, index) => (
+                                        <div key={el._id} className="col-md-3 col-auto mb-2">
+                                            <div className="card p-0" style={{
+                                                width: '100%',
+                                                cursor: 'pointer',
+                                                //boxShadow: '-1px -1px 2px #888888',
+                                                boxShadow: '2px 4px 4px #888888',
+                                                marginBottom: '5px',
+                                            }}
+                                                 onClick={() => moveToAnimal(el._id)}>
+                                                <LazyLoadImage
+                                                    src={el.photos[0]}
+                                                    effect="blur"
+                                                    loading="lazy"
+                                                    className="card-img-top"
+                                                    alt="Loading ..."
+                                                    placeholderSrc={el.photos[0]}
+                                                />
+                                                {/*<img src={el.photos[0]} loading="lazy" className="card-img-top" alt="Loading ..."/>*/}
+                                                {/*{el.photos[0] ? (*/}
+                                                {/*    <img*/}
+                                                {/*        src={el.photos[0]}*/}
+                                                {/*        className="card-img-top"*/}
+                                                {/*        alt="..."*/}
+                                                {/*    />*/}
+                                                {/*) : (*/}
+                                                {/*    <div>*/}
+                                                {/*        <Loader/>*/}
+                                                {/*        <p>Loading Image...</p>*/}
+                                                {/*    </div>*/}
+                                                {/*)}*/}
+                                                <div className="card-body">
+                                                    <h5 className="card-title">{el.name}</h5>
+                                                    <h6 className="card-text">{el.type}</h6>
+                                                    <h6 className="card-text">{el.age}, {el.sex}</h6>
+                                                </div>
                                             </div>
+                                            {(index + 1) % 4 === 0 && <div className="w-100"></div>}
                                         </div>
-                                        {(index + 1) % 4 === 0 && <div className="w-100"></div>}
-                                    </div>
-                                ))}
-                            </div>
-                        )}
+                                    ))}
+                                </div>
+                            )}
+                        </div>
                     </div>
-                )}
-            </div>
+                </div>
+            )}
         </div>
     );
 };

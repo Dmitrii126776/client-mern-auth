@@ -115,7 +115,8 @@ const Backlog = (props) => {
 
             <div className="card container-fluid" data-testid="datatable-container">
                 <Toast ref={toast}/>
-                <DataTable value={cards} paginator rows={5} rowsPerPageOptions={[5, 10]}
+                <DataTable className="min-vh-100"
+                           value={cards} paginator rows={5} rowsPerPageOptions={[5, 10]}
                            selectionMode="single" selection={selectedProduct} filters={filters}
                            onSelectionChange={(e) => setSelectedProduct(e.value)}
                            onRowSelect={onRowSelect} showGridlines
