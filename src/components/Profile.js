@@ -33,7 +33,7 @@ const Profile = () => {
 
 
     return (
-        <div className="cards-container"
+        <div className="cards-container min-vh-100"
              style={{
                  display: 'flex',
                  flexDirection: 'row',

@@ -25,6 +25,7 @@ function App() {
     const [firstname, setFirstName] = useState('')
     const [cards, setCards] = useState([])
     const [card, setCard] = useState(null)
+    const [loading, setLoading] = useState(true);
 
     const url = "https://server-mern-project.vercel.app"
 
@@ -33,6 +34,7 @@ function App() {
             .then(res => {
                 //  console.log(res.data)
                 setCards(res.data)
+                setLoading(false)
             }).catch(err => {
             console.log(err)
         })
@@ -133,6 +135,7 @@ function App() {
                             <Loader/>
                         </div>}>
                             <KanbanBoard
+                                loading={loading}
                                 cards={cards}
                                 createNewCard={createNewCard}
                                 getCards={getCards}

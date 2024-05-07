@@ -3,21 +3,14 @@ import {useLocation} from 'react-router-dom';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faGithub} from '@fortawesome/free-brands-svg-icons';
 import {faLinkedin} from '@fortawesome/free-brands-svg-icons';
-import {Button} from "reactstrap";
 import ContactForm from "./ContactForm";
 
 const Footer = () => {
     const location = useLocation();
-
-    // Set marginTop to 0 for the Welcome page and 20 for other pages
-    const marginTop = location.pathname === '/' ? 0 : 15;
+    const marginTop = location.pathname === '' || '/login' ? 0 : 15;
 
     const [modal, setModal] = useState(false);
     const toggle = () => setModal(!modal);
-
-    // <Button color="danger" onClick={toggle}>
-    //     Click Me
-    // </Button>
 
     return (
         <nav className="navbar navbar-expand-lg bg-secondary" style={{marginTop, maxHeight: 160}}>
@@ -26,7 +19,7 @@ const Footer = () => {
                     <li className="nav-item"
                         style={{display: 'flex', alignItems: 'center'}}>
                         <span onClick={toggle}
-                           style={{padding: 0, marginRight: 5, cursor: "pointer"}}>
+                              style={{padding: 0, marginRight: 5, cursor: "pointer"}}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                                  className="bi bi-envelope footer-item" viewBox="0 0 20 20">
                                 <path
@@ -34,7 +27,7 @@ const Footer = () => {
                             </svg>
                         </span>
                         <span style={{cursor: "pointer"}} className="navbar-brand text-center footer-item"
-                           onClick={toggle}
+                              onClick={toggle}
                         >Contact Me</span>
                     </li>
                     <ContactForm toggle={toggle} modal={modal}/>
