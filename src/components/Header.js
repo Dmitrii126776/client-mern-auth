@@ -1,7 +1,7 @@
 import React, {useEffect, useRef} from 'react';
 import retro from '../images/retrosupply.jpg';
 
-const resumePDF = require('../document/Dima_Kuzhilin_resume.pdf');
+const resumePDF = require('../document/Dmitrii_Kuzhilin_Resume_Updated.pdf');
 const Header = () => {
     const textRef = useRef(null);
 

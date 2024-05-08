@@ -52,7 +52,7 @@ const Footer = () => {
                               <FontAwesomeIcon icon={faLinkedin} color="white"/>
                              </a>
                         <a className="navbar-brand text-center footer-item"
-                           href="https://www.linkedin.com/in/dima-kuzhilin"
+                           href="https://www.linkedin.com/in/dmitrii-kuzhilin"
                            target="-_blank" rel="noopener noreferrer" style={{padding: 0}}>LinkedIn</a>
                         </span>
                     </li>
