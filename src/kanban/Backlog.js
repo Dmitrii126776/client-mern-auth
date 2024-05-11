@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import CreateModal from "./CreateModal";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
@@ -20,7 +20,7 @@ const Backlog = (props) => {
     const [statuses] = useState(["new", "active", "review", "closed"]);
     const [globalFilterValue, setGlobalFilterValue] = useState('');
     const [filters, setFilters] = useState(null)
-
+    const navigate = useNavigate();
 
     const onGlobalFilterChange = (e) => {
         const value = e.target.value;
@@ -77,7 +77,8 @@ const Backlog = (props) => {
     const onRowSelect = (event) => {
         const id = event.data._id
         getCardById(id)
-        window.open(`/kanban/card/${id}`, "_blank");
+        navigate(`/kanban/card/${id}`)
+        // window.open(`/kanban/card/${id}`, "_blank");
     };
 
     useEffect(() => {

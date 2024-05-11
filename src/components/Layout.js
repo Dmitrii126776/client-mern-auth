@@ -1,21 +1,35 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useLocation, useNavigate} from "react-router-dom";
-import {Dropdown, DropdownToggle, DropdownMenu, DropdownItem} from "reactstrap";
+import {Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Button} from "reactstrap";
 import {Avatar} from "antd";
-import AuthContext from "../providers/AuthContext";
+// import AuthContext from "../providers/AuthContext";
+import axios from "axios";
+import jwtDecode from "jwt-decode";
 
 const Layout = (props) => {
-    const {user, setUser} = useContext(AuthContext);
-    const {firstname, logout, children} = props;
+    // const {user, setUser} = useContext(AuthContext);
+    const {children} = props;
     const [dropdownOpen, setDropdownOpen] = useState(false);
-
     const navigate = useNavigate();
-    const handleLogout = () => {
-        logout();
-        setUser({})
-        navigate("/login");
-    };
 
+    let decoded;
+    if (localStorage.getItem('token')) {
+        const token = localStorage.getItem('token')
+        decoded = jwtDecode(token)
+    }
+
+    function handleLogout() {
+        axios.post('https://server-mern-project.vercel.app/logout', {}, {withCredentials: true})
+            .then(() => {
+                localStorage.removeItem('token')
+                // setUser({})
+                navigate("/");
+            });
+    }
+
+    const handleLogin = () => {
+        navigate("/login");
+    }
     const toggle = () => {
         setDropdownOpen(!dropdownOpen);
     };
@@ -57,14 +71,14 @@ const Layout = (props) => {
                                     Welcome
                                 </a>
                             </li>
-                            <li className="nav-item">
-                                <a
-                                    className={`nav-link ${activeLink === "/home" ? "active" : ""}`}
-                                    href="/home"
-                                >
-                                    Home
-                                </a>
-                            </li>
+                            {/*<li className="nav-item">*/}
+                            {/*    <a*/}
+                            {/*        className={`nav-link ${activeLink === "/home" ? "active" : ""}`}*/}
+                            {/*        href="/home"*/}
+                            {/*    >*/}
+                            {/*        Home*/}
+                            {/*    </a>*/}
+                            {/*</li>*/}
                             <li className="nav-item">
                                 <a
                                     className={`nav-link ${activeLink === "/projects" ? "active" : ""}`}
@@ -112,26 +126,32 @@ const Layout = (props) => {
                             </li>
                         </ul>
                     </div>
+                    {!decoded &&
+                        <Button onClick={handleLogin} outline className="mr-2">
+                            Log in
+                        </Button>
+                    }
                     <Dropdown isOpen={dropdownOpen} toggle={toggle}>
                         <DropdownToggle tag="a" className="dropdown-toggle mr-4" data-testid="dropdown-toggle">
-                            <Avatar style={{backgroundColor: "lightblue"}}
-                                    className="mr-2" size={32} src={require('../images/smile.png')}/>
-                            {firstname}
+                            {decoded ? (
+                                <Avatar style={{backgroundColor: "lightblue"}}
+                                        className="mr-2" size={32}>{decoded?.avatar}</Avatar>
+                            ) : (
+                                <Avatar style={{backgroundColor: "lightblue"}}
+                                        className="mr-2" size={32} src={require('../images/smile.png')}/>
+                            )}
                             <span className="caret"></span>
+                            {decoded?.firstname}
                         </DropdownToggle>
                         <DropdownMenu>
-                            <DropdownItem>{user?.firstname}</DropdownItem>
-                            <DropdownItem>{user?.email}</DropdownItem>
-                            {/*<DropdownItem>{user?.id}</DropdownItem>*/}
                             <DropdownItem>
                                 <a href="https://dima-kuzhilin-portfolio.netlify.app/" target="_blank"
                                    rel="noopener noreferrer"
-                                   className="nav-link" data-testid="portfolio-link">Portfolio</a>
+                                   className="nav-link" data-testid="portfolio-link">My Portfolio</a>
                             </DropdownItem>
-                            <DropdownItem data-testid="profile-link">Profile</DropdownItem>
-                            <DropdownItem onClick={handleLogout} data-testid="logout-link">Logout</DropdownItem>
-                            <DropdownItem>
-                                <a className="nav-link" data-testid="login-link" href="/login">Login</a></DropdownItem>
+                            {decoded &&
+                                <DropdownItem onClick={handleLogout} data-testid="logout-link">Log out</DropdownItem>
+                            }
                         </DropdownMenu>
                     </Dropdown>
                 </div>

@@ -8,14 +8,14 @@ export const AuthProvider = ({children}) => {
     const url = "https://server-mern-project.vercel.app"
     const [user, setUser] = useState({});
 
-    useEffect(() => {
-        async function fetchData() {
-            const id = localStorage.getItem('id');
-            const response = await axios.get(`${url}/users/${id}`)
-            setUser(response.data)
-        }
-        fetchData();
-    }, [])
+    // useEffect(() => {
+    //     async function fetchData() {
+    //         const id = localStorage.getItem('id');
+    //         const response = await axios.get(`${url}/users/${id}`)
+    //         setUser(response.data)
+    //     }
+    //     fetchData();
+    // }, [])
 
     return (
         <AuthContext.Provider value={{user, setUser}}>

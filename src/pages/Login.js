@@ -5,7 +5,6 @@ import {useNavigate} from "react-router-dom";
 import './Welcome.css';
 import AuthContext from "../providers/AuthContext";
 
-
 const Login = () => {
     const {setUser} = useContext(AuthContext);
     const [email, setEmail] = useState('')
@@ -21,15 +20,11 @@ const Login = () => {
         axios.post('https://server-mern-project.vercel.app/login', data, {withCredentials: true})
             .then((response) => {
                 const token = response.data.accessToken;
-                const id = response.data.user.id;
                 localStorage.setItem('token', token);
-                localStorage.setItem('id', id);
-                // sessionStorage.setItem("logged", true);
-                setUser(response.data.user);
                 setEmail('')
                 setPassword('')
                 setLoginError(false)
-                navigate('/home')
+                navigate(-1)
             })
             .catch(() => {
                 console.log('error')
@@ -61,7 +56,7 @@ const Login = () => {
                             <Label>Password </Label>
                             <Input
                                 value={password} onChange={e => setPassword(e.target.value)}
-                                placeholder="******" type="password"
+                                placeholder="******" type="password" autocomplete="off"
                             />
                         </FormGroup>
                     </Col>

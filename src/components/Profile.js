@@ -43,7 +43,7 @@ const Profile = () => {
                  marginTop: 20,
                  gap: 30,
              }}>
-            <div className="card"
+            <div className="card h-50"
                  style={{
                      display: 'flex', flexDirection: 'column',
                      width: 904, height: 430,

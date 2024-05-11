@@ -58,7 +58,7 @@ const KanbanCard = (props) => {
     }, [card]);
 
     return (
-        <div style={{height: 450}} data-testid="edit-task-form">
+        <div style={{height: 450}} data-testid="edit-task-form" className="min-vh-100">
             <nav className="navbar navbar-expand-lg" style={{marginTop: 10}}>
                 <div className="container-fluid d-flex justify-content-between align-items-center">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0" style={{marginLeft: "100px"}}>

@@ -184,7 +184,7 @@ const AnimalsBoard = (props) => {
                     <p>Loading...</p>
                 </div>
             ) : (
-                <div>
+                <div className="min-vh-100">
                     <div className="container-fluid d-flex justify-content-between align-items-center">
                         <div style={{marginLeft: 20}}>
                             <FormControl>

@@ -21,8 +21,6 @@ import Loader from "./components/Loader";
 const AnimalsBoard = lazy(() => import('./animals/AnimalsBoard'))
 
 function App() {
-    const [email, setEmail] = useState('');
-    const [firstname, setFirstName] = useState('')
     const [cards, setCards] = useState([])
     const [card, setCard] = useState(null)
     const [loading, setLoading] = useState(true);
@@ -101,22 +99,12 @@ function App() {
 
     useEffect(() => {
         getCards()
-        // getAnimals()
     }, [])
-
-    function logout() {
-        axios.post('https://server-mern-project.vercel.app/logout', {}, {withCredentials: true})
-            .then(() => {
-                setEmail('')
-                localStorage.removeItem('id')
-                localStorage.removeItem('token')
-            });
-    }
 
     return (
         <BrowserRouter>
             <div className="App">
-                <Layout email={email} firstname={firstname} logout={logout}/>
+                <Layout/>
                 <Routes>
                     {/*<Route path="/" element={<Welcome/>}/>*/}
                     <Route path="/" element={<Header/>}/>
@@ -124,11 +112,7 @@ function App() {
                     <Route path="/profile" element={<Profile/>}/>
                     <Route path="/login" element={<Login/>}/>
                     <Route path="/registration" element={<Registration/>}/>
-                    <Route path="/home" element={<Home
-                        // animals={animals}
-                        firstname={firstname}
-                        logout={logout}
-                        email={email}/>}/>
+                    <Route path="/home" element={<Home/>}/>
                     <Route path='/tasks' element={<TasksList/>}/>
                     <Route path="/kanban" element={
                         <Suspense fallback={<div>
@@ -158,8 +142,6 @@ function App() {
                             <Loader/>
                         </div>}>
                             <AnimalsBoard
-                                // loading={loading}
-                                // animals={animals}
                                 getAnimalById={getAnimalById}
                             />
                         </Suspense>

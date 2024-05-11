@@ -1,11 +1,9 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Avatar} from 'antd';
 import {Galleria} from 'primereact/galleria';
 import axios from 'axios';
-import AuthContext from "../providers/AuthContext";
 
 const Home = () => {
-    const {user} = useContext(AuthContext);
     const [images, setImages] = useState(null);
     const responsiveOptions = [
         {
@@ -72,7 +70,6 @@ const Home = () => {
                         <div className="d-flex align-items-center mb-3">
                             <Avatar style={{backgroundColor: 'lightblue'}} className="mr-3" size={64}
                                     src={require('../images/sea-lion.jpg')}/>
-                            <h1 style={{display: 'block'}}>{user?.firstname}</h1>
                         </div>
                     </div>
                     <div style={{marginLeft: 20, marginRight: 20}}>
