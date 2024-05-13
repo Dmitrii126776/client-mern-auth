@@ -14,23 +14,39 @@ const Registration = () => {
     const user = useContext(UserContext)
 
     const registerUser = (e) => {
+        const avatar = firstname[0].toUpperCase();
         e.preventDefault()
-
-        const data = {email, password, firstname}
-        axios.post('https://server-mern-project.vercel.app/registration', data)
+        const data = {email, password, firstname, avatar}
+        axios.post('https://server-mern-project.vercel.app/registration', data, {withCredentials: true})
             .then((response) => {
+                console.log(response)
+                console.log(response.status)
                 console.log(response.data)
-                const token = response.data.token;
-                const id = response.data.id
+                // console.log(response.data.accessToken)
+                const token = response.data.accessToken;
                 localStorage.setItem('token', token);
-                localStorage.setItem('id', id);
-                user.setEmail(response.data.user.email)
-                user.setFirstName(response.data.user.firstname)
                 setEmail('')
                 setPassword('')
-                setFirstName('')
-                navigate('/home')
-            })
+                // setLoginError(false)
+                navigate(-2)
+
+                // console.log(response.data)
+                // const token = response.data.token;
+                // const id = response.data.id
+                // localStorage.setItem('token', token);
+                // localStorage.setItem('id', id);
+                // user.setEmail(response.data.user.email)
+                // user.setFirstName(response.data.user.firstname)
+                // setEmail('')
+                // setPassword('')
+                // setFirstName('')
+                // navigate('/home')
+            }).catch(() => {
+            console.log('error')
+            // setLoginError(true)
+            setEmail('')
+            setPassword('')
+        })
     }
 
 
