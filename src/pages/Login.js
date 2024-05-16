@@ -10,6 +10,7 @@ const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [loginError, setLoginError] = useState(false);
+    const [networkError, setNetworkError] = useState(false);
 
     const navigate = useNavigate();
 
@@ -26,11 +27,19 @@ const Login = () => {
                 setLoginError(false)
                 navigate(-1)
             })
-            .catch(() => {
-                console.log('error')
-                setLoginError(true)
-                setEmail('')
-                setPassword('')
+            .catch((error) => {
+                if (error.request) {
+                    console.log('login error', error.request)
+                    setLoginError(true)
+                    setEmail('')
+                    setPassword('')
+                } else {
+                    console.log('network error', error.message);
+                    setNetworkError(true)
+                    setEmail('')
+                    setPassword('')
+                }
+
             })
     }
 
@@ -77,7 +86,11 @@ const Login = () => {
                     </Col>
                 </Row>
                 {loginError && (
-                    <div className="login-error">Login Error! Wrong email or password!</div>
+                    // <div className="login-error">Login Error! Wrong email or password!</div>
+                    <div className="login-error">User with this email or password not found.</div>
+                )}
+                {networkError && (
+                    <div className="login-error"> Sorry, we are having some issues at the moment. Please try again later.</div>
                 )}
             </Form>
         </div>
