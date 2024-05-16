@@ -13,42 +13,46 @@ const Registration = () => {
     const navigate = useNavigate();
     const user = useContext(UserContext)
 
-    const registerUser = (e) => {
-        const avatar = firstname[0].toUpperCase();
-        e.preventDefault()
-        const data = {email, password, firstname, avatar}
-        axios.post('https://server-mern-project.vercel.app/registration', data, {withCredentials: true})
-            .then((response) => {
-                console.log(response)
-                console.log(response.status)
-                console.log(response.data)
-                // console.log(response.data.accessToken)
-                const token = response.data.accessToken;
-                localStorage.setItem('token', token);
-                setEmail('')
-                setPassword('')
-                // setLoginError(false)
-                navigate(-2)
 
-                // console.log(response.data)
-                // const token = response.data.token;
-                // const id = response.data.id
-                // localStorage.setItem('token', token);
-                // localStorage.setItem('id', id);
-                // user.setEmail(response.data.user.email)
-                // user.setFirstName(response.data.user.firstname)
-                // setEmail('')
-                // setPassword('')
-                // setFirstName('')
-                // navigate('/home')
-            }).catch(() => {
-            console.log('error')
-            // setLoginError(true)
-            setEmail('')
-            setPassword('')
-        })
+    // const registerUser = (e) => {
+    //     e.preventDefault()
+    //     const avatar = firstname[0].toUpperCase();
+    //
+    //     const data = {email, password, firstname, avatar}
+    //     axios.post('https://server-mern-project.vercel.app/registration', data, {withCredentials: true})
+    //         .then((response) => {
+    //             console.log(response.data)
+    //             const token = response.data.accessToken;
+    //             // const id = response.data.id
+    //             localStorage.setItem('token', token);
+    //             // localStorage.setItem('id', id);
+    //             // user.setEmail(response.data.user.email)
+    //             // user.setFirstName(response.data.user.firstname)
+    //             setEmail('')
+    //             setPassword('')
+    //             setFirstName('')
+    //             // navigate(-1)
+    //             navigate('/')
+    //         })
+    // }
+
+    async function registerUser(e) {
+        try {
+            e.preventDefault()
+            const avatar = firstname[0].toUpperCase();
+
+            const data = {email, password, firstname, avatar}
+            const response = await axios.post('https://server-mern-project.vercel.app/registration', data, {withCredentials: true})
+            console.log(response.data)
+            // const token = response.data.accessToken;
+            localStorage.setItem('token', response.data.accessToken);
+            // localStorage.setItem('token', response.data.token);
+            navigate('/')
+
+        } catch (e) {
+            console.log(e.response?.data?.message);
+        }
     }
-
 
     return (
         <div className="welcome-container welcome-background">

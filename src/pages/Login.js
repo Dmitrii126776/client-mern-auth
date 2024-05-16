@@ -46,7 +46,7 @@ const Login = () => {
                     // Something happened in setting up the request that triggered an Error
                     console.log('error-message', error.message);
                 }
-                console.log('error-config', error.config);
+                // console.log('error-config', error.config);
             })
     }
 

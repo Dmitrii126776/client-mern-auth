@@ -17,6 +17,7 @@ import Projects from "./components/Projects";
 import Profile from "./components/Profile";
 import Footer from "./components/Footer";
 import Loader from "./components/Loader";
+import RegistrationForm from "./pages/RegistrationForm";
 
 const AnimalsBoard = lazy(() => import('./animals/AnimalsBoard'))
 
@@ -111,7 +112,8 @@ function App() {
                     <Route path="/projects" element={<Projects/>}/>
                     <Route path="/profile" element={<Profile/>}/>
                     <Route path="/login" element={<Login/>}/>
-                    <Route path="/registration" element={<Registration/>}/>
+                    {/*<Route path="/registration" element={<Registration/>}/>*/}
+                    <Route path="/registration" element={<RegistrationForm/>}/>
                     <Route path="/home" element={<Home/>}/>
                     <Route path='/tasks' element={<TasksList/>}/>
                     <Route path="/kanban" element={
