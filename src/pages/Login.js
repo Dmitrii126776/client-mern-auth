@@ -28,18 +28,25 @@ const Login = () => {
                 navigate(-1)
             })
             .catch((error) => {
-                if (error.request) {
-                    console.log('login error', error.request)
+                if (error.response) {
+                    // The request was made and the server responded with a status code that falls out of the range of 2xx
+                    console.log('login error', error.response)
                     setLoginError(true)
                     setEmail('')
                     setPassword('')
-                } else {
-                    console.log('network error', error.message);
+                } else if (error.request) {
+                    // The request was made but no response was received
+                    // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+                    // http.ClientRequest in node.js
+                    console.log('network error', error.request);
                     setNetworkError(true)
                     setEmail('')
                     setPassword('')
+                } else {
+                    // Something happened in setting up the request that triggered an Error
+                    console.log('error-message', error.message);
                 }
-
+                console.log('error-config', error.config);
             })
     }
 
@@ -90,7 +97,8 @@ const Login = () => {
                     <div className="login-error">User with this email or password not found.</div>
                 )}
                 {networkError && (
-                    <div className="login-error"> Sorry, we are having some issues at the moment. Please try again later.</div>
+                    <div className="login-error"> Sorry, we are having some issues at the moment. Please try again
+                        later.</div>
                 )}
             </Form>
         </div>
