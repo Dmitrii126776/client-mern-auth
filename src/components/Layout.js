@@ -128,7 +128,7 @@ const Layout = (props) => {
                     </div>
                     {!decoded &&
                         <Button onClick={handleLogin} outline className="mr-2">
-                            Log in
+                            Sign in
                         </Button>
                     }
                     <Dropdown isOpen={dropdownOpen} toggle={toggle}>
