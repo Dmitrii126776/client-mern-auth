@@ -13,11 +13,18 @@ const TasksList = () => {
     let uncompleted = tasks.filter(el => el.completed.status).length
     const getTasks = () => {
         $api.get(`https://server-mern-project.vercel.app/tasks`)
-            .then(res => {
-                setTasks(res.data)
+            .then((response) => {
+                setTasks(response.data)
                 setLoading(false)
-            }).catch(err => {
-            console.log(err)
+            }).catch((error) => {
+            if (error.response) {
+                console.log('get tasks error', error.response)
+                setLoading(true)
+            } else if (error.request) {
+                console.log('network error', error.request);
+            } else {
+                console.log('error-message', error.message);
+            }
         })
     }
     const createTask = (newTask) => {
