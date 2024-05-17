@@ -21,7 +21,13 @@ const AnimalsBoard = (props) => {
     const [loading, setLoading] = useState(true);
 
     const getAnimals = () => {
-        axios.get(`https://server-mern-project.vercel.app/animals`)
+        axios.get(`https://server-mern-project.vercel.app/animals`,
+            {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`,
+                    "Content-Type": "application/json"
+                }
+            })
             .then(res => {
                 // console.log(res.data)
                 setAnimals(res.data)
