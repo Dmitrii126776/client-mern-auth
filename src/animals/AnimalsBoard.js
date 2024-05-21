@@ -173,11 +173,6 @@ const AnimalsBoard = (props) => {
 
     return (
         <div className="container-fluid">
-            <div>
-                <h1>Find Your Animal</h1>
-                <hr/>
-            </div>
-
             {loading ? (
                 <div>
                     <Loader/>
@@ -185,6 +180,10 @@ const AnimalsBoard = (props) => {
                 </div>
             ) : (
                 <div className="min-vh-100">
+                    <div>
+                        <h1>Find Your Animal</h1>
+                        <hr/>
+                    </div>
                     <div className="container-fluid d-flex justify-content-between align-items-center">
                         <div style={{marginLeft: 20}}>
                             <FormControl>

@@ -47,7 +47,7 @@ const LoginForm = () => {
         axios.post('https://server-mern-project.vercel.app/login', user, {withCredentials: true})
             .then((response) => {
                 localStorage.setItem('token', response.data.accessToken);
-                navigate(-1)
+                navigate('/')
             }).catch((error) => {
             if (error.response) {
                 console.log('login error', error.response)

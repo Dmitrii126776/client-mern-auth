@@ -49,7 +49,7 @@ const RegistrationForm = () => {
                 console.log(response.data)
                 localStorage.setItem('token', response.data.accessToken);
                 setRegistrationError(false)
-                navigate(-2)
+                navigate('/')
             }).catch((error) => {
             if (error.response) {
                 console.log('registration error', error.response)
