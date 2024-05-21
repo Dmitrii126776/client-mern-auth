@@ -11,7 +11,7 @@ import Radio from "@mui/material/Radio";
 import Loader from "../components/Loader";
 import {LazyLoadImage} from "react-lazy-load-image-component";
 import 'react-lazy-load-image-component/src/effects/blur.css';
-import axios from "axios";
+import $api from "../http";
 
 
 const AnimalsBoard = (props) => {
@@ -21,13 +21,7 @@ const AnimalsBoard = (props) => {
     const [loading, setLoading] = useState(true);
 
     const getAnimals = () => {
-        axios.get(`https://server-mern-project.vercel.app/animals`,
-            {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem('token')}`,
-                    "Content-Type": "application/json"
-                }
-            })
+        $api.get('/animals')
             .then(res => {
                 // console.log(res.data)
                 setAnimals(res.data)

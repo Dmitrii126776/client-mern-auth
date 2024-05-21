@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Link, useNavigate} from "react-router-dom";
-import axios from "axios";
+import $api from "../http";
 
 const KanbanCard = (props) => {
     const {card, updateCard} = props;
@@ -28,7 +28,7 @@ const KanbanCard = (props) => {
 
     useEffect(() => {
         const getUsers = () => {
-            axios.get(`https://server-mern-project.vercel.app/users`)
+            $api.get('/users')
                 .then(res => {
                     //  console.log(res.data)
                     setUsers(res.data)

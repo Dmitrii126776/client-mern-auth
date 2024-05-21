@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Task from "./Task";
 import CreateTaskModal from "./CreateTaskModel";
-import axios from "axios";
 import $api from "../http";
 import Loader from "../components/Loader";
 import LoginAlert from "../components/LoginAlert";
@@ -15,7 +14,7 @@ const TasksList = () => {
     let completed = tasks.filter(el => !el.completed.status).length
     let uncompleted = tasks.filter(el => el.completed.status).length
     const getTasks = () => {
-        $api.get(`https://server-mern-project.vercel.app/tasks`)
+        $api.get('/tasks')
             .then((response) => {
                 setTasks(response.data)
                 setLoading(false)
@@ -33,7 +32,7 @@ const TasksList = () => {
         })
     }
     const createTask = (newTask) => {
-        axios.post(`https://server-mern-project.vercel.app/tasks`, newTask)
+        $api.post('/tasks', newTask)
             .then(res => {
                 getTasks()
             }).catch(err => {
@@ -41,7 +40,7 @@ const TasksList = () => {
         })
     }
     const updateTask = (id, updatedTask) => {
-        axios.patch(`https://server-mern-project.vercel.app/tasks/${id}`, updatedTask)
+        $api.patch(`/tasks/${id}`, updatedTask)
             .then(res => {
                 getTasks()
             }).catch(err => {
@@ -49,7 +48,7 @@ const TasksList = () => {
         })
     }
     const deleteTask = (id) => {
-        axios.delete(`https://server-mern-project.vercel.app/tasks/${id}`)
+        $api.delete(`/tasks/${id}`)
             .then(res => {
                 getTasks()
             }).catch(err => {

@@ -2,8 +2,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import React, {lazy, Suspense, useEffect, useState} from 'react';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
-import Login from './pages/Login';
-import Registration from "./pages/Registration";
 import axios from "axios";
 import Home from "./pages/Home";
 import TasksList from "./tasks/TasksList";
@@ -19,6 +17,7 @@ import Footer from "./components/Footer";
 import Loader from "./components/Loader";
 import RegistrationForm from "./pages/RegistrationForm";
 import LoginForm from "./pages/LoginForm";
+import $api from "./http";
 
 const AnimalsBoard = lazy(() => import('./animals/AnimalsBoard'))
 
@@ -27,15 +26,17 @@ function App() {
     const [card, setCard] = useState(null)
     const [loading, setLoading] = useState(true);
 
-    const url = "https://server-mern-project.vercel.app"
-
     const getCards = () => {
-        axios.get(`https://server-mern-project.vercel.app/cards`)
-            .then(res => {
-                //  console.log(res.data)
-                setCards(res.data)
-                setLoading(false)
-            }).catch(err => {
+        axios.get(`https://server-mern-project.vercel.app/cards`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+                "Content-Type": "application/json"
+            }
+        }).then(res => {
+            //  console.log(res.data)
+            setCards(res.data)
+            setLoading(false)
+        }).catch(err => {
             console.log(err)
         })
     }
@@ -43,7 +44,7 @@ function App() {
     const [animal, setAnimal] = useState({});
 
     const getAnimalById = (id) => {
-        axios.get(`${url}/animals/${id}`)
+        $api.get(`/animals/${id}`)
             .then(res => {
                 // console.log(res.data)
                 setAnimal(res.data)
@@ -53,7 +54,7 @@ function App() {
     }
 
     const getCardById = (id) => {
-        axios.get(`${url}/cards/${id}`)
+        $api.get(`/cards/${id}`)
             .then(res => {
                 //console.log(res.data)
                 setCard(res.data)
@@ -66,7 +67,7 @@ function App() {
 
     const createNewCard = (newCard) => {
         // console.log(newCard)
-        axios.post(`https://server-mern-project.vercel.app/cards`, newCard)
+        $api.post(`/cards`, newCard)
             .then(res => {
                 getCards()
             }).catch(err => {
@@ -75,7 +76,7 @@ function App() {
     }
 
     const updateCard = (id, card) => {
-        axios.patch(`https://server-mern-project.vercel.app/cards/${id}`, card)
+        $api.patch(`/cards/${id}`, card)
             .then(res => {
                 getCards()
             }).catch(err => {
@@ -84,7 +85,7 @@ function App() {
     }
 
     const deleteCard = (id) => {
-        axios.delete(`https://server-mern-project.vercel.app/cards/${id}`)
+        $api.delete(`/cards/${id}`)
             .then((res) => {
                 getCards()
             }).catch((err) => {
@@ -108,13 +109,10 @@ function App() {
             <div className="App">
                 <Layout/>
                 <Routes>
-                    {/*<Route path="/" element={<Welcome/>}/>*/}
                     <Route path="/" element={<Header/>}/>
                     <Route path="/projects" element={<Projects/>}/>
                     <Route path="/profile" element={<Profile/>}/>
-                    {/*<Route path="/login" element={<Login/>}/>*/}
                     <Route path="/login" element={<LoginForm/>}/>
-                    {/*<Route path="/registration" element={<Registration/>}/>*/}
                     <Route path="/registration" element={<RegistrationForm/>}/>
                     <Route path="/home" element={<Home/>}/>
                     <Route path='/tasks' element={<TasksList/>}/>

@@ -42,7 +42,7 @@ const LoginForm = () => {
     })
 
     const onSubmit = (data) => {
-        console.log(data)
+        // console.log(data)
         const user = {email: data.email, password: data.password}
         axios.post('https://server-mern-project.vercel.app/login', user, {withCredentials: true})
             .then((response) => {
@@ -50,7 +50,7 @@ const LoginForm = () => {
                 navigate(-1)
             }).catch((error) => {
             if (error.response) {
-                console.log('registration error', error.response)
+                console.log('login error', error.response)
                 setLoginError(true)
             } else if (error.request) {
                 console.log('network error', error.request);

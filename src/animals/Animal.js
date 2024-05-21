@@ -1,7 +1,7 @@
 import {useParams} from 'react-router-dom';
 import {useEffect, useState} from "react";
-import axios from "axios";
 import {Galleria} from 'primereact/galleria';
+import $api from "../http";
 
 const Animal = () => {
     const {id} = useParams();
@@ -33,7 +33,7 @@ const Animal = () => {
 
 
     useEffect(() => {
-        axios.get(`https://server-mern-project.vercel.app/animals/${id}`)
+        $api.get(`/animals/${id}`)
             .then(res => {
                 console.log(res.data);
                 console.log(res.data.photos);
@@ -48,17 +48,17 @@ const Animal = () => {
     return (
         <div style={{display: 'flex', flexWrap: 'wrap', margin: 10}}>
             {/*<div style={{flex: 1}}>*/}
-                <div className="card" style={{maxWidth: '600px'}}>
-                    <Galleria
-                        value={images}
-                        responsiveOptions={responsiveOptions}
-                        numVisible={4}
-                        item={itemTemplate}
-                        thumbnail={thumbnailTemplate}
-                        style={{maxWidth: '600px'}}
-                        circular={true}
-                    />
-                </div>
+            <div className="card" style={{maxWidth: '600px'}}>
+                <Galleria
+                    value={images}
+                    responsiveOptions={responsiveOptions}
+                    numVisible={4}
+                    item={itemTemplate}
+                    thumbnail={thumbnailTemplate}
+                    style={{maxWidth: '600px'}}
+                    circular={true}
+                />
+            </div>
             {/*</div>*/}
             <div style={{flex: 1, marginLeft: '20px'}}>
                 <div style={{display: 'flex', flexDirection: 'column'}}>

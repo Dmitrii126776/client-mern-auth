@@ -1,7 +1,5 @@
 import React from 'react';
 import {Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
-import {Link} from "react-router-dom";
-import CreateModal from "./CreateModal";
 
 function UpdateKanbanTaskModal(props) {
     const {task, modal, toggle} = props

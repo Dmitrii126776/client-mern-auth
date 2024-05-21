@@ -1,11 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
-import axios from "axios";
+import $api from "../http";
 
 
 function CreateModal(props) {
     const {priorities, createNewCard} = props
-    const url = "https://server-mern-project.vercel.app"
 
     const [statuses, setStatuses] = useState([])
     const arrayStatuses = statuses.map(el => el.title)
@@ -21,7 +20,7 @@ function CreateModal(props) {
     const [statusInput, setStatusInput] = useState(arrayStatuses[0])
 
     const getTaskNumber = () => {
-        axios.get(`${url}/numbers`)
+        $api.get('/numbers')
             .then(res => {
                 setTaskNumber(res.data[0].numberTask)
                 setNumber(res.data[0]._id)
@@ -32,7 +31,7 @@ function CreateModal(props) {
     }
 
     const updateTaskNumber = (id, nextTaskNumber) => {
-        axios.patch(`${url}/numbers/${id}`, nextTaskNumber)
+        $api.patch(`/numbers/${id}`, nextTaskNumber)
             .then(res => {
                 getTaskNumber()
             }).catch(err => {
@@ -41,7 +40,7 @@ function CreateModal(props) {
     }
 
     const getStatuses = () => {
-        axios.get(`${url}/statuses`)
+        $api.get('/statuses')
             .then(res => {
                 //  console.log(res.data)
                 setStatuses(res.data)
@@ -51,7 +50,7 @@ function CreateModal(props) {
     }
 
     const getUsers = () => {
-        axios.get(`${url}/users`)
+        $api.get('/users')
             .then(res => {
                 //  console.log(res.data)
                 setUsers(res.data)

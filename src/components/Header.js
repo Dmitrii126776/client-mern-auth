@@ -1,5 +1,6 @@
-import React, {useEffect, useRef} from 'react';
-import retro from '../images/retrosupply.jpg';
+import React, {useEffect, useRef, useState} from 'react';
+// import retro from '../images/retrosupply.jpg';
+import retro from '../images/retrosupply-1500x1000-282KB.jpg';
 
 const resumePDF = require('../document/Dmitrii_Kuzhilin_Resume_Updated.pdf');
 const Header = () => {
