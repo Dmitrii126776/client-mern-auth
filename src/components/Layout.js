@@ -127,21 +127,23 @@ const Layout = (props) => {
                         </ul>
                     </div>
                     {!decoded &&
-                        <Button onClick={handleLogin} outline className="mr-2">
+                        <Button onClick={handleLogin} outline className="mr-2" data-testid="nav-button-sign-in">
                             Sign in
                         </Button>
                     }
                     <Dropdown isOpen={dropdownOpen} toggle={toggle}>
                         <DropdownToggle tag="a" className="dropdown-toggle mr-4" data-testid="dropdown-toggle">
                             {decoded ? (
-                                <Avatar style={{backgroundColor: "lightblue"}}
+                                <Avatar style={{backgroundColor: "lightblue"}} data-testid="nav-user-avatar"
                                         className="mr-2" size={32}>{decoded?.avatar}</Avatar>
                             ) : (
-                                <Avatar style={{backgroundColor: "lightblue"}}
+                                <Avatar style={{backgroundColor: "lightblue"}} data-testid="nav-user-avatar"
                                         className="mr-2" size={32} src={require('../images/smile.png')}/>
                             )}
                             <span className="caret"></span>
-                            {decoded?.firstname}
+                            <span data-testid="nav-user-name">
+                                {decoded?.firstname}
+                            </span>
                         </DropdownToggle>
                         <DropdownMenu>
                             <DropdownItem>

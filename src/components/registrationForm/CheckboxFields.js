@@ -14,7 +14,7 @@ const CheckboxFields = ({name, control, errors}) => {
                                       label="I Agree to ClientApp Terms and Privacy Policy"/>
                 )}
             />
-            {errors[name] ? <ErrorMessage message={errors[name].message}/> : null}
+            {errors[name] ? <ErrorMessage name={name} message={errors[name].message}/> : null}
         </>
     );
 };

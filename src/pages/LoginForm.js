@@ -70,7 +70,8 @@ const LoginForm = () => {
                     </Avatar>
                     <Typography component='h1' fontSize='24px'
                                 sx={{mb: 2}}>Sign in</Typography>
-                    <Box noValidate component='form' onSubmit={handleSubmit(onSubmit)} sx={{width: '100%'}}>
+                    <Box noValidate component='form' onSubmit={handleSubmit(onSubmit)} sx={{width: '100%'}}
+                         data-testid="sign-in-form">
 
                         <TextFields errors={errors} control={control} name='email' label='Email'/>
 
@@ -102,25 +103,26 @@ const LoginForm = () => {
                                             </>
                                         )}
                             />
-                            {errors["password"] ? <ErrorMessage message={errors["password"].message}/> : null}
+                            {errors["password"] ? <ErrorMessage  name="password" message={errors["password"].message}/> : null}
                         </FormControl>
                         {loginError && (
-                            <Typography color='error.main' variant='h2' fontSize='16px'>
+                            <Typography color='error.main' variant='h2' fontSize='16px' data-testid="sign-in-error">
                                 Sorry, wrong email or password. Please try again.
                             </Typography>
                         )}
                         {networkError && (
-                            <Typography color='error.main' variant='h2' fontSize='16px'>
+                            <Typography color='error.main' variant='h2' fontSize='16px' data-testid="sign-in-error">
                                 Sorry, we are having some issues at the moment. Please try again later.
                             </Typography>
                         )}
                         <Button type="submit" fullWidth variant="contained"
+                                data-testid="sign-in-button"
                                 sx={{mt: 3, mb: 3}}>Sign in</Button>
                         <Divider>
                             <Chip label="Don't have an account?" size="medium"/>
                         </Divider>
                         <Button type="button" onClick={moveToRegistration} fullWidth variant="contained"
-                                color="secondary"
+                                color="secondary" data-testid="sign-up-button"
                                 sx={{mt: 3, mb: 3}}>Sign up</Button>
                     </Box>
                 </Box>

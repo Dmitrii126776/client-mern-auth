@@ -17,7 +17,7 @@ const TextFields = (props) => {
                                required label={label} variant="filled"/>
                 )}
             />
-            {errors[name] ? <ErrorMessage message={errors[name].message}/> : null}
+            {errors[name] ? <ErrorMessage name={name} message={errors[name].message}/> : null}
         </FormControl>
     );
 };

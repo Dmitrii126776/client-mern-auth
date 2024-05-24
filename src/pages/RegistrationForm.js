@@ -75,23 +75,24 @@ const RegistrationForm = () => {
                     {/*<h4>Sign up</h4>*/}
                     <Typography component='h1' fontSize='24px'
                                 sx={{mb: 2}}>Sign up</Typography>
-                    <Box noValidate component='form' onSubmit={handleSubmit(onSubmit)} sx={{width: '100%'}}>
+                    <Box noValidate component='form' onSubmit={handleSubmit(onSubmit)} sx={{width: '100%'}}
+                         data-testid="sign-up-form">
                         <TextFields errors={errors} control={control} name='fullName' label='Full Name'/>
                         <TextFields errors={errors} control={control} name='email' label='Email'/>
                         <TextFields errors={errors} control={control} name='password' label='Password'/>
                         <TextFields errors={errors} control={control} name='confirmPassword' label='Confirm Password'/>
                         <CheckboxFields errors={errors} control={control} name='privacy'/>
                         {registrationError && (
-                            <Typography color='error.main' variant='h2' fontSize='18px'>
+                            <Typography color='error.main' variant='h2' fontSize='18px' data-testid="sign-up-error">
                                 Sorry, user with this email already exists!
                             </Typography>
                         )}
                         {networkError && (
-                            <Typography color='error.main' variant='h2' fontSize='16px'>
+                            <Typography color='error.main' variant='h2' fontSize='16px' data-testid="sign-up-error">
                                 Sorry, we are having some issues at the moment. Please try again later.
                             </Typography>
                         )}
-                        <Button type="submit" fullWidth variant="contained"
+                        <Button type="submit" fullWidth variant="contained" data-testid="sign-up-button"
                                 sx={{mt: 3, mb: 3}}>Sign up</Button>
                     </Box>
                 </Box>
