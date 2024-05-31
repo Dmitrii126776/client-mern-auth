@@ -4,6 +4,7 @@ import CreateTaskModal from "./CreateTaskModel";
 import $api from "../http";
 import Loader from "../components/Loader";
 import LoginAlert from "../components/LoginAlert";
+import LoginAlertMUI from "../components/LoginAlertMUI";
 
 const TasksList = () => {
     const [tasks, setTasks] = useState([])
@@ -63,8 +64,9 @@ const TasksList = () => {
     return (
         <>
             {loginAlert ? (
-                <div>
-                    <LoginAlert/>
+                <div className="min-vh-100 mt-5">
+                    <LoginAlertMUI/>
+                    {/*<LoginAlert/>*/}
                 </div>
             ) : (
                 <div className="container-fluid min-vh-100" data-testid="task-container">
@@ -74,7 +76,6 @@ const TasksList = () => {
                             <p>Loading...</p>
                         </div>
                     ) : (
-
                         <div>
                             <div style={{margin: 15}}
                                  className="container-fluid d-flex justify-content-between align-items-center">
@@ -84,7 +85,6 @@ const TasksList = () => {
                                     <CreateTaskModal createTask={createTask}/>
                                 </div>
                             </div>
-
                             <ul className='list-group' style={{listStyleType: 'none'}}
                                 data-testid="uncompleted-tasks-list">
                                 {tasks.filter(el => !el.completed.status).map((el) => (<Task
