@@ -71,14 +71,15 @@ const Layout = (props) => {
                                     Welcome
                                 </a>
                             </li>
-                            {/*<li className="nav-item">*/}
-                            {/*    <a*/}
-                            {/*        className={`nav-link ${activeLink === "/home" ? "active" : ""}`}*/}
-                            {/*        href="/home"*/}
-                            {/*    >*/}
-                            {/*        Home*/}
-                            {/*    </a>*/}
-                            {/*</li>*/}
+                            <li className="nav-item">
+                                <a
+                                    className={`nav-link ${activeLink === "/gallery" ? "active" : ""}`}
+                                    href="/gallery"
+                                    data-testid="nav-link-gallery"
+                                >
+                                    Gallery
+                                </a>
+                            </li>
                             <li className="nav-item">
                                 <a
                                     className={`nav-link ${activeLink === "/projects" ? "active" : ""}`}

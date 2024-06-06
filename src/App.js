@@ -18,6 +18,7 @@ import Loader from "./components/Loader";
 import RegistrationForm from "./pages/RegistrationForm";
 import LoginForm from "./pages/LoginForm";
 import $api from "./http";
+import AnimalsGallery from "./animals/AnimalsGallery";
 
 const AnimalsBoard = lazy(() => import('./animals/AnimalsBoard'))
 
@@ -114,7 +115,8 @@ function App() {
                     <Route path="/profile" element={<Profile/>}/>
                     <Route path="/login" element={<LoginForm/>}/>
                     <Route path="/registration" element={<RegistrationForm/>}/>
-                    <Route path="/home" element={<Home/>}/>
+                    {/*<Route path="/home" element={<Home/>}/>*/}
+                    <Route path="/gallery" element={<AnimalsGallery/>}/>
                     <Route path='/tasks' element={<TasksList/>}/>
                     <Route path="/kanban" element={
                         <Suspense fallback={<div>
