@@ -9,19 +9,21 @@ import AnimalsDialogGallery from "./AnimalsDialogGallery";
 import Loader from "../components/Loader";
 import {LazyLoadImage} from "react-lazy-load-image-component";
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import AnimalDialog from "./AnimalDialog";
 
 export default function AnimalsGallery() {
     const [loading, setLoading] = useState(true);
     const [animals, setAnimals] = useState([]);
-    const [images, setImages] = useState([]);
+
+    const [animal, setAnimal] = useState(null);
+    const [open, setOpen] = React.useState(false);
+    const [scroll, setScroll] = React.useState('paper');
+
 
     const getAnimals = () => {
         $api.get('/animals')
             .then(res => {
                 setAnimals(res.data)
-                const animals = res.data
-                const photos = animals.map(animal => ({src: animal.mainPhoto, alt: animal.name}));
-                setImages(photos);
                 setLoading(false);
             }).catch(err => {
             console.log(err)
@@ -31,7 +33,11 @@ export default function AnimalsGallery() {
         getAnimals()
     }, [])
 
-    console.log(animals);
+    const moveToAnimal = (id) => {
+        const selectedAnimal = animals.find(el => el._id === id);
+        setAnimal(selectedAnimal || null);
+        setOpen(true);
+    };
 
     const theme = useTheme();
     const matchesXs = useMediaQuery(theme.breakpoints.up('xs'));
@@ -59,8 +65,6 @@ export default function AnimalsGallery() {
                     <p>Loading...</p>
                 </div>
             ) : (
-
-
                 <div className="min-vh-100">
                     <div
                         style={{
@@ -72,15 +76,10 @@ export default function AnimalsGallery() {
                             marginBottom: "20px",
                         }}
                     >
-                        {/*<Button*/}
-                        {/*    variant="outlined"*/}
-                        {/*    sx={{*/}
-                        {/*        marginLeft: '30px',*/}
-                        {/*    }}*/}
-                        {/*>*/}
-                        {/*    see dialog photos*/}
-                        {/*</Button>*/}
-                        <AnimalsDialogGallery animals={animals} images={images}/>
+                        <AnimalsDialogGallery animals={animals}/>
+                        {animal && (
+                            <AnimalDialog animal={animal} open={open} scroll={scroll} setOpen={setOpen}/>
+                        )}
                         <h1 style={{
                             margin: 0,
                             marginRight: isSmallScreen ? '30px' : 'auto',
@@ -97,6 +96,7 @@ export default function AnimalsGallery() {
                             {animals.map((animal, index) => (
                                 <ImageListItem key={index}
                                     // data-testid={`images-item-${index}`}
+                                               onClick={() => moveToAnimal(animal._id)}
                                                data-testid="images-item"
                                                sx={{
                                                    m: 0.5, maxWidth: 290, maxHeight: 217, cursor: 'pointer',

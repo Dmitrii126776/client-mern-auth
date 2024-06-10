@@ -1,40 +1,50 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import {useTheme} from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import {useState} from "react";
+import AnimalDialog from "./AnimalDialog";
 
 export default function AnimalsDialogGallery(props) {
-    const {animals, images} = props;
+    const {animals} = props;
+    const [openDialog, setOpenDialog] = React.useState(false);
+    const [scrollDialog, setScrollDialog] = React.useState('paper');
+
+    const [animal, setAnimal] = useState(null);
     const [open, setOpen] = React.useState(false);
     const [scroll, setScroll] = React.useState('paper');
 
-    const handleClickOpen = (scrollType) => () => {
+    const moveToAnimal = (id) => {
+        const selectedAnimal = animals.find(el => el._id === id);
+        setAnimal(selectedAnimal || null);
         setOpen(true);
-        setScroll(scrollType);
+    };
+
+    const handleClickOpen = (scrollType) => () => {
+        setOpenDialog(true);
+        setScrollDialog(scrollType);
     };
 
     const handleClose = () => {
-        setOpen(false);
+        setOpenDialog(false);
     };
 
     const descriptionElementRef = React.useRef(null);
     React.useEffect(() => {
-        if (open) {
+        if (openDialog) {
             const {current: descriptionElement} = descriptionElementRef;
             if (descriptionElement !== null) {
                 descriptionElement.focus();
             }
         }
-    }, [open]);
+    }, [openDialog]);
 
     const theme = useTheme();
     const matchesXs = useMediaQuery(theme.breakpoints.up('xs'));
@@ -53,15 +63,18 @@ export default function AnimalsDialogGallery(props) {
 
 
     return (
-        <React.Fragment>
+        <>
+            {animal && (
+                <AnimalDialog animal={animal} open={open} scroll={scroll} setOpen={setOpen}/>
+            )}
             <Button onClick={handleClickOpen('paper')}
                     data-testid="button-see-dialog"
                     sx={{marginLeft: isSmallScreen ? '10px' : '30px'}}
                     variant="outlined">see dialog photos
             </Button>
-            <Dialog open={open}
+            <Dialog open={openDialog}
                     onClose={handleClose}
-                    scroll={scroll}
+                    scroll={scrollDialog}
                     aria-labelledby="scroll-dialog-title"
                     aria-describedby="scroll-dialog-description"
                     sx={{
@@ -85,16 +98,15 @@ export default function AnimalsDialogGallery(props) {
                 >
                     <CloseIcon/>
                 </IconButton>
-                <DialogContent dividers={scroll === 'paper'}>
+                <DialogContent dividers={scrollDialog === 'paper'}>
                     <DialogContentText id="scroll-dialog-description" ref={descriptionElementRef} tabIndex={-1}>
                         <div style={{display: 'flex', justifyContent: 'center', width: '100%', marginTop: "25px"}}>
-                            {/*<div style={{display: 'flex', justifyContent: 'center', width: '90%', margin: '0 auto'}}>*/}
                             <ImageList spacing={8} cols={cols}
                                        data-testid="dialog-images-list"
                                        sx={{m: 1, width: '100%', maxWidth: "1440px"}}>
                                 {animals.map((animal, index) => (
                                     <ImageListItem key={index}
-                                        // data-testid={`dialog-images-item-${index}`}
+                                                   onClick={() => moveToAnimal(animal._id)}
                                                    data-testid="dialog-images-item"
                                                    sx={{
                                                        m: 0.5,
@@ -117,7 +129,6 @@ export default function AnimalsDialogGallery(props) {
                                                 borderRadius: '6px',
                                                 objectFit: 'cover',
                                                 boxShadow: '2px 2px 2px #888888',
-                                                // boxShadow: 3
                                             }}
                                         />
                                     </ImageListItem>
@@ -126,11 +137,7 @@ export default function AnimalsDialogGallery(props) {
                         </div>
                     </DialogContentText>
                 </DialogContent>
-                {/*<DialogActions>*/}
-                {/*    <Button onClick={handleClose}>Cancel</Button>*/}
-                {/*    <Button onClick={handleClose}>Subscribe</Button>*/}
-                {/*</DialogActions>*/}
             </Dialog>
-        </React.Fragment>
+        </>
     );
 }

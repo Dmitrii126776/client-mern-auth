@@ -35,8 +35,8 @@ const Animal = () => {
     useEffect(() => {
         $api.get(`/animals/${id}`)
             .then(res => {
-                console.log(res.data);
-                console.log(res.data.photos);
+                // console.log(res.data);
+                // console.log(res.data.photos);
                 setAnimal(res.data);
                 setImages(res.data.photos.map(photo => ({src: photo, alt: animal.name})));
             })
@@ -76,5 +76,5 @@ const Animal = () => {
         </div>
     );
 };
-export default Animal;
 
+export default Animal;

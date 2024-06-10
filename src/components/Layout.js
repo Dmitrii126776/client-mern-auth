@@ -73,15 +73,6 @@ const Layout = (props) => {
                             </li>
                             <li className="nav-item">
                                 <a
-                                    className={`nav-link ${activeLink === "/gallery" ? "active" : ""}`}
-                                    href="/gallery"
-                                    data-testid="nav-link-gallery"
-                                >
-                                    Gallery
-                                </a>
-                            </li>
-                            <li className="nav-item">
-                                <a
                                     className={`nav-link ${activeLink === "/projects" ? "active" : ""}`}
                                     href="/projects"
                                     data-testid="nav-link-projects"
@@ -96,6 +87,15 @@ const Layout = (props) => {
                                     data-testid="nav-link-animals"
                                 >
                                     Animals
+                                </a>
+                            </li>
+                            <li className="nav-item">
+                                <a
+                                    className={`nav-link ${activeLink === "/gallery" ? "active" : ""}`}
+                                    href="/gallery"
+                                    data-testid="nav-link-gallery"
+                                >
+                                    Gallery
                                 </a>
                             </li>
                             <li className="nav-item">
