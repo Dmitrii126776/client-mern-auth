@@ -7,7 +7,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const Profile = () => {
 
-    const cities = ["New York", "Dallas", "San Francisco"]
+    const cities = ["New York", "Sarasota", "San Francisco"]
     const [weatherData, setWeatherData] = useState([])
     const [loading, setLoading] = useState(true);
 
