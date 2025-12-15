@@ -70,7 +70,7 @@ const Profile = () => {
                 <div className="card-body" style={{textAlign: "left", backgroundColor: "seashell"}}>
                     <h5 style={{fontSize: 25, fontWeight: 500}}>Dmitrii Kuzhilin</h5>
                     {/*<h6>React Front-end Developer</h6>*/}
-                    <h6>New York, NY, United States</h6>
+                    <h6>Lakewood Ranch, FL, United States</h6>
                     <p className="card-text">
                         Software Engineer in Test with extensive experience in Agile development,
                         skilled in Selenium, Cypress, and Playwright.
