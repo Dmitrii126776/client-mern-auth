@@ -79,8 +79,6 @@ const Profile = () => {
                         I am committed to mentorship and elevation of teams,
                         coupled with a passion for coding in JavaScript, Java, and TypeScript.
                     </p>
-                        {/*functional interfaces that people will interact with and enjoy using.*/}
-                        {/*I am inspired by the idea of creating beautiful,*/}
                 </div>
             </div>
             <div className="cards-right-container"
