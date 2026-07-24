@@ -11,7 +11,7 @@ const CountDownTime = () => {
     const [isCountdownReady, setIsCountdownReady] = useState(false);
 
     useEffect(() => {
-        const endDate = new Date('2024-10-01T00:00:00-04:00').getTime();
+        const endDate = new Date('2026-10-01T00:00:00-04:00').getTime();
 
         const updateCountdown = () => {
             const now = new Date().getTime();
